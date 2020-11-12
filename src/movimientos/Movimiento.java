@@ -9,6 +9,20 @@ public abstract class Movimiento
 	protected int direccion;
 	
 	// Constructor
+	/**
+	 * Inicia el movimiento de una entidad hacia direcciones negativas.
+	 * @param e Entidad que se quiere mover en el mapa
+	 */
+	public Movimiento (Entidad e)
+	{
+		entidad = e;
+		direccion = -1;
+	}
+	/**
+	 * Inicia el movimiento de una entidad en una direccion dada por parametro.
+	 * @param e Entidad que se quiere mover en el mapa
+	 * @param d Direccion que toma la entidad
+	 */
 	public Movimiento (Entidad e, int d)
 	{
 		entidad = e;
@@ -23,7 +37,7 @@ public abstract class Movimiento
 	
 	public void setDireccion(int d)
 	{
-		this.direccion = d;
+		direccion = d;
 	}
 	
 	public abstract void mover();
