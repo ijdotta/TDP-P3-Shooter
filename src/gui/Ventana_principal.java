@@ -16,7 +16,7 @@ import java.awt.event.KeyListener;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-public class ventana_principal extends JFrame{
+public class Ventana_principal extends JFrame {
 
 	private JPanel escenario;
 	private JLabel lblNewLabel;
@@ -28,7 +28,7 @@ public class ventana_principal extends JFrame{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ventana_principal frame = new ventana_principal();
+					Ventana_principal frame = new Ventana_principal();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -40,7 +40,7 @@ public class ventana_principal extends JFrame{
 	/**
 	 * Create the frame.
 	 */
-	public ventana_principal() {		
+	public Ventana_principal() {		
 		// Reconocer inputs global
 		/**
 		KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
