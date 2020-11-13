@@ -1,4 +1,4 @@
-package entidades;
+package entidades.infectados;
 
 public class Beta extends Infectado {
 	
