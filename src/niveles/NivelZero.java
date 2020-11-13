@@ -1,36 +1,34 @@
 package niveles;
 
-import java.util.List;
-
 import entidades.Entidad;
 import factories.EntidadFactory;
-import factories.InfectadoAlphaFactory;
 
 public class NivelZero extends Nivel {
-
-	@Override
-	public void configurar() {
-		// TODO Auto-generated method stub
-		List<Entidad> entidades = juego.getEntidades();
+	
+	public NivelZero() {
+		/*Idea: */
+		fInfectados[0] = new InfectadoSuperAlfaFactory();
 		
-		for(Entidad e : entidades) {
-			//eliminar rastro gráfico, etc.
-			entidades.remove(e);
-		}
-		
-		EntidadFactory infectadoFactory = new InfectadoAlphaFactory();
-		for (int i = 0; i < 10; i ++) {
-			entidades.add(infectadoFactory.crearEntidad());
-		}
-		
+		/*Cuando se ejecute el método configurar en la clase NivelZero, la fábrica Alfa estará redefinida y creará otra 
+		 * ahora SuperAlfa*/
 	}
 
+}
+
+/**
+ * Esto lo creo aca para que compile el código, pero es solo un ejemplo de la dinámica
+ * que propongo con el constructor de cada Nivel
+ * 
+ * La factory real iría en el package Factories, pero no quería ensuciarlo ahora.
+ * @author Ignacio
+ *
+ */
+class InfectadoSuperAlfaFactory extends EntidadFactory {
+
 	@Override
-	public void limpiar() {
+	public Entidad crearEntidad() {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 	
-	
-
 }
