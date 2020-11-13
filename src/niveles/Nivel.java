@@ -4,9 +4,9 @@ import java.util.List;
 
 import entidades.Entidad;
 import factories.EntidadFactory;
-import factories.InfectadoAlphaFactory;
-import factories.InfectadoBetaFactory;
-import factories.PremioPermanentePocionFactory;
+import factories.infectados.InfectadoAlphaFactory;
+import factories.infectados.InfectadoBetaFactory;
+import factories.premios.PremioPermanentePocionFactory;
 import logica.Juego;
 
 public abstract class Nivel {
