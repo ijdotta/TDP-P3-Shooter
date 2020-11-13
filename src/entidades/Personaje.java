@@ -10,6 +10,7 @@ public abstract class Personaje  extends Entidad{
 	// Constructor
 	public Personaje(Movimiento m, int v, EntidadGrafica eg) {
 		super(m, v, eg);
+		hp = 100;
 	}
 	// Metodos
 	public int getHP()
