@@ -10,7 +10,7 @@ public class NivelZero extends Nivel {
 		fInfectados[0] = new InfectadoSuperAlfaFactory();
 		
 		/*Cuando se ejecute el método configurar en la clase NivelZero, la fábrica Alfa estará redefinida y creará otra 
-		 * ahora SuperAlfa*/
+		 * ahora SuperAlfa */ 
 	}
 
 }
