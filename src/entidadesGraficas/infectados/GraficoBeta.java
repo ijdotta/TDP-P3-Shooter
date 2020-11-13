@@ -5,7 +5,7 @@ import entidadesGraficas.EntidadGrafica;
 public class GraficoBeta extends EntidadGrafica {
 
 	public GraficoBeta() {
-		super("/img/InfectadoB.png");
+		super("/img/infectados/beta.png");
 	}
 
 }
