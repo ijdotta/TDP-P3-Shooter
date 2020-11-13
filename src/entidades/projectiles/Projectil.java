@@ -10,8 +10,8 @@ public abstract class Projectil extends Entidad{
 	int damage;
 	
 	// Constructor
-	public Projectil(Movimiento m, int v, EntidadGrafica eg, int dmg) {
-		super(m, v, eg);
+	public Projectil(EntidadGrafica eg, Movimiento m, int v, int dmg) {
+		super(eg, m, v);
 		damage = dmg;
 	}
 	

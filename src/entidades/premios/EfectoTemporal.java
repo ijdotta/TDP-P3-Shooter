@@ -8,8 +8,9 @@ public abstract class EfectoTemporal extends Premio {
 	// Atributos de instancia
 	int duracion;
 	// Constructor
-	public EfectoTemporal(Movimiento m, int v, EntidadGrafica eg, int d) {
-		super(m, v, eg);
+	public EfectoTemporal(EntidadGrafica eg, Movimiento m, int v, int d) {
+		super(eg, m, v);
 		duracion = d;
 	}
+
 }

@@ -5,8 +5,7 @@ import movimientos.Movimiento;
 
 public class Projectil_Infectado extends Projectil {
 
-	public Projectil_Infectado(Movimiento m, int v, EntidadGrafica eg, int dmg) {
-		super(m, v, eg, dmg);
+	public Projectil_Infectado(EntidadGrafica eg, Movimiento m, int v, int dmg) {
+		super(eg, m, v, dmg);
 	}
-
 }

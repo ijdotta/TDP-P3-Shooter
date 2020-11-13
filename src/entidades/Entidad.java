@@ -12,11 +12,11 @@ public abstract class Entidad {
 	// Constructor
 	/**
 	 * 
-	 * @param m Movimiento que se va a utilizar
-	 * @param v Velocidad
-	 * @param eg Entidad Grafica
+	 * @param v Movimiento que se va a utilizar
+	 * @param eg Velocidad
+	 * @param m Entidad Grafica
 	 */
-	public Entidad(Movimiento m, int v, EntidadGrafica eg) {
+	public Entidad(EntidadGrafica eg, Movimiento m, int v) {
 		entidadGrafica = eg;
 		movimiento = m;
 		velocidad = v;

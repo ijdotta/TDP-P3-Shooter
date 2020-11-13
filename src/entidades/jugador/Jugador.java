@@ -7,8 +7,8 @@ import movimientos.Movimiento;
 public class Jugador extends Personaje{
 	// Atributos de instancia
 	// Constructor
-	public Jugador(Movimiento m, int v, EntidadGrafica eg) {
-		super(m, v, eg);
+	public Jugador(EntidadGrafica eg, Movimiento m, int v) {
+		super(eg, m, v);
 	}
 	// Metodos
 }

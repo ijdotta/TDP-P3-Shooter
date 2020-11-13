@@ -5,7 +5,9 @@ import movimientos.Movimiento;
 
 public class Alpha extends Infectado {
 
-	public Alpha(Movimiento m, int v, EntidadGrafica eg, int dmg) {
-		super(m, v, eg, dmg);
+	public Alpha(EntidadGrafica eg, Movimiento m, int v, int dmg) {
+		super(eg, m, v, dmg);
 	}
+
+
 }

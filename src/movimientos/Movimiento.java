@@ -30,6 +30,8 @@ public abstract class Movimiento
 	}
 	
 	// Metodos
+	public abstract void mover();
+	
 	public int getDireccion()
 	{
 		return direccion;
@@ -40,5 +42,8 @@ public abstract class Movimiento
 		direccion = d;
 	}
 	
-	public abstract void mover();
+	public void setEntidad(Entidad e)
+	{
+		entidad = e;
+	}
 }

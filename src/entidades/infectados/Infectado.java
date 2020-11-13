@@ -9,8 +9,8 @@ public abstract class Infectado extends Personaje {
 	protected int damage;
 
 	// Constructor
-	public Infectado(Movimiento m, int v, EntidadGrafica eg, int dmg) {
-		super(m, v, eg);
+	public Infectado(EntidadGrafica eg, Movimiento m, int v, int dmg) {
+		super(eg, m, v);
 		damage = dmg;
 	}
 

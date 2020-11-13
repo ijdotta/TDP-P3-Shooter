@@ -5,8 +5,10 @@ import movimientos.Movimiento;
 
 public class Beta extends Infectado {
 
-	public Beta(Movimiento m, int v, EntidadGrafica eg, int dmg) {
-		super(m, v, eg, dmg);
+	public Beta(EntidadGrafica eg, Movimiento m, int v, int dmg) {
+		super(eg, m, v, dmg);
 	}
+
+
 
 }

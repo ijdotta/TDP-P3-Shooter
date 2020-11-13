@@ -5,8 +5,9 @@ import movimientos.Movimiento;
 
 public class EfectoPocion extends EfectoPermanente{
 
-	public EfectoPocion(Movimiento m, int v, EntidadGrafica eg) {
-		super(m, v, eg);
+	public EfectoPocion(EntidadGrafica eg, Movimiento m, int v) {
+		super(eg, m, v);
 	}
+
 
 }

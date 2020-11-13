@@ -4,7 +4,7 @@ import entidadesGraficas.EntidadGrafica;
 
 public class GraficoCuarentena extends EntidadGrafica{
 
-	public GraficoCuarentena(String ruta) {
+	public GraficoCuarentena() {
 		super("/img/premios/cuarentena.png");
 	}
 

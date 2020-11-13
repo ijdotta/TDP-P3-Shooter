@@ -4,7 +4,7 @@ import entidadesGraficas.EntidadGrafica;
 
 public class GraficoProjectilJugador extends EntidadGrafica {
 
-	public GraficoProjectilJugador(String ruta) {
+	public GraficoProjectilJugador() {
 		super("/img/projectiles/jugador.png");
 	}
 
