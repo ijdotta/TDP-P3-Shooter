@@ -1,10 +1,18 @@
 package entidades;
 
 public abstract class Infectado extends Personaje{
-	protected int daño;
-	protected int vida;
+	protected int cargaViral;
+	protected int dañoMelee;
 	
-	public int getVida() {
-		return vida;
+	public Infectado(int cV,int dM) {
+		cargaViral=cV;
+		dañoMelee=dM;
 	}
-}
+	
+	public int getCargaViral() {
+		return cargaViral;
+	}
+	
+	public int getDaño() {
+		return dañoMelee;
+	}
