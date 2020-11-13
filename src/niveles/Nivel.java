@@ -15,13 +15,13 @@ public abstract class Nivel {
 	protected Nivel siguienteNivel;
 
 	protected int cantidad_infectados;
-	protected EntidadFactory [] fInfectados; //Capaz usar un arreglo en lugar de lo anterior.
+	protected EntidadFactory [] fInfectados;
 	protected EntidadFactory [] fPremios;
 	
 	/**
-	 * Si hacemos esto así, de alguna forma los niveles pueden reutilizar el método configurar,
-	 * pero pueden ir variando las fábricas (y así, el tipo específico de infectado) desde su propio constructor.
-	 * Probablemente habrpia que añadir más varables fInfectados 
+	 * Si hacemos esto asÃ­, de alguna forma los niveles pueden reutilizar el mÃ©todo configurar,
+	 * pero pueden ir variando las fÃ¡bricas (y asÃ­, el tipo especÃ­fico de infectado) desde su propio constructor.
+	 * Probablemente habrpia que aÃ±adir mÃ¡s varables fInfectados 
 	 */
 	public Nivel() {
 		cantidad_infectados = 20;
@@ -34,7 +34,7 @@ public abstract class Nivel {
 	}
 	
 	/**
-	 * Crea la nueva lista de entidades del juego (o vacía la lista vieja y carga las nuevas entidades en 
+	 * Crea la nueva lista de entidades del juego (o vacÃ­a la lista vieja y carga las nuevas entidades en 
 	 * la misma lista [ver como afecta esto a la GUI])
 	 */
 	public void configurar() {
@@ -42,7 +42,7 @@ public abstract class Nivel {
 		List<Entidad> entidades = juego.getEntidades();
 		
 		for(Entidad e : entidades) {
-			//eliminar rastro gráfico, etc.
+			//eliminar rastro grÃ¡fico, etc.
 			entidades.remove(e);
 		}
 		
@@ -53,7 +53,7 @@ public abstract class Nivel {
 	}
 	
 	/**
-	 * ¿Se encarga de limpiar el juego y hacer que se limpie la GUI de cosas viejas del nivel anterior, para configurar el nuevo nivel?
+	 * Â¿Se encarga de limpiar el juego y hacer que se limpie la GUI de cosas viejas del nivel anterior, para configurar el nuevo nivel?
 	 */
 	public void limpiar() {
 		
