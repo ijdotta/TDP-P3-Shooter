@@ -1,14 +1,25 @@
 package entidades;
 
-public abstract class Personaje  extends Entidad{
-	protected int cargaViral; //Esto se podría sacar ya que El infectado hace "Daño" y el Jugador "Cura". Se podría definir "Carga Viral" en Infectado y Daño en Jugador
-	protected int velocidadMov;
-	
-	public int getCargaViral() {
-		return cargaViral;
+import entidadesGraficas.EntidadGrafica;
+import movimientos.Movimiento;
+
+public abstract class Personaje  extends Entidad{	
+
+	// Atributos de instancia
+	int hp;
+	// Constructor
+	public Personaje(Movimiento m, int v, EntidadGrafica eg) {
+		super(m, v, eg);
+		hp = 100;
+	}
+	// Metodos
+	public int getHP()
+	{
+		return hp;
 	}
 	
-	
-	
-	
+	public void setHP(int val)
+	{
+		hp = val;
+	}
 }

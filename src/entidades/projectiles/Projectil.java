@@ -1,19 +1,20 @@
-package entidades.infectados;
+package entidades.projectiles;
 
-import entidades.Personaje;
+import entidades.Entidad;
 import entidadesGraficas.EntidadGrafica;
 import movimientos.Movimiento;
 
-public abstract class Infectado extends Personaje {
+public abstract class Projectil extends Entidad{
+	
 	// Atributos de instancia
-	protected int damage;
-
+	int damage;
+	
 	// Constructor
-	public Infectado(Movimiento m, int v, EntidadGrafica eg, int dmg) {
+	public Projectil(Movimiento m, int v, EntidadGrafica eg, int dmg) {
 		super(m, v, eg);
 		damage = dmg;
 	}
-
+	
 	// Metodos
 	public int getDamage() {
 		return damage;
