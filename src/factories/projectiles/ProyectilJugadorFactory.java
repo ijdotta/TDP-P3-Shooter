@@ -7,6 +7,7 @@ import entidadesGraficas.projectiles.GraficoProjectilJugador;
 import factories.EntidadFactory;
 import movimientos.MVertical;
 import movimientos.Movimiento;
+import visitors.projectiles.VisitorProjectilJ;
 
 public class ProyectilJugadorFactory extends EntidadFactory {
 
@@ -17,6 +18,7 @@ public class ProyectilJugadorFactory extends EntidadFactory {
 		
 		Entidad nuevo_pJugador = new Projectil_Jugador(eg, m, 15, 25);
 		m.setEntidad(nuevo_pJugador);
+		nuevo_pJugador.setVisitor(new VisitorProjectilJ((Projectil_Jugador) nuevo_pJugador));
 		
 		return nuevo_pJugador;
 	}

@@ -69,7 +69,8 @@ public class Juego {
 					
 					if (obj1.intersects(obj2))
 					{
-						System.out.println("Locacion: x: "+obj1.getX()+" y: "+obj1.getY()+"   nombre_obj: "+e1.toString());
+						//System.out.println("Locacion: x: "+obj1.getX()+" y: "+obj1.getY()+"   nombre_obj: "+e1.toString());
+						e2.accept(e2.getVisitor());
 					}
 				}
 			}

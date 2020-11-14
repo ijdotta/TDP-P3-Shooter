@@ -91,6 +91,7 @@ public class Ventana_principal extends JFrame {
 				j.recibirInput(e);
 				
 				// Si se generan nuevas entidades se muestran en cada input (no me gusta)
+				// Recorro denuevo la lista de entidades del juego, si hay nuevos objetos los agrega, caso contrario no pasa nada.
 				for(Entidad enti: j.getEntidades())
 				{
 					frame.add(enti.getEntidadGrafica().getLabelImagen());
