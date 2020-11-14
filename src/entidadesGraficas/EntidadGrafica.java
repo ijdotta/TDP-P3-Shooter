@@ -8,9 +8,9 @@ public abstract class EntidadGrafica {
 	protected JLabel labelImagen;
 
 	// Constructor
-	public EntidadGrafica(String ruta) {
+	public EntidadGrafica(String ruta, int w, int h) {
 		labelImagen = new JLabel();
-		labelImagen.setSize(50, 50);
+		labelImagen.setSize(w, h);
 		
 		ImageIcon imagen = imgRedimensionada(ruta);
 		labelImagen.setIcon(imagen);

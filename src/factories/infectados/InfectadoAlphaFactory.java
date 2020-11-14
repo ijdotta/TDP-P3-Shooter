@@ -13,7 +13,7 @@ public class InfectadoAlphaFactory extends EntidadFactory {
 	@Override
 	public Entidad crearEntidad() {
 		Movimiento m = new MVertical(null, MVertical.DOWN);
-		EntidadGrafica eg = new GraficoAlpha();
+		EntidadGrafica eg = new GraficoAlpha(50,50);
 		
 		Entidad nuevo_alpha = new Alpha(eg, m, 1, 10);
 		m.setEntidad(nuevo_alpha);

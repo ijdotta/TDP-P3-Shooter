@@ -13,7 +13,7 @@ public class ProyectilInfectadoFactory extends EntidadFactory {
 	@Override
 	public Entidad crearEntidad() {
 		Movimiento m = new MVertical(null, MVertical.DOWN);
-		EntidadGrafica eg = new GraficoProjectilInfectado();
+		EntidadGrafica eg = new GraficoProjectilInfectado(10,10);
 		
 		Entidad nuevo_pInfectado = new Projectil_Infectado(eg, m, 4, 15);
 		m.setEntidad(nuevo_pInfectado);

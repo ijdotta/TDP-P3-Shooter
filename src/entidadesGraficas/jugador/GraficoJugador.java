@@ -4,8 +4,8 @@ import entidadesGraficas.EntidadGrafica;
 
 public class GraficoJugador extends EntidadGrafica {
 	
-	public GraficoJugador() {
-		super("/img/jugador_jugador.png");
+	public GraficoJugador(int w, int h) {
+		super("/img/jugador_jugador.png", w, h);
 	}
 }
 

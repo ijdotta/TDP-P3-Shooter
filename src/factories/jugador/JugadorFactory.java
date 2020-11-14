@@ -13,7 +13,7 @@ public class JugadorFactory extends EntidadFactory {
 	@Override
 	public Entidad crearEntidad() {
 		Movimiento m = new MHorizontal(null, MHorizontal.LEFT);
-		EntidadGrafica eg = new GraficoJugador();
+		EntidadGrafica eg = new GraficoJugador(50,50);
 		
 		Entidad nuevo_jugador = new Jugador(eg, m, 9);
 		m.setEntidad(nuevo_jugador);

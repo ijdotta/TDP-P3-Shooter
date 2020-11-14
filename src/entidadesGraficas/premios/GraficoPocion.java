@@ -4,8 +4,8 @@ import entidadesGraficas.EntidadGrafica;
 
 public class GraficoPocion extends EntidadGrafica {
 
-	public GraficoPocion() {
-		super("/img/premio_pocion.png");
+	public GraficoPocion(int w, int h) {
+		super("/img/premio_pocion.png", w, h);
 	}
 
 }
