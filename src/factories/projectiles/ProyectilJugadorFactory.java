@@ -13,9 +13,9 @@ public class ProyectilJugadorFactory extends EntidadFactory {
 	@Override
 	public Entidad crearEntidad() {
 		Movimiento m = new MVertical(null, MVertical.UP);
-		EntidadGrafica eg = new GraficoProjectilJugador(10,10);
+		EntidadGrafica eg = new GraficoProjectilJugador(3,30);
 		
-		Entidad nuevo_pJugador = new Projectil_Jugador(eg, m, 6, 25);
+		Entidad nuevo_pJugador = new Projectil_Jugador(eg, m, 15, 25);
 		m.setEntidad(nuevo_pJugador);
 		
 		return nuevo_pJugador;

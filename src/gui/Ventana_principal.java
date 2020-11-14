@@ -3,17 +3,21 @@ package gui;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
 
 import entidades.Entidad;
 import logica.Juego;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class Ventana_principal extends JFrame {
 
 	private JPanel escenario;
+	private Timer timer;
 
 	/**
 	 * Launch the application.
@@ -56,6 +60,18 @@ public class Ventana_principal extends JFrame {
 			this.add(e.getEntidadGrafica().getLabelImagen());
 		}
 		
+		// Inicializacion del timer
+		int refrescoTimer = 100;
+		
+		timer = new Timer(refrescoTimer, new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				juego.accionar();				
+			}
+		});
+		
+		timer.start();
 	}
 	/**
 	 * Agrega listener del teclado al frame principal.
@@ -73,6 +89,12 @@ public class Ventana_principal extends JFrame {
 			public void keyPressed(KeyEvent e)
 			{
 				j.recibirInput(e);
+				
+				// Si se generan nuevas entidades se muestran en cada input (no me gusta)
+				for(Entidad enti: j.getEntidades())
+				{
+					frame.add(enti.getEntidadGrafica().getLabelImagen());
+				}
 			}
 
 			@Override

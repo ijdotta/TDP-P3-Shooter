@@ -6,8 +6,8 @@ import entidades.Entidad;
 
 public class MVertical extends Movimiento
 {
-	public static final int UP = 1;
-	public static final int DOWN = -1;
+	public static final int UP = -1;
+	public static final int DOWN = 1;
 
 	public MVertical(Entidad e, int d)
 	{
