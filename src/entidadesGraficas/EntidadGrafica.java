@@ -9,8 +9,11 @@ public abstract class EntidadGrafica {
 
 	// Constructor
 	public EntidadGrafica(String ruta) {
+		labelImagen = new JLabel();
+		labelImagen.setSize(50, 50);
+		
 		ImageIcon imagen = imgRedimensionada(ruta);
-		labelImagen = new JLabel(imagen);
+		labelImagen.setIcon(imagen);
 	}
 
 	// Metodos
@@ -31,7 +34,7 @@ public abstract class EntidadGrafica {
 	 */
 	public ImageIcon imgRedimensionada(String ruta) {
 		ImageIcon imagen = new ImageIcon(this.getClass().getResource(ruta));
-		ImageIcon imagenRed = new ImageIcon(imagen.getImage().getScaledInstance(labelImagen.getX(), labelImagen.getY(),
+		ImageIcon imagenRed = new ImageIcon(imagen.getImage().getScaledInstance(labelImagen.getWidth(), labelImagen.getHeight(),
 				java.awt.Image.SCALE_SMOOTH));
 		return imagenRed;
 	}

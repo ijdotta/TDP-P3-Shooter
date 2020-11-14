@@ -2,24 +2,26 @@ package niveles;
 
 import entidades.Entidad;
 import factories.EntidadFactory;
+import logica.Juego;
 
 public class NivelZero extends Nivel {
 	
-	public NivelZero() {
+	public NivelZero(Juego j) {
+		super(j);
 		/*Idea: */
 		fInfectados[0] = new InfectadoSuperAlfaFactory();
 		
-		/*Cuando se ejecute el método configurar en la clase NivelZero, la fábrica Alfa estará redefinida y creará otra 
+		/*Cuando se ejecute el mï¿½todo configurar en la clase NivelZero, la fï¿½brica Alfa estarï¿½ redefinida y crearï¿½ otra 
 		 * ahora SuperAlfa */ 
 	}
 
 }
 
 /**
- * Esto lo creo aca para que compile el código, pero es solo un ejemplo de la dinámica
+ * Esto lo creo aca para que compile el cï¿½digo, pero es solo un ejemplo de la dinï¿½mica
  * que propongo con el constructor de cada Nivel
  * 
- * La factory real iría en el package Factories, pero no quería ensuciarlo ahora.
+ * La factory real irï¿½a en el package Factories, pero no querï¿½a ensuciarlo ahora.
  * @author Ignacio
  *
  */

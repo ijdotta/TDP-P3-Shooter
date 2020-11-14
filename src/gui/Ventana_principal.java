@@ -4,15 +4,16 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import entidades.Entidad;
+import logica.Juego;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-
-import javax.swing.JLabel;
 
 public class Ventana_principal extends JFrame {
 
 	private JPanel escenario;
-	private JLabel lblNewLabel;
 
 	/**
 	 * Launch the application.
@@ -33,43 +34,12 @@ public class Ventana_principal extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Ventana_principal() {		
-		// Reconocer inputs global
-		/**
-		KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
-		manager.addKeyEventDispatcher(new KeyEventDispatcher()
-		{
-			@Override
-			public boolean dispatchKeyEvent(KeyEvent e)
-			{
-				int codigoTecla = e.getKeyCode();
-
-				System.out.print("Tecla ");
-				if (codigoTecla == KeyEvent.VK_LEFT)
-				{
-					System.out.println("Izquierda");
-				}
-				else if (codigoTecla == (KeyEvent.VK_RIGHT))
-				{
-					System.out.println("Derecha");
-				}
-				else if (codigoTecla == (KeyEvent.VK_SPACE))
-				{
-					System.out.println("Espacio");
-				}
-				else
-				{
-					System.out.println();
-				}
-
-				return true;
-			}			
-		});
-		**/
-		
+	public Ventana_principal() {
+		// Iniciando el juego
+		Juego juego = new Juego();
 		setTitle("Vertical Shooter");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 800, 600);
 		escenario = new JPanel();
 		
 		
@@ -77,11 +47,14 @@ public class Ventana_principal extends JFrame {
 		setContentPane(escenario);
 		escenario.setLayout(null);
 		
-		lblNewLabel = new JLabel("New label");
-		lblNewLabel.setBounds(142, 146, 83, 26);
-		escenario.add(lblNewLabel);
 		// Para reconocer inputs
 		agregarListener(this);
+		
+		// Agregando entidades al escenario
+		for(Entidad e: juego.getEntidades())
+		{
+			this.add(e.getEntidadGrafica().getLabelImagen());
+		}
 		
 	}
 	/**
