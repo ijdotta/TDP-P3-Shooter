@@ -5,7 +5,7 @@ import entidadesGraficas.EntidadGrafica;
 public class GraficoCuarentena extends EntidadGrafica{
 
 	public GraficoCuarentena() {
-		super("/img/premios/cuarentena.png");
+		super("/img/premio_cuarentena.png");
 	}
 
 }

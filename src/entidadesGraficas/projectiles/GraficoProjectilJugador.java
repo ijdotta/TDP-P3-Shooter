@@ -5,7 +5,7 @@ import entidadesGraficas.EntidadGrafica;
 public class GraficoProjectilJugador extends EntidadGrafica {
 
 	public GraficoProjectilJugador() {
-		super("/img/projectiles/jugador.png");
+		super("/img/projectil_jugador.png");
 	}
 
 }
