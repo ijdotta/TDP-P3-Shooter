@@ -38,7 +38,7 @@ public abstract class Nivel {
 	 * la misma lista [ver como afecta esto a la GUI])
 	 */
 	public void configurar() {
-		// TODO Auto-generated method stub
+
 		List<Entidad> entidades = juego.getEntidades();
 		
 		for(Entidad e : entidades) {

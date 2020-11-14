@@ -1,10 +1,8 @@
 package factories.projectiles;
 
 import entidades.Entidad;
-import entidades.premios.EfectoSuperArma;
 import entidades.projectiles.Projectil_Infectado;
 import entidadesGraficas.EntidadGrafica;
-import entidadesGraficas.premios.GraficoSuperArma;
 import entidadesGraficas.projectiles.GraficoProjectilInfectado;
 import factories.EntidadFactory;
 import movimientos.MVertical;

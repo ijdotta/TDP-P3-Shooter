@@ -1,7 +1,5 @@
 package movimientos;
 
-import java.awt.Rectangle;
-
 import javax.swing.JLabel;
 
 import entidades.Entidad;

@@ -1,7 +1,6 @@
 package factories.projectiles;
 
 import entidades.Entidad;
-import entidades.premios.EfectoSuperArma;
 import entidades.projectiles.Projectil_Jugador;
 import entidadesGraficas.EntidadGrafica;
 import entidadesGraficas.projectiles.GraficoProjectilJugador;
