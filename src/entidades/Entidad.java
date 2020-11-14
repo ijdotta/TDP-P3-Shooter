@@ -43,7 +43,7 @@ public abstract class Entidad {
 		return entidadGrafica;
 	}
 	
-	public int getMovimiento() {
-		return velocidad;
+	public Movimiento getMovimiento() {
+		return movimiento;
 	}
 }

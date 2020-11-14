@@ -15,7 +15,7 @@ public class JugadorFactory extends EntidadFactory {
 		Movimiento m = new MHorizontal(null, MHorizontal.LEFT);
 		EntidadGrafica eg = new GraficoJugador();
 		
-		Entidad nuevo_jugador = new Jugador(eg, m, 1);
+		Entidad nuevo_jugador = new Jugador(eg, m, 9);
 		m.setEntidad(nuevo_jugador);
 		
 		return nuevo_jugador;

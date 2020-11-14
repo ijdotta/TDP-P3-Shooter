@@ -48,7 +48,7 @@ public class Ventana_principal extends JFrame {
 		escenario.setLayout(null);
 		
 		// Para reconocer inputs
-		agregarListener(this);
+		agregarListener(this, juego);
 		
 		// Agregando entidades al escenario
 		for(Entidad e: juego.getEntidades())
@@ -61,7 +61,7 @@ public class Ventana_principal extends JFrame {
 	 * Agrega listener del teclado al frame principal.
 	 * @param frame
 	 */
-	private void agregarListener(JFrame frame)
+	private void agregarListener(JFrame frame, Juego j)
 	{
 		frame.addKeyListener(new KeyListener()
 		{
@@ -72,25 +72,7 @@ public class Ventana_principal extends JFrame {
 			@Override
 			public void keyPressed(KeyEvent e)
 			{
-				int codigoTecla = e.getKeyCode();
-
-				System.out.print("Tecla ");
-				if (codigoTecla == KeyEvent.VK_LEFT)
-				{
-					System.out.println("Izquierda");
-				}
-				else if (codigoTecla == (KeyEvent.VK_RIGHT))
-				{
-					System.out.println("Derecha");
-				}
-				else if (codigoTecla == (KeyEvent.VK_SPACE))
-				{
-					System.out.println("Espacio");
-				}
-				else
-				{
-					System.out.println();
-				}
+				j.recibirInput(e);
 			}
 
 			@Override
