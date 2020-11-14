@@ -106,19 +106,6 @@ public class Juego {
 		movimientoj.mover();
 	}
 	
-	private void dispararJugador()
-	{
-		Entidad projectil = factoryProjectilJugador.crearEntidad();
-		JLabel lblJ,lblP;
-		
-		lblJ = jugador.getEntidadGrafica().getLabelImagen();
-		lblP = projectil.getEntidadGrafica().getLabelImagen();
-		
-		lblP.setLocation(lblJ.getX() + (lblJ.getWidth()/2 - 2) , lblJ.getY());
-		
-		entidades.add(projectil);
-	}
-	
 	private void generarDisparo(Entidad enti, EntidadFactory projectilF)
 	{
 		Entidad projectil = projectilF.crearEntidad();
