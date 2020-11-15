@@ -1,4 +1,4 @@
-package visitors.projectiles;
+package visitors.infectados;
 
 import entidades.infectados.Alpha;
 import entidades.infectados.Beta;
@@ -10,73 +10,67 @@ import entidades.projectiles.Projectil_Infectado;
 import entidades.projectiles.Projectil_Jugador;
 import visitors.Visitor;
 
-public class VisitorProjectilJ extends Visitor{
-	
+public class VisitorAlpha extends Visitor {
+
 	// Atributos de instancia
-	private Projectil_Jugador projectilj;
-	
+	private Alpha alpha;
+
 	// Constructor
-	public VisitorProjectilJ(Projectil_Jugador pj)
-	{
-		projectilj = pj;
+	public VisitorAlpha(Alpha a) {
+		alpha = a;
 	}
-	
-	// Metodos	
+
+	// Metodos
 	@Override
 	public void visitAlpha(Alpha a) {
-		a.setHP(a.getHP() - projectilj.getDamage());
-		
-		if(a.getHP() <= 0)
-		{
-			System.out.println("MUERTO: "+a.toString()+"   HP: "+a.getHP());
-		}
+		// TODO Auto-generated method stub
+
 	}
 
 	@Override
 	public void visitBeta(Beta b) {
-		b.setHP(b.getHP() - projectilj.getDamage());
-		
-		if(b.getHP() <= 0)
-		{
-			System.out.println("MUERTO: "+b.toString());
-		}
+		// TODO Auto-generated method stub
+
 	}
 
 	@Override
 	public void visitCuarentena(EfectoCuarentena ec) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void visitPocion(EfectoPocion ep) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void visitSuperArma(EfectoSuperArma esa) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void visitProjectilJ(Projectil_Jugador pj) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void visitProjectilI(Projectil_Infectado pi) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void visitJugador(Jugador j) {
-		// TODO Auto-generated method stub
+		j.setHP(j.getHP() - alpha.getDamage());
 		
+		if (j.getHP() <= 0)
+		{
+			System.out.println("***Perdiste***    HP: "+j.getHP());
+		}
+
 	}
-
-
 }

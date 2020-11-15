@@ -7,6 +7,7 @@ import entidadesGraficas.infectados.GraficoAlpha;
 import factories.EntidadFactory;
 import movimientos.MVertical;
 import movimientos.Movimiento;
+import visitors.infectados.VisitorAlpha;
 
 public class InfectadoAlphaFactory extends EntidadFactory {
 
@@ -17,6 +18,7 @@ public class InfectadoAlphaFactory extends EntidadFactory {
 		
 		Entidad nuevo_alpha = new Alpha(eg, m, 1, 10);
 		m.setEntidad(nuevo_alpha);
+		nuevo_alpha.setVisitor(new VisitorAlpha((Alpha) nuevo_alpha));
 		
 		return nuevo_alpha;
 	}
