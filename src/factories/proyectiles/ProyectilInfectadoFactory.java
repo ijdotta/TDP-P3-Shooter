@@ -21,7 +21,7 @@ public class ProyectilInfectadoFactory extends EntidadFactory {
 		Movimiento m = new MVertical(null, MVertical.DOWN);
 		EntidadGrafica eg = new GraficoProyectilInfectado(10, 10);
 
-		Entidad nuevo_pInfectado = new Proyectil_Infectado(juego, eg, m, 4, 15);
+		Entidad nuevo_pInfectado = new Proyectil_Infectado(juego, eg, m, 10, 15);
 		m.setEntidad(nuevo_pInfectado);
 
 		return nuevo_pInfectado;

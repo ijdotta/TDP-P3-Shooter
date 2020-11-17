@@ -1,5 +1,7 @@
 package entidades.infectados;
 
+import java.util.Random;
+
 import entidadesGraficas.EntidadGrafica;
 import factories.proyectiles.ProyectilInfectadoFactory;
 import logica.Juego;
@@ -17,5 +19,8 @@ public class Alpha extends Infectado {
 	public void accept(Visitor v) {
 		v.visitAlpha(this);
 	}
-
+	
+	public void disparar() {
+		juego.generarDisparo(this);		
+	}
 }

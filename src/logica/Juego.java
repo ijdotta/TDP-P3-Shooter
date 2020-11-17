@@ -4,6 +4,7 @@ import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -49,13 +50,26 @@ public class Juego {
 
 	// Metodos
 	public void accionar() {
+		List<Entidad> quieren_disparar = new LinkedList<Entidad>();
 		Rectangle obj1, obj2;
+		Random rand = new Random();
 
 		// Mover las entidades y preguntarles si quieren disparar
 		for (Entidad e : entidades) {
 			if (!e.equals(jugador)) {
 				e.getMovimiento().mover();
+
+				// Hago un random para saber si quiere disparar
+				// Para que no dispare todo el tiempo, tiene 1/100 chances de disparar
+				if (rand.nextInt(100) == 0) {
+					quieren_disparar.add(e);
+				}
 			}
+		}
+
+		// Hacer que disparen los que ganaron derecho a disparar
+		for (Entidad e : quieren_disparar) {
+			e.disparar();
 		}
 
 		// Detectar colisiones

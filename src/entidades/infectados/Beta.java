@@ -1,5 +1,7 @@
 package entidades.infectados;
 
+import java.util.Random;
+
 import entidadesGraficas.EntidadGrafica;
 import factories.proyectiles.ProyectilInfectadoFactory;
 import logica.Juego;
@@ -18,5 +20,8 @@ public class Beta extends Infectado {
 		System.out.println("aaa");
 		v.visitBeta(this);
 	}
-
+	
+	public void disparar() {
+		juego.generarDisparo(this);		
+	}
 }

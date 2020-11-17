@@ -34,7 +34,12 @@ public abstract class Entidad {
 
 	// Metodos
 	public abstract void accept(Visitor v);
-
+	
+	/**
+	 * Implementar disparo a aquellas entidades que disparen.
+	 */
+	public void disparar() {}
+	
 	public void setEntidadGrafica(EntidadGrafica eg) {
 		entidadGrafica = eg;
 	}
