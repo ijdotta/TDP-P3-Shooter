@@ -60,7 +60,7 @@ public class Ventana_principal extends JFrame {
 		agregarListener(juego);
 
 		// Inicializacion del timer
-		refrescoTimer = 100;
+		refrescoTimer = 50;
 
 		timer = new Timer(refrescoTimer, new ActionListener() {
 			@Override
