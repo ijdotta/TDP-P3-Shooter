@@ -1,7 +1,7 @@
-package factories.projectiles;
+package factories.proyectiles;
 
 import entidades.Entidad;
-import entidades.projectiles.Projectil_Jugador;
+import entidades.proyectiles.Proyectil_Jugador;
 import entidadesGraficas.EntidadGrafica;
 import entidadesGraficas.projectiles.GraficoProjectilJugador;
 import factories.EntidadFactory;
@@ -16,9 +16,9 @@ public class ProyectilJugadorFactory extends EntidadFactory {
 		Movimiento m = new MVertical(null, MVertical.UP);
 		EntidadGrafica eg = new GraficoProjectilJugador(3,30);
 		
-		Entidad nuevo_pJugador = new Projectil_Jugador(eg, m, 15, 25);
+		Entidad nuevo_pJugador = new Proyectil_Jugador(eg, m, 15, 25);
 		m.setEntidad(nuevo_pJugador);
-		nuevo_pJugador.setVisitor(new VisitorProjectilJ((Projectil_Jugador) nuevo_pJugador));
+		nuevo_pJugador.setVisitor(new VisitorProjectilJ((Proyectil_Jugador) nuevo_pJugador));
 		
 		return nuevo_pJugador;
 	}

@@ -6,17 +6,17 @@ import entidades.jugador.Jugador;
 import entidades.premios.EfectoCuarentena;
 import entidades.premios.EfectoPocion;
 import entidades.premios.EfectoSuperArma;
-import entidades.projectiles.Projectil_Infectado;
-import entidades.projectiles.Projectil_Jugador;
+import entidades.proyectiles.Proyectil_Infectado;
+import entidades.proyectiles.Proyectil_Jugador;
 import visitors.Visitor;
 
 public class VisitorProjectilJ extends Visitor{
 	
 	// Atributos de instancia
-	private Projectil_Jugador projectilj;
+	private Proyectil_Jugador projectilj;
 	
 	// Constructor
-	public VisitorProjectilJ(Projectil_Jugador pj)
+	public VisitorProjectilJ(Proyectil_Jugador pj)
 	{
 		projectilj = pj;
 	}
@@ -61,13 +61,13 @@ public class VisitorProjectilJ extends Visitor{
 	}
 
 	@Override
-	public void visitProjectilJ(Projectil_Jugador pj) {
+	public void visitProjectilJ(Proyectil_Jugador pj) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void visitProjectilI(Projectil_Infectado pi) {
+	public void visitProjectilI(Proyectil_Infectado pi) {
 		// TODO Auto-generated method stub
 		
 	}

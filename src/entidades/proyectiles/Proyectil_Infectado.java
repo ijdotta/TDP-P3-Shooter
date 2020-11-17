@@ -1,12 +1,12 @@
-package entidades.projectiles;
+package entidades.proyectiles;
 
 import entidadesGraficas.EntidadGrafica;
 import movimientos.Movimiento;
 import visitors.Visitor;
 
-public class Projectil_Infectado extends Projectil {
+public class Proyectil_Infectado extends Proyectil {
 
-	public Projectil_Infectado(EntidadGrafica eg, Movimiento m, int v, int dmg) {
+	public Proyectil_Infectado(EntidadGrafica eg, Movimiento m, int v, int dmg) {
 		super(eg, m, v, dmg);
 	}
 

@@ -6,8 +6,8 @@ import entidades.jugador.Jugador;
 import entidades.premios.EfectoCuarentena;
 import entidades.premios.EfectoPocion;
 import entidades.premios.EfectoSuperArma;
-import entidades.projectiles.Projectil_Infectado;
-import entidades.projectiles.Projectil_Jugador;
+import entidades.proyectiles.Proyectil_Infectado;
+import entidades.proyectiles.Proyectil_Jugador;
 
 public abstract class Visitor 
 {
@@ -16,7 +16,7 @@ public abstract class Visitor
 	public abstract void visitCuarentena(EfectoCuarentena ec);
 	public abstract void visitPocion(EfectoPocion ep);
 	public abstract void visitSuperArma(EfectoSuperArma esa);
-	public abstract void visitProjectilJ(Projectil_Jugador pj);
-	public abstract void visitProjectilI(Projectil_Infectado pi);
+	public abstract void visitProjectilJ(Proyectil_Jugador pj);
+	public abstract void visitProjectilI(Proyectil_Infectado pi);
 	public abstract void visitJugador(Jugador j);
 }

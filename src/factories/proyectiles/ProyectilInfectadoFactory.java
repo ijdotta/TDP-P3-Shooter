@@ -1,7 +1,7 @@
-package factories.projectiles;
+package factories.proyectiles;
 
 import entidades.Entidad;
-import entidades.projectiles.Projectil_Infectado;
+import entidades.proyectiles.Proyectil_Infectado;
 import entidadesGraficas.EntidadGrafica;
 import entidadesGraficas.projectiles.GraficoProjectilInfectado;
 import factories.EntidadFactory;
@@ -15,7 +15,7 @@ public class ProyectilInfectadoFactory extends EntidadFactory {
 		Movimiento m = new MVertical(null, MVertical.DOWN);
 		EntidadGrafica eg = new GraficoProjectilInfectado(10,10);
 		
-		Entidad nuevo_pInfectado = new Projectil_Infectado(eg, m, 4, 15);
+		Entidad nuevo_pInfectado = new Proyectil_Infectado(eg, m, 4, 15);
 		m.setEntidad(nuevo_pInfectado);
 		
 		return nuevo_pInfectado;

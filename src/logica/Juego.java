@@ -11,7 +11,7 @@ import entidades.Entidad;
 import entidades.infectados.Infectado;
 import factories.EntidadFactory;
 import factories.jugador.JugadorFactory;
-import factories.projectiles.ProyectilJugadorFactory;
+import factories.proyectiles.ProyectilJugadorFactory;
 import movimientos.MHorizontal;
 import movimientos.Movimiento;
 import niveles.Nivel;

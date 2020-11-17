@@ -3,7 +3,7 @@ package entidades;
 import entidadesGraficas.EntidadGrafica;
 import movimientos.Movimiento;
 
-public abstract class Personaje  extends Entidad{	
+public abstract class Personaje extends Entidad{	
 
 	// Atributos de instancia
 	int hp;

@@ -1,16 +1,16 @@
-package entidades.projectiles;
+package entidades.proyectiles;
 
 import entidades.Entidad;
 import entidadesGraficas.EntidadGrafica;
 import movimientos.Movimiento;
 
-public abstract class Projectil extends Entidad{
+public abstract class Proyectil extends Entidad{
 	
 	// Atributos de instancia
 	int damage;
 	
 	// Constructor
-	public Projectil(EntidadGrafica eg, Movimiento m, int v, int dmg) {
+	public Proyectil(EntidadGrafica eg, Movimiento m, int v, int dmg) {
 		super(eg, m, v);
 		damage = dmg;
 	}
