@@ -65,11 +65,11 @@ public class VisitorAlpha extends Visitor {
 
 	@Override
 	public void visitJugador(Jugador j) {
-		j.setHP(j.getHP() - alpha.getDamage());
+		j.setVida(j.getVida() - alpha.getDamage());
 		
-		if (j.getHP() <= 0)
+		if (j.getVida() <= 0)
 		{
-			System.out.println("***Perdiste***    HP: "+j.getHP());
+			System.out.println("***Perdiste***    HP: "+j.getVida());
 		}
 
 	}

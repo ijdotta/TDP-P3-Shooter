@@ -24,19 +24,19 @@ public class VisitorProyectilJ extends Visitor{
 	// Metodos	
 	@Override
 	public void visitAlpha(Alpha a) {
-		a.setHP(a.getHP() - projectilj.getDamage());
+		a.setVida(a.getVida() - projectilj.getDamage());
 		
-		if(a.getHP() <= 0)
+		if(a.getVida() <= 0)
 		{
-			System.out.println("MUERTO: "+a.toString()+"   HP: "+a.getHP());
+			System.out.println("MUERTO: "+a.toString()+"   HP: "+a.getVida());
 		}
 	}
 
 	@Override
 	public void visitBeta(Beta b) {
-		b.setHP(b.getHP() - projectilj.getDamage());
+		b.setVida(b.getVida() - projectilj.getDamage());
 		
-		if(b.getHP() <= 0)
+		if(b.getVida() <= 0)
 		{
 			System.out.println("MUERTO: "+b.toString());
 		}

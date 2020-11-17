@@ -11,10 +11,11 @@ public abstract class Entidad {
 	protected Movimiento movimiento;
 	protected int velocidad;
 	protected Visitor visitor;
+	protected int vida;
 	
 	// Constructor
 	/**
-	 * 
+	 * Inicia la entidad con 100 de vida.
 	 * @param v Movimiento que se va a utilizar
 	 * @param eg Velocidad
 	 * @param m Entidad Grafica
@@ -24,6 +25,7 @@ public abstract class Entidad {
 		movimiento = m;
 		velocidad = v;
 		visitor = new VisitorNulo();
+		vida = 100;
 	}
 
 	// Metodos
@@ -61,5 +63,15 @@ public abstract class Entidad {
 	public void setVisitor(Visitor v)
 	{
 		visitor = v;
+	}
+	
+	public int getVida()
+	{
+		return vida;
+	}
+	
+	public void setVida(int val)
+	{
+		vida = val;
 	}
 }
