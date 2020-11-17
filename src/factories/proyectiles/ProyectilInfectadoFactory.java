@@ -8,6 +8,7 @@ import factories.EntidadFactory;
 import logica.Juego;
 import movimientos.MVertical;
 import movimientos.Movimiento;
+import visitors.proyectiles.VisitorProyectilI;
 
 public class ProyectilInfectadoFactory extends EntidadFactory {
 
@@ -23,6 +24,7 @@ public class ProyectilInfectadoFactory extends EntidadFactory {
 
 		Entidad nuevo_pInfectado = new Proyectil_Infectado(juego, eg, m, 10, 15);
 		m.setEntidad(nuevo_pInfectado);
+		nuevo_pInfectado.setVisitor(new VisitorProyectilI((Proyectil_Infectado) nuevo_pInfectado));
 
 		return nuevo_pInfectado;
 	}

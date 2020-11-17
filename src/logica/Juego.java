@@ -88,6 +88,7 @@ public class Juego {
 				}
 			}
 		}
+		
 		// Chequear si hay entidades muertas
 		for (Entidad e: entidades) {
 			// Preguntar si esta fuera del escenario.
@@ -153,11 +154,7 @@ public class Juego {
 		entidades.remove(enti);
 		System.out.println("***Removido*** Entidad: " + enti.toString());
 	}
-
-	public void finalizarJuego() {
-
-	}
-
+	
 	/**
 	 * Reposiciona una entidad en el tope dentro del rango del jugador. Esta pensada
 	 * para ser utilizada para los infectados que se salgan de la pantalla.
@@ -168,9 +165,15 @@ public class Juego {
 		int x, y;
 		Random rand = new Random();
 		x = jugador.getEntidadGrafica().getLabelImagen().getX() - 100 + rand.nextInt(200);
-		y = rand.nextInt(75) + 35;
+		y = 10;
 		enti.getEntidadGrafica().getLabelImagen().setLocation(x, y);
 	}
+
+	public void finalizarJuego() {
+
+	}
+
+	
 
 	// Getter/Setters
 	public void setNivel(Nivel nivel) {
