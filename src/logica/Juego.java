@@ -53,7 +53,7 @@ public class Juego {
 		List<Entidad> quieren_disparar, a_eliminar;
 		quieren_disparar = new LinkedList<Entidad>();
 		a_eliminar = new LinkedList<Entidad>();
-		
+
 		Rectangle obj1, obj2;
 		Random rand = new Random();
 
@@ -75,29 +75,33 @@ public class Juego {
 			e.disparar();
 		}
 
-		// Detectar colisiones
+		// Detectar colisiones/ Realizar interacciones.
 		for (Entidad e1 : entidades) {
 			for (Entidad e2 : entidades) {
 				if (!e1.equals(e2)) {
 					obj1 = e1.getEntidadGrafica().getLabelImagen().getBounds();
 					obj2 = e2.getEntidadGrafica().getLabelImagen().getBounds();
-
+					
 					if (obj1.intersects(obj2)) {
 						e2.accept(e1.getVisitor());
-					}
-					
-					// Ver si la entidad esta muerta
-					if(e2.getVida() <= 0) {
-						a_eliminar.add(e2);
 					}
 				}
 			}
 		}
+		// Chequear si hay entidades muertas
+		for (Entidad e: entidades) {
+			// Preguntar si esta fuera del escenario.
+			e.outOfBounds();
+
+			// Ver si la entidad esta muerta
+			if (e.getVida() <= 0) {
+				a_eliminar.add(e);
+			}
+		}
 		
-		// Para aquella entidades que murieron las elimino
-		for (Entidad e: a_eliminar) {
-			gui.removeComponent(e.getEntidadGrafica().getLabelImagen());
-			entidades.remove(e);
+		// Para aquella entidades que murieron las elimino/ Hacer que dejen premio
+		for (Entidad e : a_eliminar) {
+			removerEntidad(e);
 		}
 	}
 
@@ -143,9 +147,29 @@ public class Juego {
 		entidades.add(projectil);
 		gui.addComponent(lblP);
 	}
+	
+	private void removerEntidad(Entidad enti) {
+		gui.removeComponent(enti.getEntidadGrafica().getLabelImagen());
+		entidades.remove(enti);
+		System.out.println("***Removido*** Entidad: " + enti.toString());
+	}
 
 	public void finalizarJuego() {
 
+	}
+
+	/**
+	 * Reposiciona una entidad en el tope dentro del rango del jugador. Esta pensada
+	 * para ser utilizada para los infectados que se salgan de la pantalla.
+	 * 
+	 * @param enti Entidad a reposicionar
+	 */
+	public void reposicionar(Entidad enti) {
+		int x, y;
+		Random rand = new Random();
+		x = jugador.getEntidadGrafica().getLabelImagen().getX() - 100 + rand.nextInt(200);
+		y = rand.nextInt(75) + 35;
+		enti.getEntidadGrafica().getLabelImagen().setLocation(x, y);
 	}
 
 	// Getter/Setters

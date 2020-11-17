@@ -23,4 +23,10 @@ public abstract class Infectado extends Personaje {
 	public void setDamage(int dmg) {
 		damage = dmg;
 	}
+	
+	public void outOfBounds() {
+		if (this.checkOutOfBounds()) {
+			juego.reposicionar(this);
+		}
+	}
 }

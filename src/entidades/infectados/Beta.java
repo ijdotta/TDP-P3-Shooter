@@ -17,7 +17,6 @@ public class Beta extends Infectado {
 
 	@Override
 	public void accept(Visitor v) {
-		System.out.println("aaa");
 		v.visitBeta(this);
 	}
 	
