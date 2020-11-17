@@ -2,14 +2,15 @@ package entidades.jugador;
 
 import entidades.Personaje;
 import entidadesGraficas.EntidadGrafica;
+import logica.Juego;
 import movimientos.Movimiento;
 import visitors.Visitor;
 
-public class Jugador extends Personaje{
+public class Jugador extends Personaje {
 	// Atributos de instancia
 	// Constructor
-	public Jugador(EntidadGrafica eg, Movimiento m, int v) {
-		super(eg, m, v);
+	public Jugador(Juego j, EntidadGrafica eg, Movimiento m, int v) {
+		super(j, eg, m, v);
 	}
 	// Metodos
 

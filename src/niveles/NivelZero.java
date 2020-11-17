@@ -9,7 +9,7 @@ public class NivelZero extends Nivel {
 	public NivelZero(Juego j) {
 		super(j);
 		/*Idea: */
-		fInfectados[0] = new InfectadoSuperAlfaFactory();
+		fInfectados[0] = new InfectadoSuperAlfaFactory(juego);
 		
 		/*Cuando se ejecute el m�todo configurar en la clase NivelZero, la f�brica Alfa estar� redefinida y crear� otra 
 		 * ahora SuperAlfa */ 
@@ -26,6 +26,11 @@ public class NivelZero extends Nivel {
  *
  */
 class InfectadoSuperAlfaFactory extends EntidadFactory {
+
+	public InfectadoSuperAlfaFactory(Juego j) {
+		super(j);
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public Entidad crearEntidad() {

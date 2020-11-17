@@ -32,11 +32,11 @@ public abstract class Nivel {
 
 		cantidad_infectados = 20;
 		fInfectados = new EntidadFactory[3];
-		fInfectados[0] = new InfectadoAlphaFactory();
-		fInfectados[1] = new InfectadoBetaFactory();
+		fInfectados[0] = new InfectadoAlphaFactory(juego);
+		fInfectados[1] = new InfectadoBetaFactory(juego);
 
 		fPremios = new EntidadFactory[3];
-		fPremios[0] = new PremioPermanentePocionFactory();
+		fPremios[0] = new PremioPermanentePocionFactory(juego);
 	}
 
 	/**

@@ -2,6 +2,7 @@ package entidades.infectados;
 
 import entidades.Personaje;
 import entidadesGraficas.EntidadGrafica;
+import logica.Juego;
 import movimientos.Movimiento;
 
 public abstract class Infectado extends Personaje {
@@ -9,8 +10,8 @@ public abstract class Infectado extends Personaje {
 	protected int damage;
 
 	// Constructor
-	public Infectado(EntidadGrafica eg, Movimiento m, int v, int dmg) {
-		super(eg, m, v);
+	public Infectado(Juego j, EntidadGrafica eg, Movimiento m, int v, int dmg) {
+		super(j, eg, m, v);
 		damage = dmg;
 	}
 
@@ -18,9 +19,8 @@ public abstract class Infectado extends Personaje {
 	public int getDamage() {
 		return damage;
 	}
-	
-	public void setDamage(int dmg)
-	{
+
+	public void setDamage(int dmg) {
 		damage = dmg;
 	}
 }

@@ -29,8 +29,8 @@ public class Juego {
 	public Juego() {
 
 		entidades = new LinkedList<Entidad>();
-		factoryJugador = new JugadorFactory();
-		factoryProjectilJugador = new ProyectilJugadorFactory();
+		factoryJugador = new JugadorFactory(this);
+		factoryProjectilJugador = new ProyectilJugadorFactory(this);
 
 		// El primero de la lista es el jugador
 		jugador = factoryJugador.crearEntidad();
