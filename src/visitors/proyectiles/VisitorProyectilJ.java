@@ -1,4 +1,4 @@
-package visitors.projectiles;
+package visitors.proyectiles;
 
 import entidades.infectados.Alpha;
 import entidades.infectados.Beta;
@@ -10,13 +10,13 @@ import entidades.proyectiles.Proyectil_Infectado;
 import entidades.proyectiles.Proyectil_Jugador;
 import visitors.Visitor;
 
-public class VisitorProjectilJ extends Visitor{
+public class VisitorProyectilJ extends Visitor{
 	
 	// Atributos de instancia
 	private Proyectil_Jugador projectilj;
 	
 	// Constructor
-	public VisitorProjectilJ(Proyectil_Jugador pj)
+	public VisitorProyectilJ(Proyectil_Jugador pj)
 	{
 		projectilj = pj;
 	}
