@@ -1,7 +1,10 @@
 package gui;
 
 import java.awt.EventQueue;
+
+import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
@@ -18,6 +21,7 @@ public class Ventana_principal extends JFrame {
 
 	private JPanel escenario;
 	private Timer timer;
+	private int refrescoTimer;
 
 	/**
 	 * Launch the application.
@@ -39,68 +43,64 @@ public class Ventana_principal extends JFrame {
 	 * Create the frame.
 	 */
 	public Ventana_principal() {
-		// Iniciando el juego
-		Juego juego = new Juego();
+		// Inicio del frame
 		setTitle("Vertical Shooter");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
 		escenario = new JPanel();
-		
-		
+
 		escenario.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(escenario);
 		escenario.setLayout(null);
-		
+
+		// Iniciando el juego
+		Juego juego = new Juego(this);
+
 		// Para reconocer inputs
-		agregarListener(this, juego);
-		
-		// Agregando entidades al escenario
-		for(Entidad e: juego.getEntidades())
-		{
-			this.add(e.getEntidadGrafica().getLabelImagen());
-		}
-		
+		agregarListener(juego);
+
 		// Inicializacion del timer
-		int refrescoTimer = 100;
-		
-		timer = new Timer(refrescoTimer, new ActionListener()
-		{
+		refrescoTimer = 100;
+
+		timer = new Timer(refrescoTimer, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				juego.accionar();				
+				juego.accionar();
 			}
 		});
-		
+
 		timer.start();
 	}
+
 	/**
 	 * Agrega listener del teclado al frame principal.
+	 * 
 	 * @param frame
 	 */
-	private void agregarListener(JFrame frame, Juego j)
-	{
-		frame.addKeyListener(new KeyListener()
-		{
+	private void agregarListener(Juego j) {
+		this.addKeyListener(new KeyListener() {
 
 			@Override
-			public void keyTyped(KeyEvent e) {}
-
-			@Override
-			public void keyPressed(KeyEvent e)
-			{
-				j.recibirInput(e);
-				
-				// Si se generan nuevas entidades se muestran en cada input (no me gusta)
-				// Recorro denuevo la lista de entidades del juego, si hay nuevos objetos los agrega, caso contrario no pasa nada.
-				for(Entidad enti: j.getEntidades())
-				{
-					frame.add(enti.getEntidadGrafica().getLabelImagen());
-				}
+			public void keyTyped(KeyEvent e) {
 			}
 
 			@Override
-			public void keyReleased(KeyEvent e) {}
-			
-		});		
+			public void keyPressed(KeyEvent e) {
+				j.recibirInput(e);
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+			}
+
+		});
+	}
+
+	public void addComponent(JComponent comp) {
+		this.add(comp);
+	}
+
+	public void removeComponent(JComponent comp) {
+		this.remove(comp);
 	}
 }

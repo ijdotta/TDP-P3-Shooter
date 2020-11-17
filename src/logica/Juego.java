@@ -5,6 +5,7 @@ import java.awt.event.KeyEvent;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import entidades.Entidad;
@@ -12,6 +13,7 @@ import entidades.infectados.Infectado;
 import factories.EntidadFactory;
 import factories.jugador.JugadorFactory;
 import factories.proyectiles.ProyectilJugadorFactory;
+import gui.Ventana_principal;
 import movimientos.MHorizontal;
 import movimientos.Movimiento;
 import niveles.Nivel;
@@ -19,6 +21,7 @@ import niveles.NivelUno;
 
 public class Juego {
 	// Atributos de instancia
+	private Ventana_principal gui;
 	private List<Entidad> entidades;
 	private Entidad jugador;
 	private Nivel nivel;
@@ -26,8 +29,8 @@ public class Juego {
 	private EntidadFactory factoryProjectilJugador;
 
 	// Constructor
-	public Juego() {
-
+	public Juego(Ventana_principal vp) {
+		this.gui = vp;
 		entidades = new LinkedList<Entidad>();
 		factoryJugador = new JugadorFactory(this);
 		factoryProjectilJugador = new ProyectilJugadorFactory(this);
@@ -36,47 +39,41 @@ public class Juego {
 		jugador = factoryJugador.crearEntidad();
 		jugador.getEntidadGrafica().getLabelImagen().setLocation(350, 475);
 		entidades.add(jugador);
+		gui.addComponent(jugador.getEntidadGrafica().getLabelImagen());
 
 		// Inicia el juego desde el nivel uno
 		nivel = new NivelUno(this);
 		nivel.configurar();
-
 	}
 
 	// Metodos
-	public void accionar()
-	{
+	public void accionar() {
 		Rectangle obj1, obj2;
-		
+
 		// Mover las entidades
-		for (Entidad e: entidades)
-		{
-			if (!e.equals(jugador))
-			{
+		for (Entidad e : entidades) {
+			if (!e.equals(jugador)) {
 				e.getMovimiento().mover();
 			}
 		}
-		
+
 		// Detectar colisiones (ineficiente)
-		for (Entidad e1: entidades)
-		{
-			for (Entidad e2: entidades)
-			{
-				if (!e1.equals(e2))
-				{
+		for (Entidad e1 : entidades) {
+			for (Entidad e2 : entidades) {
+				if (!e1.equals(e2)) {
 					obj1 = e1.getEntidadGrafica().getLabelImagen().getBounds();
 					obj2 = e2.getEntidadGrafica().getLabelImagen().getBounds();
-					
-					if (obj1.intersects(obj2))
-					{
-						//System.out.println("Locacion: x: "+obj1.getX()+" y: "+obj1.getY()+"   nombre_obj: "+e1.toString());
+
+					if (obj1.intersects(obj2)) {
+						// System.out.println("Locacion: x: "+obj1.getX()+" y: "+obj1.getY()+"
+						// nombre_obj: "+e1.toString());
 						e2.accept(e1.getVisitor());
 					}
 				}
 			}
 		}
 	}
-	
+
 	public void recibirInput(KeyEvent e) {
 		int codigoTecla = e.getKeyCode();
 
@@ -95,7 +92,7 @@ public class Juego {
 	private void moverJugador(KeyEvent e) {
 		int codigoTecla = e.getKeyCode();
 		Movimiento movimientoj = jugador.getMovimiento();
-		
+
 		if (codigoTecla == KeyEvent.VK_LEFT) {
 			System.out.println("Izquierda");
 			movimientoj.setDireccion(MHorizontal.LEFT);
@@ -103,21 +100,21 @@ public class Juego {
 			System.out.println("Derecha");
 			movimientoj.setDireccion(MHorizontal.RIGHT);
 		}
-		
+
 		movimientoj.mover();
 	}
-	
-	private void generarDisparo(Entidad enti, EntidadFactory projectilF)
-	{
+
+	private void generarDisparo(Entidad enti, EntidadFactory projectilF) {
 		Entidad projectil = projectilF.crearEntidad();
-		JLabel lblE,lblP;
-		
+		JLabel lblE, lblP;
+
 		lblE = enti.getEntidadGrafica().getLabelImagen();
 		lblP = projectil.getEntidadGrafica().getLabelImagen();
-		
-		lblP.setLocation(lblE.getX() + (lblE.getWidth()/2 - 2) , lblE.getY());
-		
+
+		lblP.setLocation(lblE.getX() + (lblE.getWidth() / 2 - 2), lblE.getY());
+
 		entidades.add(projectil);
+		gui.addComponent(lblP);
 	}
 
 	public void finalizarJuego() {
@@ -135,5 +132,13 @@ public class Juego {
 
 	public List<Entidad> getEntidades() {
 		return entidades;
+	}
+
+	public Ventana_principal getGui() {
+		return gui;
+	}
+
+	public void setGui(Ventana_principal vp) {
+		gui = vp;
 	}
 }

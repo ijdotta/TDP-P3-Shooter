@@ -63,9 +63,11 @@ public abstract class Nivel {
 			lbl = enti.getEntidadGrafica().getLabelImagen();
 			
 			// Para ponerle una posicion inicial.
-			lbl.setLocation(rand.nextInt(750), rand.nextInt(75)+35);
+			
+			lbl.setLocation(rand.nextInt((int) juego.getGui().getWidth() - lbl.getWidth()), rand.nextInt(75)+35);
 			
 			entidades.add(enti);
+			juego.getGui().addComponent(lbl);
 		}
 
 	}
