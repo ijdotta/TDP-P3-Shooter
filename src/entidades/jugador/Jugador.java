@@ -2,6 +2,7 @@ package entidades.jugador;
 
 import entidades.Personaje;
 import entidadesGraficas.EntidadGrafica;
+import factories.proyectiles.ProyectilJugadorFactory;
 import logica.Juego;
 import movimientos.Movimiento;
 import visitors.Visitor;
@@ -11,6 +12,7 @@ public class Jugador extends Personaje {
 	// Constructor
 	public Jugador(Juego j, EntidadGrafica eg, Movimiento m, int v) {
 		super(j, eg, m, v);
+		proyectil = new ProyectilJugadorFactory(juego);
 	}
 	// Metodos
 

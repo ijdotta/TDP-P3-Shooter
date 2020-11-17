@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import entidades.Entidad;
+import entidades.Personaje;
 import entidades.infectados.Infectado;
 import factories.EntidadFactory;
 import factories.jugador.JugadorFactory;
@@ -50,14 +51,14 @@ public class Juego {
 	public void accionar() {
 		Rectangle obj1, obj2;
 
-		// Mover las entidades
+		// Mover las entidades y preguntarles si quieren disparar
 		for (Entidad e : entidades) {
 			if (!e.equals(jugador)) {
 				e.getMovimiento().mover();
 			}
 		}
 
-		// Detectar colisiones (ineficiente)
+		// Detectar colisiones
 		for (Entidad e1 : entidades) {
 			for (Entidad e2 : entidades) {
 				if (!e1.equals(e2)) {
@@ -82,7 +83,7 @@ public class Juego {
 			moverJugador(e);
 		} else if (codigoTecla == (KeyEvent.VK_SPACE)) {
 			System.out.println("Espacio");
-			generarDisparo(jugador, factoryProjectilJugador);
+			generarDisparo((Personaje) jugador);
 		} else {
 			System.out.println();
 		}
@@ -104,8 +105,8 @@ public class Juego {
 		movimientoj.mover();
 	}
 
-	private void generarDisparo(Entidad enti, EntidadFactory projectilF) {
-		Entidad projectil = projectilF.crearEntidad();
+	public void generarDisparo(Personaje enti) {
+		Entidad projectil = enti.getProyectil().crearEntidad();
 		JLabel lblE, lblP;
 
 		lblE = enti.getEntidadGrafica().getLabelImagen();
