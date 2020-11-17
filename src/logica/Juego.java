@@ -50,7 +50,10 @@ public class Juego {
 
 	// Metodos
 	public void accionar() {
-		List<Entidad> quieren_disparar = new LinkedList<Entidad>();
+		List<Entidad> quieren_disparar, a_eliminar;
+		quieren_disparar = new LinkedList<Entidad>();
+		a_eliminar = new LinkedList<Entidad>();
+		
 		Rectangle obj1, obj2;
 		Random rand = new Random();
 
@@ -80,12 +83,21 @@ public class Juego {
 					obj2 = e2.getEntidadGrafica().getLabelImagen().getBounds();
 
 					if (obj1.intersects(obj2)) {
-						// System.out.println("Locacion: x: "+obj1.getX()+" y: "+obj1.getY()+"
-						// nombre_obj: "+e1.toString());
 						e2.accept(e1.getVisitor());
+					}
+					
+					// Ver si la entidad esta muerta
+					if(e2.getVida() <= 0) {
+						a_eliminar.add(e2);
 					}
 				}
 			}
+		}
+		
+		// Para aquella entidades que murieron las elimino
+		for (Entidad e: a_eliminar) {
+			gui.removeComponent(e.getEntidadGrafica().getLabelImagen());
+			entidades.remove(e);
 		}
 	}
 
