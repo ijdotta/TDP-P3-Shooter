@@ -110,4 +110,12 @@ public abstract class Entidad {
 	public void setVida(int val) {
 		vida = val;
 	}
+	
+	public Juego getJuego() {
+		return juego;
+	}
+	
+	public void setJuego(Juego j) {
+		juego = j;
+	}
 }
