@@ -24,7 +24,10 @@ public class VisitorProyectilJ extends Visitor{
 	// Metodos	
 	@Override
 	public void visitAlpha(Alpha a) {
+		// Hacerle daño
 		a.setVida(a.getVida() - projectilj.getDamage());
+		// Matar el projectil
+		projectilj.setVida(-1);
 		
 		if(a.getVida() <= 0)
 		{

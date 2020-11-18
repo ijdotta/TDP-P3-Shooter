@@ -66,7 +66,10 @@ public class VisitorProyectilI extends Visitor{
 
 	@Override
 	public void visitJugador(Jugador j) {
+		// Hacer daño
 		j.setVida(j.getVida() - projectili.getDamage());
+		// Matar el projectil
+		projectili.setVida(-1);
 		
 		if(j.getVida() <= 0)
 		{
