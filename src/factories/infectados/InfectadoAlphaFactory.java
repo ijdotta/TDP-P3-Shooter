@@ -22,7 +22,7 @@ public class InfectadoAlphaFactory extends EntidadFactory {
 		Movimiento m = new MVertical(null, MVertical.DOWN);
 		EntidadGrafica eg = new GraficoAlpha(50, 50);
 
-		Entidad nuevo_alpha = new Alpha(juego, eg, m, 1, 10);
+		Entidad nuevo_alpha = new Alpha(juego, eg, m, 1, 1);
 		m.setEntidad(nuevo_alpha);
 		nuevo_alpha.setVisitor(new VisitorAlpha((Alpha) nuevo_alpha));
 

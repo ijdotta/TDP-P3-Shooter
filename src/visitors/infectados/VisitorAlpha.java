@@ -67,10 +67,7 @@ public class VisitorAlpha extends Visitor {
 	public void visitJugador(Jugador j) {
 		j.setVida(j.getVida() - alpha.getDamage());
 		
-		if (j.getVida() <= 0)
-		{
-			System.out.println("***Perdiste***    HP: "+j.getVida());
-		}
-
+		// Actualizar graficamente la vida
+		j.getJuego().getGui().actualizarLabelVidaJugador("Vida_Jugador: "+j.getVida());
 	}
 }

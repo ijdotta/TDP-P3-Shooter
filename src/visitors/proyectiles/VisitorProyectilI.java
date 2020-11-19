@@ -71,10 +71,8 @@ public class VisitorProyectilI extends Visitor{
 		// Matar el projectil
 		projectili.setVida(-1);
 		
-		if(j.getVida() <= 0)
-		{
-			System.out.println("MUERTO: "+j.toString()+"   HP: "+j.getVida());
-		}
+		// Actualizar graficamente la vida
+		j.getJuego().getGui().actualizarLabelVidaJugador("Vida_Jugador: "+j.getVida());
 	}
 
 }

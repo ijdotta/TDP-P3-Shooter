@@ -37,6 +37,7 @@ public class Juego {
 		jugador = factoryJugador.crearEntidad();
 		jugador.getEntidadGrafica().getLabelImagen().setLocation(350, 475);
 		this.addEntidad(jugador);
+		gui.actualizarLabelVidaJugador("Vida_Jugador: "+jugador.getVida());
 
 		// Inicia el juego desde el nivel uno
 		nivel = new NivelUno(this);
@@ -196,7 +197,9 @@ public class Juego {
 
 	}
 
-	
+	public String getVidaJugador() {
+		return "Vida_Jugador: "+jugador.getVida();
+	}
 
 	// Getter/Setters
 	public void setNivel(Nivel nivel) {

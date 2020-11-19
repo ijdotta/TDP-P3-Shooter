@@ -21,7 +21,7 @@ public class InfectadoBetaFactory extends EntidadFactory {
 		Movimiento m = new MVertical(null, MVertical.DOWN);
 		EntidadGrafica eg = new GraficoBeta(50, 50);
 
-		Entidad nuevo_beta = new Beta(juego, eg, m, 1, 20);
+		Entidad nuevo_beta = new Beta(juego, eg, m, 1, 2);
 		m.setEntidad(nuevo_beta);
 
 		return nuevo_beta;

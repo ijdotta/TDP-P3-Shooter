@@ -14,12 +14,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import javax.swing.JLabel;
 
 public class Ventana_principal extends JFrame {
 
 	private JPanel escenario;
 	private Timer timer;
 	private int refrescoTimer;
+	JLabel lblVidaJugador;
 
 	/**
 	 * Launch the application.
@@ -50,6 +52,11 @@ public class Ventana_principal extends JFrame {
 		escenario.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(escenario);
 		escenario.setLayout(null);
+		
+		// Label vida del jugador
+		lblVidaJugador = new JLabel("N/A");
+		lblVidaJugador.setBounds(330, 525, 132, 25);
+		escenario.add(lblVidaJugador);
 
 		// Iniciando el juego
 		Juego juego = new Juego(this);
@@ -63,7 +70,7 @@ public class Ventana_principal extends JFrame {
 		timer = new Timer(refrescoTimer, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				juego.accionar();
+				juego.accionar();				
 			}
 		});
 
@@ -95,10 +102,14 @@ public class Ventana_principal extends JFrame {
 	}
 
 	public void addComponent(JComponent comp) {
-		this.add(comp);
+		getContentPane().add(comp);
 	}
 
 	public void removeComponent(JComponent comp) {
 		this.remove(comp);
+	}
+	
+	public void actualizarLabelVidaJugador(String s) {
+		lblVidaJugador.setText(s);
 	}
 }
