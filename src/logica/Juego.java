@@ -139,9 +139,28 @@ public class Juego {
 		lblP = projectil.getEntidadGrafica().getLabelImagen();
 
 		lblP.setLocation(lblE.getX() + (lblE.getWidth() / 2 - 2), lblE.getY());
-
-		entidades.add(projectil);
-		gui.addComponent(lblP);
+		
+		this.addEntidad(projectil);
+	}
+	
+	public void generarPremio(Entidad enti) {
+		Entidad premio;
+		Random rand;
+		JLabel lblE, lblP;
+		
+		// Se genera un premio al azar de los disponibles, si es que existe
+		if (premios.length > 0)
+		{
+			rand = new Random();
+			premio = premios[rand.nextInt(premios.length)].crearEntidad();
+			
+			lblE = enti.getEntidadGrafica().getLabelImagen();
+			lblP = premio.getEntidadGrafica().getLabelImagen();
+			
+			lblP.setLocation(lblE.getX() + (lblE.getWidth() / 2 - 2), lblE.getY());
+			
+			this.addEntidad(premio);
+		}		
 	}
 	
 	public void removerEntidad(Entidad enti) {
@@ -194,5 +213,9 @@ public class Juego {
 
 	public void setGui(Ventana_principal vp) {
 		gui = vp;
+	}
+	
+	public void setPremios(EntidadFactory[] p) {
+		premios = p;
 	}
 }

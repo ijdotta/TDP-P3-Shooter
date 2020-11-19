@@ -10,6 +10,8 @@ import factories.EntidadFactory;
 import factories.infectados.InfectadoAlphaFactory;
 import factories.infectados.InfectadoBetaFactory;
 import factories.premios.PremioPermanentePocionFactory;
+import factories.premios.PremioTemporalCuarentenaFactory;
+import factories.premios.PremioTemporalSuperArmaFactory;
 import logica.Juego;
 
 public abstract class Nivel {
@@ -47,6 +49,7 @@ public abstract class Nivel {
 		Random rand = new Random();
 		JLabel lbl;
 		Entidad enti;
+		EntidadFactory[] premios;
 		
 		// Si en el algun momento queres borrar la lista
 		// podes usar entidades.clear();
@@ -57,6 +60,7 @@ public abstract class Nivel {
 		}
 		**/
 		
+		// Agregando infectados al escenarip
 		for (int i = 0; i < cantidad_infectados / 2; i++) {
 			enti = fInfectados[0].crearEntidad();
 			lbl = enti.getEntidadGrafica().getLabelImagen();
@@ -67,6 +71,15 @@ public abstract class Nivel {
 			
 			juego.addEntidad(enti);
 		}
+		
+		// Determinando que premios pueden aparecer en el escenario
+		 premios = new EntidadFactory[3];
+		 
+		 premios[0] = new PremioPermanentePocionFactory(juego);
+		 premios[1] = new PremioTemporalCuarentenaFactory(juego);
+		 premios[2] = new PremioTemporalSuperArmaFactory(juego);
+		 
+		 juego.setPremios(premios);
 
 	}
 
