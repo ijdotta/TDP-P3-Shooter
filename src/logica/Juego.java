@@ -56,7 +56,8 @@ public class Juego {
 		for (Entidad e : entidades) {
 			if (!e.equals(jugador)) {
 				e.getMovimiento().mover();
-
+				e.getState().disparar();
+				
 				// Hago un random para saber si quiere disparar
 				// Para que no dispare todo el tiempo, tiene 1/100 chances de disparar
 				if (rand.nextInt(100) == 0) {

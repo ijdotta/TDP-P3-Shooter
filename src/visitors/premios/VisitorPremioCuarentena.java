@@ -1,4 +1,4 @@
-package visitors.jugador;
+package visitors.premios;
 
 import entidades.infectados.Alpha;
 import entidades.infectados.Beta;
@@ -10,19 +10,12 @@ import entidades.proyectiles.Proyectil_Infectado;
 import entidades.proyectiles.Proyectil_Jugador;
 import visitors.Visitor;
 
-public class VisitorJugador extends Visitor{
-	// Atributos de instancia
-	private Jugador jugador;
+public class VisitorPremioCuarentena extends Visitor{
 
-	// Constructor
-	public VisitorJugador(Jugador j) {
-		jugador = j;
-	}
-	
-	// Metodos
 	@Override
 	public void visitAlpha(Alpha a) {
 		// TODO Auto-generated method stub
+		//a.setState(new Congelado());
 		
 	}
 
@@ -34,25 +27,19 @@ public class VisitorJugador extends Visitor{
 
 	@Override
 	public void visitCuarentena(EfectoCuarentena ec) {
-		// El premio muere
-		ec.setVida(-1);
-		for (Entidad e: ec.getJuego().getEntidades()){
-			   //premio.accept(e.getVisitor());
-			   e.accept(ec.getVisitor());
-		}
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
 	public void visitPocion(EfectoPocion ep) {
-		// El premio muere
-		ep.setVida(-1);
+		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void visitSuperArma(EfectoSuperArma esa) {
-		// El premio muere
-		esa.setVida(-1);
+		// TODO Auto-generated method stub
 		
 	}
 
@@ -73,4 +60,5 @@ public class VisitorJugador extends Visitor{
 		// TODO Auto-generated method stub
 		
 	}
+
 }

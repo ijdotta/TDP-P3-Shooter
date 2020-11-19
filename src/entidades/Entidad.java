@@ -16,6 +16,7 @@ public abstract class Entidad {
 	protected int velocidad;
 	protected Visitor visitor;
 	protected int vida;
+	// protected State estado;
 
 	// Constructor
 	/**

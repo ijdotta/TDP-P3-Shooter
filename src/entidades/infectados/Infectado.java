@@ -38,4 +38,11 @@ public abstract class Infectado extends Personaje {
 	public void morir() {
 		juego.generarPremio(this);
 	}
+	
+	public void congelar()
+	{
+		state = new Congelado();
+	}
+	
+	
 }
