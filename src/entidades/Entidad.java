@@ -2,6 +2,8 @@ package entidades;
 
 import javax.swing.JLabel;
 
+import entidades.estados.DefaultState;
+import entidades.estados.State;
 import entidadesGraficas.EntidadGrafica;
 import logica.Juego;
 import movimientos.Movimiento;
@@ -16,7 +18,7 @@ public abstract class Entidad {
 	protected int velocidad;
 	protected Visitor visitor;
 	protected int vida;
-	// protected State estado;
+	protected State state;
 
 	// Constructor
 	/**
@@ -33,6 +35,7 @@ public abstract class Entidad {
 		velocidad = v;
 		visitor = new VisitorNulo();
 		vida = 100;
+		state = new DefaultState(this);
 	}
 
 	// Metodos
@@ -42,19 +45,26 @@ public abstract class Entidad {
 	 * Redefinir disparo a aquellas entidades que disparen.
 	 */
 	public void disparar() {
+		state.disparar();
 	}
 	
 	/**
 	 * Redefinir morir a aquellas entidades que hagan alguna accion al morir.
 	 */
-	public void morir() {}
+	public void morir() {
+		state.morir();
+	}
+	
+	public void mover() {
+		state.mover();
+	}
 
 	public void outOfBounds() {
 		if (this.checkOutOfBounds()) {
 			vida = -1;
 		}
 	}
-
+	
 	/**
 	 * Indica si la Entidad actual esta fuera del escenario.
 	 * @return True si esta fuera del escenario, False caso contrario.

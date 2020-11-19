@@ -18,7 +18,4 @@ public class Alpha extends Infectado {
 		v.visitAlpha(this);
 	}
 
-	public void disparar() {
-		juego.generarDisparo(this);
-	}
 }

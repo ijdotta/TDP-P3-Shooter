@@ -1,5 +1,6 @@
 package visitors.jugador;
 
+import entidades.Entidad;
 import entidades.infectados.Alpha;
 import entidades.infectados.Beta;
 import entidades.jugador.Jugador;

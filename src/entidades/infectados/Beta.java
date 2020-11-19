@@ -18,7 +18,4 @@ public class Beta extends Infectado {
 		v.visitBeta(this);
 	}
 	
-	public void disparar() {
-		juego.generarDisparo(this);		
-	}
 }
