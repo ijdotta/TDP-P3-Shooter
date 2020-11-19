@@ -11,7 +11,15 @@ import entidades.proyectiles.Proyectil_Jugador;
 import visitors.Visitor;
 
 public class VisitorJugador extends Visitor{
+	// Atributos de instancia
+	private Jugador jugador;
 
+	// Constructor
+	public VisitorJugador(Jugador j) {
+		jugador = j;
+	}
+	
+	// Metodos
 	@Override
 	public void visitAlpha(Alpha a) {
 		// TODO Auto-generated method stub
@@ -26,19 +34,22 @@ public class VisitorJugador extends Visitor{
 
 	@Override
 	public void visitCuarentena(EfectoCuarentena ec) {
-		// TODO Auto-generated method stub
+		// El premio muere
+		ec.setVida(-1);
 		
 	}
 
 	@Override
 	public void visitPocion(EfectoPocion ep) {
-		// TODO Auto-generated method stub
+		// El premio muere
+		ep.setVida(-1);
 		
 	}
 
 	@Override
 	public void visitSuperArma(EfectoSuperArma esa) {
-		// TODO Auto-generated method stub
+		// El premio muere
+		esa.setVida(-1);
 		
 	}
 

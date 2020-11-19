@@ -8,6 +8,7 @@ import factories.EntidadFactory;
 import logica.Juego;
 import movimientos.MHorizontal;
 import movimientos.Movimiento;
+import visitors.jugador.VisitorJugador;
 
 public class JugadorFactory extends EntidadFactory {
 
@@ -23,6 +24,7 @@ public class JugadorFactory extends EntidadFactory {
 
 		Entidad nuevo_jugador = new Jugador(juego, eg, m, 9);
 		m.setEntidad(nuevo_jugador);
+		nuevo_jugador.setVisitor(new VisitorJugador((Jugador) nuevo_jugador));
 
 		return nuevo_jugador;
 	}
