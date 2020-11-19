@@ -4,12 +4,10 @@ import java.awt.EventQueue;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
 
-import entidades.Entidad;
 import logica.Juego;
 
 import java.awt.event.ActionEvent;

@@ -6,15 +6,12 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import entidades.Entidad;
 import entidades.Personaje;
-import entidades.infectados.Infectado;
 import factories.EntidadFactory;
 import factories.jugador.JugadorFactory;
-import factories.proyectiles.ProyectilJugadorFactory;
 import gui.Ventana_principal;
 import movimientos.MHorizontal;
 import movimientos.Movimiento;
@@ -28,20 +25,18 @@ public class Juego {
 	private Entidad jugador;
 	private Nivel nivel;
 	private EntidadFactory factoryJugador;
-	private EntidadFactory factoryProjectilJugador;
+	private EntidadFactory[] premios;
 
 	// Constructor
 	public Juego(Ventana_principal vp) {
 		this.gui = vp;
 		entidades = new LinkedList<Entidad>();
 		factoryJugador = new JugadorFactory(this);
-		factoryProjectilJugador = new ProyectilJugadorFactory(this);
 
 		// El primero de la lista es el jugador
 		jugador = factoryJugador.crearEntidad();
 		jugador.getEntidadGrafica().getLabelImagen().setLocation(350, 475);
-		entidades.add(jugador);
-		gui.addComponent(jugador.getEntidadGrafica().getLabelImagen());
+		this.addEntidad(jugador);
 
 		// Inicia el juego desde el nivel uno
 		nivel = new NivelUno(this);
@@ -149,10 +144,15 @@ public class Juego {
 		gui.addComponent(lblP);
 	}
 	
-	private void removerEntidad(Entidad enti) {
+	public void removerEntidad(Entidad enti) {
 		gui.removeComponent(enti.getEntidadGrafica().getLabelImagen());
 		entidades.remove(enti);
 		System.out.println("***Removido*** Entidad: " + enti.toString());
+	}
+	
+	public void addEntidad(Entidad enti) {
+		entidades.add(enti);
+		gui.addComponent(enti.getEntidadGrafica().getLabelImagen());
 	}
 	
 	/**

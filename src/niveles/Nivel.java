@@ -47,7 +47,6 @@ public abstract class Nivel {
 		Random rand = new Random();
 		JLabel lbl;
 		Entidad enti;
-		List<Entidad> entidades = juego.getEntidades();
 		
 		// Si en el algun momento queres borrar la lista
 		// podes usar entidades.clear();
@@ -66,8 +65,7 @@ public abstract class Nivel {
 			
 			lbl.setLocation(rand.nextInt((int) juego.getGui().getWidth() - lbl.getWidth()), rand.nextInt(75)+35);
 			
-			entidades.add(enti);
-			juego.getGui().addComponent(lbl);
+			juego.addEntidad(enti);
 		}
 
 	}

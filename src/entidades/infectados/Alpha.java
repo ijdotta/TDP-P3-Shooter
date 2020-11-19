@@ -1,7 +1,5 @@
 package entidades.infectados;
 
-import java.util.Random;
-
 import entidadesGraficas.EntidadGrafica;
 import factories.proyectiles.ProyectilInfectadoFactory;
 import logica.Juego;
