@@ -19,9 +19,9 @@ public class PremioTemporalSuperArmaFactory extends EntidadFactory {
 	@Override
 	public Entidad crearEntidad() {
 		Movimiento m = new MVertical(null, MVertical.DOWN);
-		EntidadGrafica eg = new GraficoSuperArma(25, 25);
+		EntidadGrafica eg = new GraficoSuperArma(30, 30);
 
-		Entidad nueva_super_arma = new EfectoSuperArma(juego, eg, m, 1, 19);
+		Entidad nueva_super_arma = new EfectoSuperArma(juego, eg, m, 5, 19);
 		m.setEntidad(nueva_super_arma);
 
 		return nueva_super_arma;

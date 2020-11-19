@@ -24,9 +24,18 @@ public abstract class Infectado extends Personaje {
 		damage = dmg;
 	}
 	
+	/**
+	 * Si el infectado esta out of bounds me vuelvo a reposicionar
+	 */
 	public void outOfBounds() {
 		if (this.checkOutOfBounds()) {
 			juego.reposicionar(this);
 		}
+	}
+	/**
+	 * Si el infectado muere deja un premio
+	 */
+	public void morir() {
+		juego.generarPremio(this);
 	}
 }

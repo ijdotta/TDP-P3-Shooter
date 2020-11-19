@@ -19,9 +19,9 @@ public class PremioTemporalCuarentenaFactory extends EntidadFactory {
 	@Override
 	public Entidad crearEntidad() {
 		Movimiento m = new MVertical(null, MVertical.DOWN);
-		EntidadGrafica eg = new GraficoCuarentena(25, 25);
+		EntidadGrafica eg = new GraficoCuarentena(30, 30);
 
-		Entidad nueva_cuarentena = new EfectoCuarentena(juego, eg, m, 1, 9);
+		Entidad nueva_cuarentena = new EfectoCuarentena(juego, eg, m, 5, 9);
 		m.setEntidad(nueva_cuarentena);
 
 		return nueva_cuarentena;

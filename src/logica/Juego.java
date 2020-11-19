@@ -95,8 +95,10 @@ public class Juego {
 			}
 		}
 		
-		// Para aquella entidades que murieron las elimino/ Hacer que dejen premio
+		// Para aquella entidades que murieron les pregunto si tienen alguna accion al morir
+		// luego las elimino
 		for (Entidad e : a_eliminar) {
+			e.morir();
 			removerEntidad(e);
 		}
 	}

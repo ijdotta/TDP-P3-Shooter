@@ -38,10 +38,15 @@ public abstract class Entidad {
 	public abstract void accept(Visitor v);
 
 	/**
-	 * Implementar disparo a aquellas entidades que disparen.
+	 * Redefinir disparo a aquellas entidades que disparen.
 	 */
 	public void disparar() {
 	}
+	
+	/**
+	 * Redefinir morir a aquellas entidades que hagan alguna accion al morir.
+	 */
+	public void morir() {}
 
 	public void outOfBounds() {
 		if (this.checkOutOfBounds()) {
