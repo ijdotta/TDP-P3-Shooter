@@ -5,6 +5,8 @@ import java.util.Random;
 import javax.swing.JLabel;
 
 import entidades.Entidad;
+import entidadesGraficas.EntidadGrafica;
+import entidadesGraficas.background.Background;
 import factories.EntidadFactory;
 import factories.infectados.InfectadoAlphaFactory;
 import factories.infectados.InfectadoBetaFactory;
@@ -49,37 +51,39 @@ public abstract class Nivel {
 		JLabel lbl;
 		Entidad enti;
 		EntidadFactory[] premios;
+		EntidadGrafica bg = new Background("/img/Background_Scenery1.png", juego.getGui().getWidth(),
+				juego.getGui().getHeight());
 		
+		// Background del nivel
+		juego.getGui().setBackground(bg.getLabelImagen());
+
 		// Si en el algun momento queres borrar la lista
 		// podes usar entidades.clear();
 		/**
-		for (Entidad e : entidades) {
-			// eliminar rastro gráfico, etc.
-			entidades.remove(e);
-		}
-		**/
-		
+		 * for (Entidad e : entidades) { // eliminar rastro gráfico, etc.
+		 * entidades.remove(e); }
+		 **/
+
 		// Agregando infectados al escenarip
 		for (int i = 0; i < cantidad_infectados / 2; i++) {
 			enti = fInfectados[0].crearEntidad();
 			lbl = enti.getEntidadGrafica().getLabelImagen();
-			
+
 			// Para ponerle una posicion inicial.
-			
-			lbl.setLocation(rand.nextInt((int) juego.getGui().getWidth() - lbl.getWidth()), rand.nextInt(75)+35);
-			
+
+			lbl.setLocation(rand.nextInt((int) juego.getGui().getWidth() - lbl.getWidth()), rand.nextInt(75) + 35);
+
 			juego.addEntidad(enti);
 		}
-		
-		// Determinando que premios pueden aparecer en el escenario
-		 premios = new EntidadFactory[3];
-		 
-		 premios[0] = new PremioPermanentePocionFactory(juego);
-		 premios[1] = new PremioTemporalCuarentenaFactory(juego);
-		 premios[2] = new PremioTemporalSuperArmaFactory(juego);
-		 
-		 juego.setPremios(premios);
 
+		// Determinando que premios pueden aparecer en el escenario
+		premios = new EntidadFactory[3];
+
+		premios[0] = new PremioPermanentePocionFactory(juego);
+		premios[1] = new PremioTemporalCuarentenaFactory(juego);
+		premios[2] = new PremioTemporalSuperArmaFactory(juego);
+
+		juego.setPremios(premios);
 	}
 
 	/**

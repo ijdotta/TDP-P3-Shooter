@@ -145,7 +145,7 @@ public class Juego {
 
 		lblP.setLocation(lblE.getX() + (lblE.getWidth() / 2 - 2), lblE.getY());
 		
-		this.addEntidad(projectil);
+		this.addEntidad1(projectil);
 	}
 	
 	public void generarPremio(Entidad enti) {
@@ -177,6 +177,11 @@ public class Juego {
 	public void addEntidad(Entidad enti) {
 		entidades.add(enti);
 		gui.addComponent(enti.getEntidadGrafica().getLabelImagen());
+	}
+	
+	public void addEntidad1(Entidad enti) {
+		entidades.add(enti);
+		gui.addComponent1(enti.getEntidadGrafica().getLabelImagen());
 	}
 	
 	/**
