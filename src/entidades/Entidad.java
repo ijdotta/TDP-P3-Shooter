@@ -132,4 +132,12 @@ public abstract class Entidad {
 	public void setJuego(Juego j) {
 		juego = j;
 	}
+	
+	public State getState() {
+		return state;
+	}
+	
+	public void setState(State s) {
+		state = s;
+	}
 }
