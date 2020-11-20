@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 
 import entidades.Entidad;
 import entidades.Personaje;
+import entidades.jugador.Jugador;
 import factories.EntidadFactory;
 import factories.jugador.JugadorFactory;
 import gui.Ventana_principal;
@@ -158,6 +159,7 @@ public class Juego {
 		{
 			rand = new Random();
 			premio = premios[rand.nextInt(premios.length)].crearEntidad();
+			//premio = premios[1].crearEntidad();
 			
 			lblE = enti.getEntidadGrafica().getLabelImagen();
 			lblP = premio.getEntidadGrafica().getLabelImagen();
@@ -230,5 +232,9 @@ public class Juego {
 	
 	public void setPremios(EntidadFactory[] p) {
 		premios = p;
+	}
+	
+	public Jugador getJugador() {
+		return (Jugador) jugador;
 	}
 }

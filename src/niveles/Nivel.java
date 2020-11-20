@@ -5,6 +5,8 @@ import java.util.Random;
 import javax.swing.JLabel;
 
 import entidades.Entidad;
+import entidades.premios.timers.TimerCuarentena;
+import entidades.premios.timers.TimerSuperArma;
 import entidadesGraficas.EntidadGrafica;
 import entidadesGraficas.background.Background;
 import factories.EntidadFactory;
@@ -82,7 +84,11 @@ public abstract class Nivel {
 		premios[0] = new PremioPermanentePocionFactory(juego);
 		premios[1] = new PremioTemporalCuarentenaFactory(juego);
 		premios[2] = new PremioTemporalSuperArmaFactory(juego);
-
+		
+		// De cada premio temporal hacerle conocer el juego
+		TimerCuarentena.getInstance().setJuego(juego);
+		TimerSuperArma.getInstance().setJuego(juego);
+		
 		juego.setPremios(premios);
 	}
 

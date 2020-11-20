@@ -7,6 +7,8 @@ import entidades.jugador.Jugador;
 import entidades.premios.EfectoCuarentena;
 import entidades.premios.EfectoPocion;
 import entidades.premios.EfectoSuperArma;
+import entidades.premios.timers.TimerCuarentena;
+import entidades.premios.timers.TimerSuperArma;
 import entidades.proyectiles.Proyectil_Infectado;
 import entidades.proyectiles.Proyectil_Jugador;
 import factories.EntidadFactory;
@@ -38,11 +40,20 @@ public class VisitorJugador extends Visitor {
 
 	@Override
 	public void visitCuarentena(EfectoCuarentena ec) {
-		Visitor congelar = new VisitorAplicarCuarentena();
+		TimerCuarentena tc;
 
 		// Congelar a los infectados
 		for (Entidad e : ec.getJuego().getEntidades()) {
-			e.accept(congelar);
+			e.accept(new VisitorAplicarCuarentena());
+		}
+
+		// Iniciar/ Reiniciar Timer
+		tc = ec.getTimerCuarentena();
+		
+		if (tc.isRunning()) {
+			tc.restart();
+		} else {
+			tc.start();
 		}
 
 		// El premio muere
@@ -68,11 +79,22 @@ public class VisitorJugador extends Visitor {
 
 	@Override
 	public void visitSuperArma(EfectoSuperArma esa) {
+		TimerSuperArma tsa;
 		// Guardo el proyectil anterior
-		EntidadFactory proyectil_anterior = jugador.getProyectil();
+		//EntidadFactory proyectil_anterior = jugador.getProyectil();
+		
 		// Seteo el nuevo proyectil mas fuerte
 		jugador.setProyectil(new ProyectilFuerteFactory(jugador.getJuego()));
-
+		
+		// Inicio/ Reinicio el timer
+		tsa = esa.getTimerSuperArma();
+		
+		if (tsa.isRunning()) {
+			tsa.restart();
+		} else {
+			tsa.start();
+		}
+		
 		// El premio muere
 		esa.setVida(-1);
 	}

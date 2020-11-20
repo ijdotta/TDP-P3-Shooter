@@ -1,6 +1,6 @@
 package visitors.premios;
 
-import entidades.estados.InfectadoCongeladoState;
+import entidades.estados.InfectadoDefaultState;
 import entidades.infectados.Alpha;
 import entidades.infectados.Beta;
 import entidades.infectados.Infectado;
@@ -12,16 +12,16 @@ import entidades.proyectiles.Proyectil_Infectado;
 import entidades.proyectiles.Proyectil_Jugador;
 import visitors.Visitor;
 
-public class VisitorAplicarCuarentena extends Visitor{
+public class VisitorNormalizarInfectado extends Visitor{
 
 	@Override
 	public void visitAlpha(Alpha a) {
-		this.congelarInfectado(a);
+		this.descongelarInfectado(a);		
 	}
 
 	@Override
 	public void visitBeta(Beta b) {
-		this.congelarInfectado(b);
+		this.descongelarInfectado(b);		
 	}
 
 	@Override
@@ -60,12 +60,10 @@ public class VisitorAplicarCuarentena extends Visitor{
 		
 	}
 	
-	private void congelarInfectado(Infectado enti) {
-		// Guardo el estado anterior
-		//State state_anterior = enti.getState();
-		// Pongo su estado en congelado
-		enti.setState(new InfectadoCongeladoState(enti));
+	private void descongelarInfectado(Infectado enti) {		
+		// Pongo su estado en normal
+		enti.setState(new InfectadoDefaultState(enti));
 		
-		System.out.println("***Congelado*** "+enti.toString());
+		System.out.println("***Descongelado*** "+enti.toString());
 	}
 }

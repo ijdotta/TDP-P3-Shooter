@@ -5,7 +5,7 @@ import logica.Juego;
 public abstract class EfectoTemporal extends Premio {
 
 	// Atributos de instancia
-	int duracion;
+	//public static int DURACION;
 
 	// Constructor
 	public EfectoTemporal(Juego j) {
