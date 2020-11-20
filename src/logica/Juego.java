@@ -180,6 +180,7 @@ public class Juego {
 	}
 	
 	public void addEntidad1(Entidad enti) {
+		//System.out.println("***Generado***"+enti.toString());
 		entidades.add(enti);
 		gui.addComponent1(enti.getEntidadGrafica().getLabelImagen());
 	}

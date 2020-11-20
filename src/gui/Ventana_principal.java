@@ -108,12 +108,19 @@ public class Ventana_principal extends JFrame {
 		});
 	}
 
+	/**
+	 * Pone la componente en la capa superior
+	 * @param comp
+	 */
 	public void addComponent(JComponent comp) {
-		getContentPane().add(comp, 2);
+		getContentPane().add(comp, Integer.valueOf(2));
 	}
-	
+	/**
+	 * Pone la componente la capa del medio
+	 * @param comp
+	 */
 	public void addComponent1(JComponent comp) {
-		getContentPane().add(comp, 10);
+		getContentPane().add(comp, Integer.valueOf(1));
 	}
 
 	public void removeComponent(JComponent comp) {
@@ -123,8 +130,11 @@ public class Ventana_principal extends JFrame {
 	public void actualizarLabelVidaJugador(String s) {
 		lblVidaJugador.setText(s);
 	}
-
+	/**
+	 * Pone la componente en la capa inferior
+	 * @param bg
+	 */
 	public void setBackground(JComponent bg) {
-		escenario.add(bg, 6);
+		escenario.add(bg, Integer.valueOf(0));
 	}
 }
