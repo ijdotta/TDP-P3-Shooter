@@ -10,7 +10,7 @@ public class EfectoCuarentena extends EfectoTemporal {
 		super(j);
 		
 		velocidad = 5;
-		duracion = 19;
+		duracion = 4;
 		
 		entidadGrafica = new GraficoCuarentena(30, 30);
 	}

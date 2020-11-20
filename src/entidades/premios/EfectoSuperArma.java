@@ -10,7 +10,7 @@ public class EfectoSuperArma extends EfectoTemporal {
 		super(j);
 		
 		velocidad = 5;
-		duracion = 19;
+		duracion = 6;
 		
 		entidadGrafica = new GraficoSuperArma(30, 30);
 		
