@@ -9,6 +9,8 @@ import entidades.premios.EfectoPocion;
 import entidades.premios.EfectoSuperArma;
 import entidades.proyectiles.Proyectil_Infectado;
 import entidades.proyectiles.Proyectil_Jugador;
+import factories.EntidadFactory;
+import factories.proyectiles.ProyectilFuerteFactory;
 import visitors.Visitor;
 import visitors.premios.VisitorAplicarCuarentena;
 
@@ -69,9 +71,13 @@ public class VisitorJugador extends Visitor{
 
 	@Override
 	public void visitSuperArma(EfectoSuperArma esa) {
-		// El premio muere
-		esa.setVida(-1);
+		// Guardo el proyectil anterior
+		EntidadFactory proyectil_anterior = jugador.getProyectil();
+		// Seteo el nuevo proyectil mas fuerte
+		jugador.setProyectil(new ProyectilFuerteFactory(jugador.getJuego()));
 		
+		// El premio muere
+		esa.setVida(-1);		
 	}
 
 	@Override
