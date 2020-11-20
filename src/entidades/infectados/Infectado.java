@@ -2,20 +2,31 @@ package entidades.infectados;
 
 import entidades.Personaje;
 import entidades.estados.InfectadoDefaultState;
-import entidades.estados.State;
-import entidadesGraficas.EntidadGrafica;
+import factories.proyectiles.ProyectilInfectadoFactory;
 import logica.Juego;
-import movimientos.Movimiento;
+import movimientos.MVertical;
 
 public abstract class Infectado extends Personaje {
 	// Atributos de instancia
 	protected int damage;
 	
-	// Constructor
-	public Infectado(Juego j, EntidadGrafica eg, Movimiento m, int v, int dmg) {
-		super(j, eg, m, v);
+	/**
+	 * SUBCLASE DEBE DETERMINAR DMG, VISITOR Y EG
+	 * @param j
+	 * @param eg
+	 * @param m
+	 * @param v
+	 * @param dmg
+	 */
+	public Infectado(Juego j) {
+		super(j);
+		
+		velocidad = 1;
+		
+		movimiento = new MVertical(this, MVertical.DOWN);
+		
 		state = new InfectadoDefaultState(this);
-		damage = dmg;
+		proyectil = new ProyectilInfectadoFactory(juego);
 	}
 
 	// Metodos

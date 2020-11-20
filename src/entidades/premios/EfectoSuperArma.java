@@ -1,14 +1,19 @@
 package entidades.premios;
 
-import entidadesGraficas.EntidadGrafica;
+import entidadesGraficas.premios.GraficoSuperArma;
 import logica.Juego;
-import movimientos.Movimiento;
 import visitors.Visitor;
 
 public class EfectoSuperArma extends EfectoTemporal {
 
-	public EfectoSuperArma(Juego j, EntidadGrafica eg, Movimiento m, int v, int d) {
-		super(j, eg, m, v, d);
+	public EfectoSuperArma(Juego j) {
+		super(j);
+		
+		velocidad = 5;
+		duracion = 19;
+		
+		entidadGrafica = new GraficoSuperArma(30, 30);
+		
 	}
 
 	@Override

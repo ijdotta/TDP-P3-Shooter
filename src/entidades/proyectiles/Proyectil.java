@@ -2,8 +2,6 @@ package entidades.proyectiles;
 
 import entidades.Entidad;
 import logica.Juego;
-import entidadesGraficas.EntidadGrafica;
-import movimientos.Movimiento;
 
 public abstract class Proyectil extends Entidad {
 
@@ -11,9 +9,8 @@ public abstract class Proyectil extends Entidad {
 	int damage;
 
 	// Constructor
-	public Proyectil(Juego j, EntidadGrafica eg, Movimiento m, int v, int dmg) {
-		super(j, eg, m, v);
-		damage = dmg;
+	public Proyectil(Juego j) {
+		super(j);
 	}
 
 	// Metodos

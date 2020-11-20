@@ -1,16 +1,18 @@
 package entidades.infectados;
 
-import entidadesGraficas.EntidadGrafica;
-import factories.proyectiles.ProyectilInfectadoFactory;
+import entidadesGraficas.infectados.GraficoAlpha;
 import logica.Juego;
-import movimientos.Movimiento;
 import visitors.Visitor;
+import visitors.infectados.VisitorAlpha;
 
 public class Alpha extends Infectado {
 
-	public Alpha(Juego j, EntidadGrafica eg, Movimiento m, int v, int dmg) {
-		super(j, eg, m, v, dmg);
-		proyectil = new ProyectilInfectadoFactory(juego);
+	public Alpha(Juego j) {
+		super(j);
+		
+		damage = 1;
+		entidadGrafica = new GraficoAlpha(50, 50);
+		visitor = new VisitorAlpha(this);
 	}
 
 	@Override

@@ -28,11 +28,9 @@ public abstract class Entidad {
 	 * @param eg Velocidad
 	 * @param m  Entidad Grafica
 	 */
-	public Entidad(Juego j, EntidadGrafica eg, Movimiento m, int v) {
+	public Entidad(Juego j) {
 		juego = j;
-		entidadGrafica = eg;
-		movimiento = m;
-		velocidad = v;
+
 		visitor = new VisitorNulo();
 		vida = 100;
 		state = new DefaultState(this);

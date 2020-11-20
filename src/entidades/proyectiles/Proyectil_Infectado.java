@@ -1,14 +1,21 @@
 package entidades.proyectiles;
 
+import entidadesGraficas.proyectiles.GraficoProyectilInfectado;
 import logica.Juego;
-import entidadesGraficas.EntidadGrafica;
-import movimientos.Movimiento;
+import movimientos.MVertical;
 import visitors.Visitor;
+import visitors.proyectiles.VisitorProyectilI;
 
 public class Proyectil_Infectado extends Proyectil {
 
-	public Proyectil_Infectado(Juego j, EntidadGrafica eg, Movimiento m, int v, int dmg) {
-		super(j, eg, m, v, dmg);
+	public Proyectil_Infectado(Juego j) {
+		super(j);
+		
+		movimiento = new MVertical(this, MVertical.DOWN);
+		entidadGrafica = new GraficoProyectilInfectado(10, 10);
+		visitor = new VisitorProyectilI(this);
+		velocidad = 10;
+		damage = 15;
 	}
 
 	@Override

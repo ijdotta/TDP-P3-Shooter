@@ -1,14 +1,18 @@
 package entidades.premios;
 
-import entidadesGraficas.EntidadGrafica;
+import entidadesGraficas.premios.GraficoCuarentena;
 import logica.Juego;
-import movimientos.Movimiento;
 import visitors.Visitor;
 
 public class EfectoCuarentena extends EfectoTemporal {
 
-	public EfectoCuarentena(Juego j, EntidadGrafica eg, Movimiento m, int v, int d) {
-		super(j, eg, m, v, d);
+	public EfectoCuarentena(Juego j) {
+		super(j);
+		
+		velocidad = 5;
+		duracion = 19;
+		
+		entidadGrafica = new GraficoCuarentena(30, 30);
 	}
 
 	@Override

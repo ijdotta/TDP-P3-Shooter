@@ -18,13 +18,7 @@ public class PremioPermanentePocionFactory extends EntidadFactory {
 
 	@Override
 	public Entidad crearEntidad() {
-		Movimiento m = new MVertical(null, MVertical.DOWN);
-		EntidadGrafica eg = new GraficoPocion(30, 30);
-
-		Entidad nueva_pocion = new EfectoPocion(juego, eg, m, 5);
-		m.setEntidad(nueva_pocion);
-
-		return nueva_pocion;
+		return new EfectoPocion(juego);
 	}
 
 }
