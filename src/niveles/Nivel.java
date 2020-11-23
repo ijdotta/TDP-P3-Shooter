@@ -71,8 +71,8 @@ public abstract class Nivel {
 
 			// Para ponerle una posicion inicial.
 
-			lbl.setLocation(rand.nextInt((int) juego.getGui().getWidth() - lbl.getWidth()), rand.nextInt(75) + 35);
-
+			lbl.setLocation(rand.nextInt((int) juego.getGui().getWidth() - lbl.getWidth()), rand.nextInt(25) - lbl.getHeight());
+			
 			juego.addEntidad(enti);
 		}
 

@@ -79,7 +79,8 @@ public class Ventana_principal extends JFrame {
 		agregarListener(juego);
 
 		// Inicializacion del timer
-		refrescoTimer = 50;
+		//refrescoTimer = 33; // 30 ticks/segundo
+		refrescoTimer = 16; // 60 ticks/segundo
 
 		timer = new Timer(refrescoTimer, new ActionListener() {
 			@Override

@@ -196,8 +196,10 @@ public class Juego {
 	public void reposicionar(Entidad enti) {
 		int x, y;
 		Random rand = new Random();
+		
 		x = jugador.getEntidadGrafica().getLabelImagen().getX() - 100 + rand.nextInt(200);
-		y = 10;
+		y = 1 - enti.getEntidadGrafica().getLabelImagen().getHeight();
+		
 		enti.getEntidadGrafica().getLabelImagen().setLocation(x, y);
 	}
 

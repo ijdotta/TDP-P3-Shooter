@@ -45,14 +45,14 @@ public abstract class Entidad {
 	public void disparar() {
 		state.disparar();
 	}
-	
+
 	/**
 	 * Redefinir morir a aquellas entidades que hagan alguna accion al morir.
 	 */
 	public void morir() {
 		state.morir();
 	}
-	
+
 	public void mover() {
 		state.mover();
 	}
@@ -62,25 +62,29 @@ public abstract class Entidad {
 			vida = -1;
 		}
 	}
-	
+
 	/**
 	 * Indica si la Entidad actual esta fuera del escenario.
+	 * 
 	 * @return True si esta fuera del escenario, False caso contrario.
 	 */
 	protected boolean checkOutOfBounds() {
 		boolean dentro_x, dentro_y;
-		int entidad_x, entidad_y, frame_w, frame_h;
+		int entidad_x, entidad_y, entidad_w, entidad_h, frame_w, frame_h;
 
 		JLabel lblE = entidadGrafica.getLabelImagen();
 		entidad_x = lblE.getX();
 		entidad_y = lblE.getY();
 
+		entidad_w = lblE.getWidth();
+		entidad_h = lblE.getHeight();
+
 		frame_w = juego.getGui().getWidth();
 		frame_h = juego.getGui().getHeight();
 
-		dentro_x = (entidad_x >= 0) && (entidad_x <= frame_w);
-		dentro_y = (entidad_y >= 0) && (entidad_y <= frame_h);
-
+		dentro_x = ((entidad_x + entidad_w) >= 0) && (entidad_x <= frame_w);
+		dentro_y = ((entidad_y + entidad_h) >= 0) && (entidad_y <= frame_h);
+		
 		return !(dentro_x && dentro_y);
 	}
 
@@ -124,19 +128,19 @@ public abstract class Entidad {
 	public void setVida(int val) {
 		vida = val;
 	}
-	
+
 	public Juego getJuego() {
 		return juego;
 	}
-	
+
 	public void setJuego(Juego j) {
 		juego = j;
 	}
-	
+
 	public State getState() {
 		return state;
 	}
-	
+
 	public void setState(State s) {
 		state = s;
 	}
