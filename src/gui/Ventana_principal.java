@@ -109,8 +109,7 @@ public class Ventana_principal extends JFrame {
 
 	/**
 	 * Agrega listener del teclado al frame principal.
-	 * 
-	 * @param frame
+	 * @param j
 	 */
 	private void agregarListener(Juego j) {
 		
@@ -160,8 +159,11 @@ public class Ventana_principal extends JFrame {
 	 * remueve una componente del escenario
 	 * @param comp
 	 */
-	public void removeComponent(JComponent comp) {
+	public void removeComponent(JComponent comp) {		
+		// Luego lo quito del escenario
 		this.remove(comp);
+		// Repintar el background remueve las basuras graficas
+		background.getLabelImagen().repaint();
 	}
 
 	/**
