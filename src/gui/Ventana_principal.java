@@ -8,6 +8,8 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
 
+import entidadesGraficas.EntidadGrafica;
+import entidadesGraficas.background.Background;
 import logica.Juego;
 
 import java.awt.event.ActionEvent;
@@ -28,7 +30,8 @@ public class Ventana_principal extends JFrame {
 	private JLayeredPane escenario;
 	private Timer timer;
 	private int refrescoTimer;
-	JLabel lblVidaJugador;
+	private JLabel lblVidaJugador;
+	private EntidadGrafica background;
 
 	/**
 	 * Launch the application.
@@ -60,10 +63,14 @@ public class Ventana_principal extends JFrame {
 		setContentPane(escenario);
 		escenario.setLayout(null);
 
+		// Inicio del background
+		background = new Background(this.getWidth(), this.getHeight());
+		escenario.add(background.getLabelImagen(), Integer.valueOf(0));
+
 		// Label vida del jugador
 		lblVidaJugador = new JLabel("N/A");
 		lblVidaJugador.setBounds(330, 525, 132, 25);
-		escenario.add(lblVidaJugador);
+		escenario.add(lblVidaJugador, Integer.valueOf(2));
 
 		// Iniciando el juego
 		Juego juego = new Juego(this);
@@ -110,13 +117,16 @@ public class Ventana_principal extends JFrame {
 
 	/**
 	 * Pone la componente en la capa superior
+	 * 
 	 * @param comp
 	 */
 	public void addComponent(JComponent comp) {
 		getContentPane().add(comp, Integer.valueOf(2));
 	}
+
 	/**
 	 * Pone la componente la capa del medio
+	 * 
 	 * @param comp
 	 */
 	public void addComponent1(JComponent comp) {
@@ -130,11 +140,12 @@ public class Ventana_principal extends JFrame {
 	public void actualizarLabelVidaJugador(String s) {
 		lblVidaJugador.setText(s);
 	}
+
 	/**
-	 * Pone la componente en la capa inferior
-	 * @param bg
+	 * Cambia la imagen del background segun la ruta 
+	 * @param ruta ruta de la imagen
 	 */
-	public void setBackground(JComponent bg) {
-		escenario.add(bg, Integer.valueOf(0));
+	public void setBackground(String ruta) {
+		background.setImagen(ruta);
 	}
 }

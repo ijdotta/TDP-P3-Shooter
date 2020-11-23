@@ -4,8 +4,8 @@ import entidadesGraficas.EntidadGrafica;
 
 public class Background extends EntidadGrafica{
 
-	public Background(String ruta, int w, int h) {
-		super(ruta, w, h);
+	public Background(int w, int h) {
+		super("/img/background_blanco.png", w, h);
 	}
 
 }

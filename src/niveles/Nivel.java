@@ -53,11 +53,9 @@ public abstract class Nivel {
 		JLabel lbl;
 		Entidad enti;
 		EntidadFactory[] premios;
-		EntidadGrafica bg = new Background("/img/Background_Scenery1.png", juego.getGui().getWidth(),
-				juego.getGui().getHeight());
 		
 		// Background del nivel
-		juego.getGui().setBackground(bg.getLabelImagen());
+		juego.getGui().setBackground("/img/Background_Scenery1.png");
 
 		// Si en el algun momento queres borrar la lista
 		// podes usar entidades.clear();
