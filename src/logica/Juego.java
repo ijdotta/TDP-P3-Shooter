@@ -105,6 +105,8 @@ public class Juego {
 			e.morir();
 			removerEntidad(e);
 		}
+		
+		perderJuego();
 	}
 
 	public void recibirInput(KeyEvent e) {
@@ -210,11 +212,12 @@ public class Juego {
 	public void finalizarJuego() {
 
 	}
-
-	public String getVidaJugador() {
-		return "Vida_Jugador: "+jugador.getVida();
+	
+	public void perderJuego() {
+		if (jugador.getVida() <= 0) {
+			gui.perderJuego();
+		}
 	}
-
 	// Getter/Setters
 	public void setNivel(Nivel nivel) {
 		this.nivel = nivel;

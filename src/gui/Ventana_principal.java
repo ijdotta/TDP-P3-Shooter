@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JComponent;
@@ -18,6 +19,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
+import java.awt.Font;
+import javax.swing.SwingConstants;
 
 public class Ventana_principal extends JFrame {
 
@@ -31,7 +34,9 @@ public class Ventana_principal extends JFrame {
 	private Timer timer;
 	private int refrescoTimer;
 	private JLabel lblVidaJugador;
+	private JLabel lblStatus;
 	private EntidadGrafica background;
+	private KeyListener keyListener;
 
 	/**
 	 * Launch the application.
@@ -69,8 +74,15 @@ public class Ventana_principal extends JFrame {
 
 		// Label vida del jugador
 		lblVidaJugador = new JLabel("N/A");
-		lblVidaJugador.setBounds(330, 525, 132, 25);
-		escenario.add(lblVidaJugador, Integer.valueOf(2));
+		lblVidaJugador.setHorizontalAlignment(SwingConstants.CENTER);
+		lblVidaJugador.setBounds(275, 525, 132, 25);
+		escenario.add(lblVidaJugador, Integer.valueOf(3));
+		
+		lblStatus = new JLabel("N/A");
+		lblStatus.setHorizontalAlignment(SwingConstants.CENTER);
+		lblStatus.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 32));
+		lblStatus.setBounds(150, 100, 500, 200);
+		escenario.add(lblStatus, Integer.valueOf(3));
 
 		// Iniciando el juego
 		Juego juego = new Juego(this);
@@ -78,6 +90,9 @@ public class Ventana_principal extends JFrame {
 		// Para reconocer inputs
 		agregarListener(juego);
 
+		// Muestreo inicial de labels
+		lblStatus.setVisible(false);
+		
 		// Inicializacion del timer
 		//refrescoTimer = 33; // 30 ticks/segundo
 		refrescoTimer = 16; // 60 ticks/segundo
@@ -98,7 +113,8 @@ public class Ventana_principal extends JFrame {
 	 * @param frame
 	 */
 	private void agregarListener(Juego j) {
-		this.addKeyListener(new KeyListener() {
+		
+		keyListener = new KeyListener() {
 
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -112,10 +128,17 @@ public class Ventana_principal extends JFrame {
 			@Override
 			public void keyReleased(KeyEvent e) {
 			}
-
-		});
+		};
+		
+		this.addKeyListener(keyListener);
 	}
-
+	/**
+	 * remueve el listener actual
+	 */
+	private void removerListener() {
+		this.removeKeyListener(keyListener);
+	}
+	
 	/**
 	 * Pone la componente en la capa superior
 	 * 
@@ -133,11 +156,18 @@ public class Ventana_principal extends JFrame {
 	public void addComponent1(JComponent comp) {
 		getContentPane().add(comp, Integer.valueOf(1));
 	}
-
+	/**
+	 * remueve una componente del escenario
+	 * @param comp
+	 */
 	public void removeComponent(JComponent comp) {
 		this.remove(comp);
 	}
 
+	/**
+	 * Actualiza la vida del jugador
+	 * @param s
+	 */
 	public void actualizarLabelVidaJugador(String s) {
 		lblVidaJugador.setText(s);
 	}
@@ -148,5 +178,16 @@ public class Ventana_principal extends JFrame {
 	 */
 	public void setBackground(String ruta) {
 		background.setImagen(ruta);
+	}
+	/**
+	 * Mostrar que se perdio el juego.
+	 * Inhabilitar inputs del teclado
+	 */
+	public void perderJuego() {
+		lblStatus.setForeground(Color.RED);
+		lblStatus.setText("Perdiste");
+		lblStatus.setVisible(true);
+		timer.stop();
+		removerListener();
 	}
 }
