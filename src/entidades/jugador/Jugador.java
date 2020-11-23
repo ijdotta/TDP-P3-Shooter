@@ -30,4 +30,10 @@ public class Jugador extends Personaje {
 	public void accept(Visitor v) {
 		v.visitJugador(this);
 	}
+	
+	public void setVida(int val) {
+		super.setVida(val);
+		
+		juego.getGui().actualizarLabelVidaJugador("Vida: "+vida);
+	}
 }

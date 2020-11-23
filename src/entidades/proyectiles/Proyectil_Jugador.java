@@ -11,7 +11,7 @@ public class Proyectil_Jugador extends Proyectil {
 	public Proyectil_Jugador(Juego j) {
 		super(j);
 		movimiento = new MVertical(this, MVertical.UP);
-		entidadGrafica = new GraficoProyectilJugador(3, 30);
+		entidadGrafica = new GraficoProyectilJugador(4, 30);
 		visitor = new VisitorProyectilJ(this);
 		velocidad = 15;
 		damage = 25;

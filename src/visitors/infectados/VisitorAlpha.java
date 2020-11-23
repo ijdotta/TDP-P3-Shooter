@@ -66,8 +66,5 @@ public class VisitorAlpha extends Visitor {
 	@Override
 	public void visitJugador(Jugador j) {
 		j.setVida(j.getVida() - alpha.getDamage());
-		
-		// Actualizar graficamente la vida
-		j.getJuego().getGui().actualizarLabelVidaJugador("Vida_Jugador: "+j.getVida());
 	}
 }

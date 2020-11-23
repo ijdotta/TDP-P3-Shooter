@@ -38,7 +38,7 @@ public class Juego {
 		jugador = factoryJugador.crearEntidad();
 		jugador.getEntidadGrafica().getLabelImagen().setLocation(350, 475);
 		this.addEntidad(jugador);
-		gui.actualizarLabelVidaJugador("Vida_Jugador: "+jugador.getVida());
+		gui.actualizarLabelVidaJugador("Vida: "+jugador.getVida());
 
 		// Inicia el juego desde el nivel uno
 		nivel = new NivelUno(this);
@@ -143,9 +143,11 @@ public class Juego {
 
 		lblE = enti.getEntidadGrafica().getLabelImagen();
 		lblP = projectil.getEntidadGrafica().getLabelImagen();
-
-		lblP.setLocation(lblE.getX() + (lblE.getWidth() / 2 - 2), lblE.getY());
 		
+		// Posiciono el disparo en el centro de la entidad
+		lblP.setLocation(lblE.getX() + (lblE.getWidth() / 2) - (lblP.getWidth()/ 2), lblE.getY() + (lblE.getHeight() / 2) - (lblP.getHeight() / 2));
+		
+		// Introduzco el label en la capa del medio, asi esta abajo del infectado y encima del background
 		this.addEntidad1(projectil);
 	}
 	
@@ -164,9 +166,11 @@ public class Juego {
 			lblE = enti.getEntidadGrafica().getLabelImagen();
 			lblP = premio.getEntidadGrafica().getLabelImagen();
 			
-			lblP.setLocation(lblE.getX() + (lblE.getWidth() / 2 - 2), lblE.getY());
+			// Posiciono el premio en el centro de la entidad
+			lblP.setLocation(lblE.getX() + (lblE.getWidth() / 2) - (lblP.getWidth()/ 2), lblE.getY() + (lblE.getHeight() / 2) - (lblP.getHeight() / 2));
 			
-			this.addEntidad(premio);
+			// Introduzco el label en la capa del medio, asi esta abajo del infectado y encima del background
+			this.addEntidad1(premio);
 		}		
 	}
 	

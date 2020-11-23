@@ -70,8 +70,6 @@ public class VisitorJugador extends Visitor {
 		} else {
 			jugador.setVida(vida_aumentada);
 		}
-		// Actualizar el label de vida
-		jugador.getJuego().getGui().actualizarLabelVidaJugador("Vida_Jugador: " + jugador.getVida());
 
 		// El premio muere
 		ep.setVida(-1);
