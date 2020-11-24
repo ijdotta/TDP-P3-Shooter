@@ -13,12 +13,10 @@ import logica.Juego;
  * @author
  *
  */
-public class TimerSuperArma {
+public class TimerSuperArma extends TimerP{
 	
 	// Atributos
 	private static TimerSuperArma timer_super_arma = new TimerSuperArma();
-	private Timer timer;
-	private Juego juego;
 	
 	// Constructor
 	private TimerSuperArma(){
@@ -38,26 +36,5 @@ public class TimerSuperArma {
 	// Metodos
 	public static TimerSuperArma getInstance() {
 		return timer_super_arma;
-	}
-	
-	public void start() {
-		timer.start();
-	}
-	
-	public void stop() {
-		timer.stop();
-	}
-	
-	public void restart() {
-		timer.restart();
-	}
-	
-	public boolean isRunning() {
-		return timer.isRunning();
-	}
-	
-	// Setters / Getters
-	public void setJuego(Juego j) {
-		juego = j;
 	}
 }

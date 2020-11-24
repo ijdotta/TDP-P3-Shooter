@@ -15,12 +15,10 @@ import visitors.premios.VisitorNormalizarInfectado;
  * @author
  *
  */
-public class TimerCuarentena {
+public class TimerCuarentena extends TimerP{
 
 	// Atributos
 	private static TimerCuarentena timer_cuarentena = new TimerCuarentena();
-	private Timer timer;
-	private Juego juego;
 	
 	// Constructor
 	private TimerCuarentena(){
@@ -42,26 +40,5 @@ public class TimerCuarentena {
 	// Metodos
 	public static TimerCuarentena getInstance() {
 		return timer_cuarentena;
-	}
-	
-	public void start() {
-		timer.start();
-	}
-	
-	public void stop() {
-		timer.stop();
-	}
-	
-	public void restart() {
-		timer.restart();
-	}
-	
-	public boolean isRunning() {
-		return timer.isRunning();
-	}
-	
-	// Setters / Getters
-	public void setJuego(Juego j) {
-		juego = j;
 	}
 }
