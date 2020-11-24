@@ -3,6 +3,7 @@ package entidades.premios;
 import entidadesGraficas.premios.GraficoPocion;
 import logica.Juego;
 import visitors.Visitor;
+import visitors.premios.VisitorPocion;
 
 public class EfectoPocion extends EfectoPermanente {
 
@@ -14,6 +15,8 @@ public class EfectoPocion extends EfectoPermanente {
 		
 		velocidad = 5;
 		entidadGrafica = new GraficoPocion(30, 30);
+		
+		visitor = new VisitorPocion(this);
 	}
 
 	// Metodos

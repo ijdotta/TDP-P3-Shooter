@@ -4,6 +4,7 @@ import entidades.premios.timers.TimerSuperArma;
 import entidadesGraficas.premios.GraficoSuperArma;
 import logica.Juego;
 import visitors.Visitor;
+import visitors.premios.VisitorSuperArma;
 
 public class EfectoSuperArma extends EfectoTemporal {
 
@@ -17,6 +18,9 @@ public class EfectoSuperArma extends EfectoTemporal {
 		velocidad = 5;
 		
 		entidadGrafica = new GraficoSuperArma(30, 30);
+		
+		visitor = new VisitorSuperArma(this);
+		
 		timer_super_arma = TimerSuperArma.getInstance();
 	}
 	

@@ -4,6 +4,7 @@ import entidades.premios.timers.TimerCuarentena;
 import entidadesGraficas.premios.GraficoCuarentena;
 import logica.Juego;
 import visitors.Visitor;
+import visitors.premios.VisitorCuarentena;
 
 public class EfectoCuarentena extends EfectoTemporal {
 
@@ -17,6 +18,9 @@ public class EfectoCuarentena extends EfectoTemporal {
 		velocidad = 5;
 		
 		entidadGrafica = new GraficoCuarentena(30, 30);
+		
+		visitor = new VisitorCuarentena(this);
+		
 		timer_cuarentena = TimerCuarentena.getInstance();
 	}
 	// Metodos
