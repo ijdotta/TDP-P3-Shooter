@@ -2,12 +2,8 @@ package factories.premios;
 
 import entidades.Entidad;
 import entidades.premios.EfectoPocion;
-import entidadesGraficas.EntidadGrafica;
-import entidadesGraficas.premios.GraficoPocion;
 import factories.EntidadFactory;
 import logica.Juego;
-import movimientos.MVertical;
-import movimientos.Movimiento;
 
 public class PremioPermanentePocionFactory extends EntidadFactory {
 

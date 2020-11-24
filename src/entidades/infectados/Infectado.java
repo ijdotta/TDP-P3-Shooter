@@ -43,7 +43,7 @@ public abstract class Infectado extends Personaje {
 	 */
 	public void outOfBounds() {
 		if (this.checkOutOfBounds()) {
-			juego.reposicionar(this);
+			juego.reposicionarInfectado(this);
 		}
 	}
 	

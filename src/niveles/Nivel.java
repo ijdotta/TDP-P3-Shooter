@@ -7,8 +7,6 @@ import javax.swing.JLabel;
 import entidades.Entidad;
 import entidades.premios.timers.TimerCuarentena;
 import entidades.premios.timers.TimerSuperArma;
-import entidadesGraficas.EntidadGrafica;
-import entidadesGraficas.background.Background;
 import factories.EntidadFactory;
 import factories.infectados.InfectadoAlphaFactory;
 import factories.infectados.InfectadoBetaFactory;
@@ -56,7 +54,10 @@ public abstract class Nivel {
 		
 		// Background del nivel
 		juego.getGui().setBackground("/img/Background_Scenery1.png");
-
+		
+		// Indicar graficamente en cual nivel estoy
+		juego.getGui().indicarNivel("Nivel Abstracto");
+		
 		// Si en el algun momento queres borrar la lista
 		// podes usar entidades.clear();
 		/**
@@ -64,7 +65,7 @@ public abstract class Nivel {
 		 * entidades.remove(e); }
 		 **/
 
-		// Agregando infectados al escenarip
+		// Agregando infectados al escenario
 		for (int i = 0; i < cantidad_infectados / 2; i++) {
 			enti = fInfectados[0].crearEntidad();
 			lbl = enti.getEntidadGrafica().getLabelImagen();

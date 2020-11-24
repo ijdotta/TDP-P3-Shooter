@@ -11,7 +11,6 @@ import entidades.premios.timers.TimerCuarentena;
 import entidades.premios.timers.TimerSuperArma;
 import entidades.proyectiles.Proyectil_Infectado;
 import entidades.proyectiles.Proyectil_Jugador;
-import factories.EntidadFactory;
 import factories.proyectiles.ProyectilFuerteFactory;
 import visitors.Visitor;
 import visitors.premios.VisitorAplicarCuarentena;

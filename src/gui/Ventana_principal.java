@@ -5,7 +5,6 @@ import java.awt.EventQueue;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
 
@@ -35,6 +34,7 @@ public class Ventana_principal extends JFrame {
 	private int refrescoTimer;
 	private JLabel lblVidaJugador;
 	private JLabel lblStatus;
+	private JLabel lblNivel;
 	private EntidadGrafica background;
 	private KeyListener keyListener;
 
@@ -73,16 +73,22 @@ public class Ventana_principal extends JFrame {
 		escenario.add(background.getLabelImagen(), Integer.valueOf(0));
 
 		// Label vida del jugador
-		lblVidaJugador = new JLabel("N/A");
+		lblVidaJugador = new JLabel("Vida del jugador");
+		lblVidaJugador.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblVidaJugador.setHorizontalAlignment(SwingConstants.CENTER);
-		lblVidaJugador.setBounds(275, 525, 132, 25);
+		lblVidaJugador.setBounds(607, 37, 167, 25);
 		escenario.add(lblVidaJugador, Integer.valueOf(3));
 		
-		lblStatus = new JLabel("N/A");
+		lblStatus = new JLabel("Estado del juego");
 		lblStatus.setHorizontalAlignment(SwingConstants.CENTER);
 		lblStatus.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 32));
 		lblStatus.setBounds(150, 100, 500, 200);
 		escenario.add(lblStatus, Integer.valueOf(3));
+		
+		lblNivel = new JLabel("Nivel actual");
+		lblNivel.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblNivel.setBounds(10, 11, 141, 69);
+		escenario.add(lblNivel, Integer.valueOf(3));
 
 		// Iniciando el juego
 		Juego juego = new Juego(this);
@@ -94,8 +100,8 @@ public class Ventana_principal extends JFrame {
 		lblStatus.setVisible(false);
 		
 		// Inicializacion del timer
-		//refrescoTimer = 33; // 30 ticks/segundo
-		refrescoTimer = 16; // 60 ticks/segundo
+		refrescoTimer = 33; // 30 ticks/segundo
+		//refrescoTimer = 16; // 60 ticks/segundo
 
 		timer = new Timer(refrescoTimer, new ActionListener() {
 			@Override
@@ -191,5 +197,18 @@ public class Ventana_principal extends JFrame {
 		lblStatus.setVisible(true);
 		timer.stop();
 		removerListener();
+	}
+	/**
+	 * Mostrar que se gano el juego
+	 */
+	public void ganarJuego() {
+		lblStatus.setForeground(Color.GREEN);
+		lblStatus.setText("Ganaste");
+		lblStatus.setVisible(true);
+		timer.stop();
+	}
+	
+	public void indicarNivel(String nivel_actual) {
+		lblNivel.setText(nivel_actual);
 	}
 }
