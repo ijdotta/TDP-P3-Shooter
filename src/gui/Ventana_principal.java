@@ -70,15 +70,15 @@ public class Ventana_principal extends JFrame {
 		// Inicio del frame
 		setTitle("Vertical Shooter");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 800, 600);
+		setBounds(100, 100, 816, 639);
 		escenario = new JLayeredPane();
 
-		escenario.setBorder(new EmptyBorder(5, 5, 5, 5));
+		escenario.setBorder(new EmptyBorder(5, 5, 5, 5));		
 		setContentPane(escenario);
 		escenario.setLayout(null);
 
 		// Inicio del background
-		background = new Background(this.getWidth(), this.getHeight());
+		background = new Background(this.getWidth() -16, this.getHeight()-39);
 		escenario.add(background.getLabelImagen(), Integer.valueOf(0));
 
 		// Label vida del jugador
@@ -86,7 +86,8 @@ public class Ventana_principal extends JFrame {
 		lblVidaJugador.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblVidaJugador.setHorizontalAlignment(SwingConstants.CENTER);
 		lblVidaJugador.setBounds(607, 37, 167, 25);
-		escenario.add(lblVidaJugador, Integer.valueOf(3));
+		escenario.add(lblVidaJugador, Integer.valueOf(3));		
+		
 		
 		lblStatus = new JLabel("Estado del juego");
 		lblStatus.setHorizontalAlignment(SwingConstants.CENTER);
@@ -219,6 +220,14 @@ public class Ventana_principal extends JFrame {
 	
 	public void indicarNivel(String nivel_actual) {
 		lblNivel.setText(nivel_actual);
+	}
+	
+	public int escenarioWidth() {
+		return background.getLabelImagen().getWidth();
+	}
+	
+	public int escenarioHeight() {
+		return background.getLabelImagen().getHeight();
 	}
 	
 	private void inicializarLogger() {

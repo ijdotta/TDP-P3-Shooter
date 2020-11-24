@@ -79,8 +79,8 @@ public abstract class Entidad {
 		entidad_w = lblE.getWidth();
 		entidad_h = lblE.getHeight();
 
-		frame_w = juego.getGui().getWidth();
-		frame_h = juego.getGui().getHeight();
+		frame_w = juego.escenarioWidth();
+		frame_h = juego.escenarioHeight();
 
 		dentro_x = ((entidad_x + entidad_w) >= 0) && (entidad_x <= frame_w);
 		dentro_y = ((entidad_y + entidad_h) >= 0) && (entidad_y <= frame_h);

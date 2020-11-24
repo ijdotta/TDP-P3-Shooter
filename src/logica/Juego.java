@@ -327,7 +327,13 @@ public class Juego {
 	public Jugador getJugador() {
 		return (Jugador) jugador;
 	}
+	public int escenarioWidth() {
+		return gui.escenarioWidth();
+	}
 	
+	public int escenarioHeight() {
+		return gui.escenarioHeight();
+	}
 	private void inicializarLogger() {
 		if (logger == null) {
 			
