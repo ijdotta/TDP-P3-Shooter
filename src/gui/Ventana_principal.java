@@ -16,6 +16,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.logging.ConsoleHandler;
+import java.util.logging.Handler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import java.awt.Font;
@@ -27,6 +32,8 @@ public class Ventana_principal extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	private static Logger logger;
 
 	// private JPanel escenario;
 	private JLayeredPane escenario;
@@ -58,6 +65,8 @@ public class Ventana_principal extends JFrame {
 	 * Create the frame.
 	 */
 	public Ventana_principal() {
+		inicializarLogger();
+		
 		// Inicio del frame
 		setTitle("Vertical Shooter");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -210,5 +219,22 @@ public class Ventana_principal extends JFrame {
 	
 	public void indicarNivel(String nivel_actual) {
 		lblNivel.setText(nivel_actual);
+	}
+	
+	private void inicializarLogger() {
+		if (logger == null) {
+			
+			logger = Logger.getLogger(this.getClass().getName());
+			
+			Handler hnd = new ConsoleHandler();
+			hnd.setLevel(Level.ALL);
+			logger.addHandler(hnd);
+			
+			logger.setLevel(Level.ALL);
+			
+			Logger rootLoger = logger.getParent();
+			for (Handler h : rootLoger.getHandlers())
+				h.setLevel(Level.OFF);
+		}
 	}
 }

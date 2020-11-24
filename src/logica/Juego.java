@@ -5,6 +5,10 @@ import java.awt.event.KeyEvent;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
+import java.util.logging.ConsoleHandler;
+import java.util.logging.Handler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.JLabel;
 
@@ -20,6 +24,10 @@ import niveles.Nivel;
 import niveles.NivelUno;
 
 public class Juego {
+	
+	//Testing
+	private static Logger logger;
+	
 	// Atributos de instancia
 	private Ventana_principal gui;
 	private List<Entidad> entidades;
@@ -36,6 +44,8 @@ public class Juego {
 	 * @param vp Ventana Principal de la gui
 	 */
 	public Juego(Ventana_principal vp) {
+		inicializarLogger();
+		
 		this.gui = vp;
 		entidades = new LinkedList<Entidad>();
 		factoryJugador = new JugadorFactory(this);
@@ -126,15 +136,16 @@ public class Juego {
 	public void recibirInput(KeyEvent e) {
 		int codigoTecla = e.getKeyCode();
 
-		System.out.print("Tecla ");
 		if ((codigoTecla == KeyEvent.VK_LEFT) || (codigoTecla == (KeyEvent.VK_RIGHT))) {
 			moverJugador(e);
-		} else if (codigoTecla == (KeyEvent.VK_SPACE)) {
-			System.out.println("Espacio");
+		} 
+		else if (codigoTecla == (KeyEvent.VK_SPACE)) {
+			logger.finer("Tecla: espacio");
 			generarDisparo((Personaje) jugador);
-		} else {
-			System.out.println();
-		}
+		} 
+//		else {
+//			System.out.println();
+//		}
 
 	}
 
@@ -148,10 +159,10 @@ public class Juego {
 		Movimiento movimientoj = jugador.getMovimiento();
 
 		if (codigoTecla == KeyEvent.VK_LEFT) {
-			System.out.println("Izquierda");
+			logger.finer("Tecla: izquierda");
 			movimientoj.setDireccion(MHorizontal.LEFT);
 		} else if (codigoTecla == KeyEvent.VK_RIGHT) {
-			System.out.println("Derecha");
+			logger.finer("Tecla: derecha");
 			movimientoj.setDireccion(MHorizontal.RIGHT);
 		}
 
@@ -218,7 +229,7 @@ public class Juego {
 	public void removerEntidad(Entidad enti) {
 		gui.removeComponent(enti.getEntidadGrafica().getLabelImagen());
 		entidades.remove(enti);
-		System.out.println("***Removido*** Entidad: " + enti.toString());
+		logger.info("***Removido*** Entidad: " + enti.toString());
 	}
 
 	/**
@@ -237,7 +248,7 @@ public class Juego {
 	 * @param enti entidad a agregar
 	 */
 	public void addEntidad1(Entidad enti) {
-		// System.out.println("***Generado***"+enti.toString());
+		// logger.info("***Generado***"+enti.toString());
 		entidades.add(enti);
 		gui.addComponent1(enti.getEntidadGrafica().getLabelImagen());
 	}
@@ -315,5 +326,22 @@ public class Juego {
 
 	public Jugador getJugador() {
 		return (Jugador) jugador;
+	}
+	
+	private void inicializarLogger() {
+		if (logger == null) {
+			
+			logger = Logger.getLogger(this.getClass().getName());
+			
+			Handler hnd = new ConsoleHandler();
+			hnd.setLevel(Level.ALL);
+			logger.addHandler(hnd);
+			
+			logger.setLevel(Level.ALL);
+			
+			Logger rootLoger = logger.getParent();
+			for (Handler h : rootLoger.getHandlers())
+				h.setLevel(Level.OFF);
+		}
 	}
 }
