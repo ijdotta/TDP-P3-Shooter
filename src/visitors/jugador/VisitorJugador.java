@@ -61,7 +61,7 @@ public class VisitorJugador extends Visitor {
 
 	@Override
 	public void visitPocion(EfectoPocion ep) {
-		int vida_aumentada = jugador.getVida() + 25;
+		int vida_aumentada = jugador.getVida() + EfectoPocion.CURACION;
 
 		// Aumentar vida con un tope de 100
 		if (vida_aumentada > 100) {
