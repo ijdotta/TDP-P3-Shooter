@@ -48,31 +48,21 @@ public abstract class Nivel {
 	 */
 	public void configurar() {
 		Random rand = new Random();
-		JLabel lbl;
 		Entidad enti;
 		EntidadFactory[] premios;
 		
 		// Background del nivel
-		juego.getGui().setBackground("/img/Background_Scenery1.png");
+		juego.setBackground("/img/Background_Scenery1.png");
 		
 		// Indicar graficamente en cual nivel estoy
-		juego.getGui().indicarNivel("Nivel Abstracto");
-		
-		// Si en el algun momento queres borrar la lista
-		// podes usar entidades.clear();
-		/**
-		 * for (Entidad e : entidades) { // eliminar rastro gráfico, etc.
-		 * entidades.remove(e); }
-		 **/
+		juego.indicarNivel("Nivel Abstracto");
 
 		// Agregando infectados al escenario
 		for (int i = 0; i < cantidad_infectados / 2; i++) {
 			enti = fInfectados[0].crearEntidad();
-			lbl = enti.getEntidadGrafica().getLabelImagen();
 
 			// Para ponerle una posicion inicial.
-
-			lbl.setLocation(rand.nextInt((int) juego.getGui().getWidth() - lbl.getWidth()), rand.nextInt(25) - lbl.getHeight());
+			enti.setLocation(rand.nextInt((int) juego.escenarioWidth() - enti.getWidth()), rand.nextInt(25) - enti.getHeight());
 			
 			juego.addEntidad(enti);
 		}

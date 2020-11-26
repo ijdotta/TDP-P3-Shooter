@@ -177,14 +177,10 @@ public class Juego {
 	 */
 	public void generarDisparo(Personaje enti) {
 		Entidad projectil = enti.getProyectil().crearEntidad();
-		JLabel lblE, lblP;
-
-		lblE = enti.getEntidadGrafica().getLabelImagen();
-		lblP = projectil.getEntidadGrafica().getLabelImagen();
 
 		// Posiciono el disparo en el centro de la entidad
-		lblP.setLocation(lblE.getX() + (lblE.getWidth() / 2) - (lblP.getWidth() / 2),
-				lblE.getY() + (lblE.getHeight() / 2) - (lblP.getHeight() / 2));
+		projectil.setLocation(enti.getX() + (enti.getWidth() / 2) - (projectil.getWidth() / 2),
+				enti.getY() + (enti.getHeight() / 2) - (projectil.getHeight() / 2));
 
 		// Introduzco el label en la capa del medio, asi esta abajo del infectado y
 		// encima del background
@@ -200,20 +196,15 @@ public class Juego {
 	public void generarPremio(Entidad enti) {
 		Entidad premio;
 		Random rand;
-		JLabel lblE, lblP;
 
 		// Se genera un premio al azar de los disponibles, si es que existe
 		if (premios.length > 0) {
 			rand = new Random();
 			premio = premios[rand.nextInt(premios.length)].crearEntidad();
-			// premio = premios[1].crearEntidad();
-
-			lblE = enti.getEntidadGrafica().getLabelImagen();
-			lblP = premio.getEntidadGrafica().getLabelImagen();
-
+			
 			// Posiciono el premio en el centro de la entidad
-			lblP.setLocation(lblE.getX() + (lblE.getWidth() / 2) - (lblP.getWidth() / 2),
-					lblE.getY() + (lblE.getHeight() / 2) - (lblP.getHeight() / 2));
+			premio.setLocation(enti.getX() + (enti.getWidth() / 2) - (premio.getWidth() / 2),
+					enti.getY() + (enti.getHeight() / 2) - (premio.getHeight() / 2));
 
 			// Introduzco el label en la capa del medio, asi esta abajo del infectado y
 			// encima del background
@@ -227,7 +218,7 @@ public class Juego {
 	 * @param enti entidad a remover
 	 */
 	public void removerEntidad(Entidad enti) {
-		gui.removeComponent(enti.getEntidadGrafica().getLabelImagen());
+		gui.removeComponent(enti.getLabelImagen());
 		entidades.remove(enti);
 		logger.info("***Removido*** Entidad: " + enti.toString());
 	}
@@ -239,7 +230,7 @@ public class Juego {
 	 */
 	public void addEntidad(Entidad enti) {
 		entidades.add(enti);
-		gui.addComponent(enti.getEntidadGrafica().getLabelImagen());
+		gui.addComponent(enti.getLabelImagen());
 	}
 
 	/**
@@ -250,7 +241,7 @@ public class Juego {
 	public void addEntidad1(Entidad enti) {
 		// logger.info("***Generado***"+enti.toString());
 		entidades.add(enti);
-		gui.addComponent1(enti.getEntidadGrafica().getLabelImagen());
+		gui.addComponent1(enti.getLabelImagen());
 	}
 
 	/**
@@ -263,17 +254,16 @@ public class Juego {
 		int x, y;
 		Random rand = new Random();
 
-		x = jugador.getEntidadGrafica().getLabelImagen().getX() - 100 + rand.nextInt(200);
-		y = 1 - enti.getEntidadGrafica().getLabelImagen().getHeight();
+		x = jugador.getX() - 100 + rand.nextInt(200);
+		y = 1 - enti.getHeight();
 
-		enti.getEntidadGrafica().getLabelImagen().setLocation(x, y);
+		enti.setLocation(x, y);
 	}
 	/**
-	 * Pone al jugador en su posicion inicial.
+	 * Posiciona al jugador en su posicion inicial.
 	 */
 	public void posicionInicialJugador() {
-		JLabel lblJ = jugador.getEntidadGrafica().getLabelImagen();
-		jugador.getEntidadGrafica().getLabelImagen().setLocation((gui.getWidth() / 2) - (lblJ.getWidth()/2), (gui.getHeight() - 100) - (lblJ.getHeight()/2));
+		jugador.setLocation((gui.escenarioWidth() / 2) - (jugador.getWidth()/2), (gui.escenarioHeight() - 50) - (jugador.getHeight()/2));
 	}
 	public void finalizarJuego() {
 
@@ -333,6 +323,13 @@ public class Juego {
 	
 	public int escenarioHeight() {
 		return gui.escenarioHeight();
+	}
+	public void setBackground(String ruta) {
+		gui.setBackground(ruta);
+	}
+	
+	public void indicarNivel(String nivel_actual) {
+		gui.indicarNivel(nivel_actual);
 	}
 	private void inicializarLogger() {
 		if (logger == null) {

@@ -2,40 +2,103 @@ package entidadesGraficas;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-
+/**
+ * Implementacion de la parte grafica de una Entidad,
+ * @author Comision 12
+ *
+ */
 public abstract class EntidadGrafica {
 	// Atributos de instancia
 	protected JLabel labelImagen;
+	protected String ruta;
 
 	// Constructor
+	/**
+	 * Inicia la entidad grafica con una imagen y dimensiones pasadas por parametro
+	 * @param ruta ruta de la imagen
+	 * @param w ancho
+	 * @param h alto
+	 */
 	public EntidadGrafica(String ruta, int w, int h) {
 		labelImagen = new JLabel();
 		labelImagen.setSize(w, h);
-
-		ImageIcon imagen = imgRedimensionada(ruta);
-		labelImagen.setIcon(imagen);
+		this.ruta = ruta;
+		redimensionarImagen();
 	}
 
 	// Metodos
-	public JLabel getLabelImagen() {
-		return labelImagen;
-	}
-
-	public void setImagen(String ruta) {
-		ImageIcon imagen = imgRedimensionada(ruta);
-		labelImagen.setIcon(imagen);
-	}
-
 	/**
-	 * Devuelve un ImageIcon redimensionado al label actual.
-	 * 
-	 * @param ruta Ruta de la imagen.
-	 * @return ImageIcon redimensionado.
+	 * Setea la imagen de la entidad grafica segun una ruta.
+	 * @param ruta ruta de la imagen.
 	 */
-	public ImageIcon imgRedimensionada(String ruta) {
+	public void setImagen(String ruta) {
+		this.ruta = ruta;
+		redimensionarImagen();
+	}
+	/**
+	 * Redimensiona la imagen actual para que se ajuste a las dimensiones del label.
+	 */
+	private void redimensionarImagen() {
 		ImageIcon imagen = new ImageIcon(this.getClass().getResource(ruta));
 		ImageIcon imagenRed = new ImageIcon(imagen.getImage().getScaledInstance(labelImagen.getWidth(),
 				labelImagen.getHeight(), java.awt.Image.SCALE_SMOOTH));
-		return imagenRed;
+		labelImagen.setIcon(imagenRed);
+	}
+	// Getters/ Setters
+	/**
+	 * Retorna el JLabel de la entidad grafica.
+	 * @return JLabel de la entidad grafica.
+	 */
+	public JLabel getLabelImagen() {
+		return labelImagen;
+	}
+	
+	/**
+	 * Retorna el ancho del label.
+	 * @return ancho del label.
+	 */
+	public int getWidth() {
+		return labelImagen.getWidth();
+	}
+	
+	/**
+	 * Retorna la altura del label
+	 * @return altura del label
+	 */
+	public int getHeight() {
+		return labelImagen.getHeight();
+	}
+	
+	/**
+	 * setea el ancho y alto del label
+	 * @param w ancho
+	 * @param h alto
+	 */
+	public void setSize(int w, int h) {
+		labelImagen.setSize(w, h);
+		redimensionarImagen();
+	}
+	/**
+	 * Retorna la posicion del label en el eje x
+	 * @return posicion del label en el eje x
+	 */
+	public int getX() {
+		return labelImagen.getX();
+	}
+	
+	/**
+	 * Retorna la posicion del label en el eje y
+	 * @return posicion del label en el eje y
+	 */
+	public int getY() {
+		return labelImagen.getY();
+	}
+	/**
+	 * Setea la posicion del label segun los ejes coordenados
+	 * @param x posicion del label en el eje x
+	 * @param y posicion del label en el eje y
+	 */
+	public void setLocation(int x, int y) {
+		labelImagen.setLocation(x, y);
 	}
 }
