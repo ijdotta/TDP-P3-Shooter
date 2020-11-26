@@ -2,17 +2,8 @@ package niveles;
 
 import java.util.Random;
 
-import javax.swing.JLabel;
-
 import entidades.Entidad;
-import entidades.premios.timers.TimerCuarentena;
-import entidades.premios.timers.TimerSuperArma;
 import factories.EntidadFactory;
-import factories.infectados.InfectadoAlphaFactory;
-import factories.infectados.InfectadoBetaFactory;
-import factories.premios.PremioPermanentePocionFactory;
-import factories.premios.PremioTemporalCuarentenaFactory;
-import factories.premios.PremioTemporalSuperArmaFactory;
 import logica.Juego;
 
 public abstract class Nivel {

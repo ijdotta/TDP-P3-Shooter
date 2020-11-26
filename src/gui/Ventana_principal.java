@@ -2,17 +2,7 @@ package gui;
 
 import java.awt.Color;
 import java.awt.EventQueue;
-
-import javax.swing.JButton;
-import javax.swing.JComponent;
-import javax.swing.JFrame;
-import javax.swing.Timer;
-import javax.swing.border.EmptyBorder;
-
-import entidadesGraficas.EntidadGrafica;
-import entidadesGraficas.background.Background;
-import logica.Juego;
-
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -24,25 +14,23 @@ import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.swing.JComponent;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
-import javax.swing.JPanel;
-
-import java.awt.Font;
 import javax.swing.SwingConstants;
-import java.awt.event.MouseMotionAdapter;
+import javax.swing.Timer;
+import javax.swing.border.EmptyBorder;
+
+import entidadesGraficas.EntidadGrafica;
+import entidadesGraficas.background.Background;
+import logica.Juego;
 
 public class Ventana_principal extends JFrame {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	
 	private static Logger logger;
-
-	// private JPanel escenario;
 	private JLayeredPane escenario;
+	private Juego juego;
 	private Timer timer;
 	private int refrescoTimer;
 	private JLabel lblVidaJugador;
@@ -52,6 +40,7 @@ public class Ventana_principal extends JFrame {
 	private JLabel lblIniciar;
 	private EntidadGrafica background;
 	private KeyListener keyListener;
+
 	/**
 	 * Launch the application.
 	 */
@@ -77,16 +66,16 @@ public class Ventana_principal extends JFrame {
 		setTitle("Vertical Shooter");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 816, 639);
-		
-		//Escenario
+
+		// Escenario
 		escenario = new JLayeredPane();
 		setContentPane(escenario);
 
-		escenario.setBorder(new EmptyBorder(5, 5, 5, 5));		
+		escenario.setBorder(new EmptyBorder(5, 5, 5, 5));
 		escenario.setLayout(null);
 
 		// Inicio del background
-		background = new Background(this.getWidth() -16, this.getHeight()-39);
+		background = new Background(this.getWidth() - 16, this.getHeight() - 39);
 		escenario.add(background.getLabelImagen(), Integer.valueOf(0));
 
 		// Label vida del jugador
@@ -94,99 +83,109 @@ public class Ventana_principal extends JFrame {
 		lblVidaJugador.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblVidaJugador.setHorizontalAlignment(SwingConstants.CENTER);
 		lblVidaJugador.setBounds(607, 37, 167, 25);
-		escenario.add(lblVidaJugador, Integer.valueOf(3));		
+		escenario.add(lblVidaJugador, Integer.valueOf(3));
 		
-		
+		// Inicio label Status
 		lblStatus = new JLabel("Estado del juego");
 		lblStatus.setHorizontalAlignment(SwingConstants.CENTER);
 		lblStatus.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 32));
 		lblStatus.setBounds(150, 100, 500, 200);
 		escenario.add(lblStatus, Integer.valueOf(3));
 		
+		// Inicio label Nivel
 		lblNivel = new JLabel("Nivel actual");
 		lblNivel.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblNivel.setBounds(10, 11, 141, 69);
 		escenario.add(lblNivel, Integer.valueOf(3));
 		
+		// Inicio label Iniciar
 		lblIniciar = new JLabel("Iniciar");
 		this.agregarListenerIniciar(lblIniciar);
 		lblIniciar.setHorizontalAlignment(SwingConstants.CENTER);
-		lblIniciar.setBounds(241, 325, 292, 87);
+		lblIniciar.setBounds(241, 200, 292, 87);
 		lblIniciar.setVisible(true);
-		escenario.add(lblIniciar,Integer.valueOf(5));
-		
+		escenario.add(lblIniciar, Integer.valueOf(5));
+
+		// Inicio label Reiniciar
 		lblReiniciar = new JLabel("Reiniciar");
 		this.agregarListenerReiniciar(lblReiniciar);
 		lblReiniciar.setHorizontalAlignment(SwingConstants.CENTER);
-		lblReiniciar.setBounds(241, 325, 292, 87);
+		lblReiniciar.setBounds(241, 200, 292, 87);
 		lblReiniciar.setVisible(false);
-		escenario.add(lblReiniciar,Integer.valueOf(5));
+		escenario.add(lblReiniciar, Integer.valueOf(5));
 		
+		// Inicializar juego
+		juego = new Juego(this);
+		
+		// Para reconocer inputs
+		this.agregarListener(juego);
+
+		// Muestreo inicial de labels
+		lblStatus.setVisible(true);
+		lblStatus.setText("Vertical Shooter");
+
+		// Inicializacion del timer
+		refrescoTimer = 33; // 30 ticks/segundo
+		// refrescoTimer = 16; // 60 ticks/segundo
+
+		timer = new Timer(refrescoTimer, new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				juego.accionar();
+			}
+		});
+
+		timer.start();
 	}
-	
-	private void iniciarJuego() {
-				//Inicializar juego
-				Juego juego= new Juego(this);
-				// Para reconocer inputs
-				this.agregarListener(juego);
 
-				// Muestreo inicial de labels
-				lblStatus.setVisible(false);
-				
-				// Inicializacion del timer
-				refrescoTimer = 33; // 30 ticks/segundo
-				//refrescoTimer = 16; // 60 ticks/segundo
-
-				timer = new Timer(refrescoTimer, new ActionListener() {
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						juego.accionar();
-					}
-				});
-
-				timer.start();
-	}
-	
 	private void agregarListenerIniciar(JLabel labelIniciar) {
 		labelIniciar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				lblIniciar.setVisible(false);
-				iniciarJuego();
+				lblStatus.setVisible(false);
+				juego.iniciarNivel();
 			}
+
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				labelIniciar.setForeground(Color.yellow);
 			}
+
 			@Override
 			public void mouseExited(MouseEvent e) {
 				labelIniciar.setForeground(Color.black);
 			}
 		});
 	}
-	
+
 	private void agregarListenerReiniciar(JLabel labelIniciar) {
 		labelIniciar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				iniciarJuego(); //TODO reiniciar juego
 				lblReiniciar.setVisible(false);
+				lblIniciar.setVisible(true);
+				lblStatus.setForeground(Color.BLACK);
+				lblStatus.setText("Vertical Shooter");
+				juego.reiniciarJuego();
+				timer.start();
 			}
+
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				labelIniciar.setForeground(Color.yellow);
 			}
+
 			@Override
 			public void mouseExited(MouseEvent e) {
 				labelIniciar.setForeground(Color.black);
 			}
 		});
 	}
-	
-	
-	
+
 	/**
 	 * Agrega listener del teclado al frame principal.
+	 * 
 	 * @param j
 	 */
 	private void agregarListener(Juego j) {
@@ -205,16 +204,17 @@ public class Ventana_principal extends JFrame {
 			public void keyReleased(KeyEvent e) {
 			}
 		};
-		
+
 		this.addKeyListener(keyListener);
 	}
+
 	/**
 	 * remueve el listener actual
 	 */
 	private void removerListener() {
 		this.removeKeyListener(keyListener);
 	}
-	
+
 	/**
 	 * Pone la componente en la capa superior
 	 * 
@@ -232,11 +232,13 @@ public class Ventana_principal extends JFrame {
 	public void addComponent1(JComponent comp) {
 		getContentPane().add(comp, Integer.valueOf(1));
 	}
+
 	/**
 	 * remueve una componente del escenario
+	 * 
 	 * @param comp
 	 */
-	public void removeComponent(JComponent comp) {		
+	public void removeComponent(JComponent comp) {
 		// Luego lo quito del escenario
 		this.remove(comp);
 		// Repintar el background remueve las basuras graficas
@@ -245,6 +247,7 @@ public class Ventana_principal extends JFrame {
 
 	/**
 	 * Actualiza la vida del jugador
+	 * 
 	 * @param s
 	 */
 	public void actualizarLabelVidaJugador(String s) {
@@ -252,15 +255,16 @@ public class Ventana_principal extends JFrame {
 	}
 
 	/**
-	 * Cambia la imagen del background segun la ruta 
+	 * Cambia la imagen del background segun la ruta
+	 * 
 	 * @param ruta ruta de la imagen
 	 */
 	public void setBackground(String ruta) {
 		background.setImagen(ruta);
 	}
+
 	/**
-	 * Mostrar que se perdio el juego.
-	 * Inhabilitar inputs del teclado
+	 * Mostrar que se perdio el juego. Inhabilitar inputs del teclado
 	 */
 	public void perderJuego() {
 		lblStatus.setForeground(Color.RED);
@@ -270,7 +274,7 @@ public class Ventana_principal extends JFrame {
 		removerListener();
 		lblReiniciar.setVisible(true);
 	}
-	
+
 	/**
 	 * Mostrar que se gano el juego
 	 */
@@ -280,33 +284,34 @@ public class Ventana_principal extends JFrame {
 		lblStatus.setVisible(true);
 		timer.stop();
 	}
-	
+
 	public void indicarNivel(String nivel_actual) {
 		lblNivel.setText(nivel_actual);
 	}
-	
+
 	public int escenarioWidth() {
 		return background.getLabelImagen().getWidth();
 	}
-	
+
 	public int escenarioHeight() {
 		return background.getLabelImagen().getHeight();
 	}
-	
+
 	private void inicializarLogger() {
 		if (logger == null) {
-			
+
 			logger = Logger.getLogger(this.getClass().getName());
-			
+
 			Handler hnd = new ConsoleHandler();
 			hnd.setLevel(Level.ALL);
 			logger.addHandler(hnd);
-			
+
 			logger.setLevel(Level.ALL);
-			
+
 			Logger rootLoger = logger.getParent();
 			for (Handler h : rootLoger.getHandlers())
 				h.setLevel(Level.OFF);
 		}
 	}
+
 }

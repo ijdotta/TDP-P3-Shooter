@@ -10,8 +10,6 @@ import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.swing.JLabel;
-
 import entidades.Entidad;
 import entidades.Personaje;
 import entidades.jugador.Jugador;
@@ -55,9 +53,8 @@ public class Juego {
 		this.addEntidad(jugador);
 		gui.actualizarLabelVidaJugador("Vida: " + jugador.getVida());
 
-		// Inicia el juego desde el nivel uno
-		nivel = new NivelUno(this);
-		nivel.configurar();
+		// Dejar iniciado el juego desde el primer nivel
+		principioDelJuego();
 	}
 
 	// Metodos
@@ -94,13 +91,11 @@ public class Juego {
 		// Detectar colisiones/ Realizar interacciones.
 		for (Entidad e1 : entidades) {
 			for (Entidad e2 : entidades) {
-				if (!e1.equals(e2)) {
-					obj1 = e1.getEntidadGrafica().getLabelImagen().getBounds();
-					obj2 = e2.getEntidadGrafica().getLabelImagen().getBounds();
+				obj1 = e1.getEntidadGrafica().getLabelImagen().getBounds();
+				obj2 = e2.getEntidadGrafica().getLabelImagen().getBounds();
 
-					if (obj1.intersects(obj2)) {
-						e2.accept(e1.getVisitor());
-					}
+				if (obj1.intersects(obj2)) {
+					e2.accept(e1.getVisitor());
 				}
 			}
 		}
@@ -141,11 +136,7 @@ public class Juego {
 		else if (codigoTecla == (KeyEvent.VK_SPACE)) {
 			logger.finer("Tecla: espacio");
 			generarDisparo((Personaje) jugador);
-		} 
-//		else {
-//			System.out.println();
-//		}
-
+		}
 	}
 
 	/**
@@ -283,6 +274,19 @@ public class Juego {
 		}
 	}
 
+	public void iniciarNivel() {
+		nivel.configurar();
+	}
+	
+	public void reiniciarJuego() {
+		this.limpiarEscenario();
+		this.addEntidad(jugador);
+		this.principioDelJuego();
+	}
+	
+	private void principioDelJuego() {
+		nivel = new NivelUno(this);
+	}
 	// Getter/Setters
 	public void setNivel(Nivel nivel) {
 		this.nivel = nivel;

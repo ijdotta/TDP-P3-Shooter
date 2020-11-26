@@ -7,7 +7,6 @@ import javax.swing.Timer;
 
 import entidades.premios.EfectoSuperArma;
 import factories.proyectiles.ProyectilJugadorFactory;
-import logica.Juego;
 /**
  * Con patron Singleton
  * @author

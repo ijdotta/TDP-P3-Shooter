@@ -1,20 +1,14 @@
 package visitors.jugador;
 
-import entidades.Entidad;
 import entidades.infectados.Alpha;
 import entidades.infectados.Beta;
 import entidades.jugador.Jugador;
 import entidades.premios.EfectoCuarentena;
 import entidades.premios.EfectoPocion;
 import entidades.premios.EfectoSuperArma;
-import entidades.premios.timers.TimerCuarentena;
-import entidades.premios.timers.TimerP;
-import entidades.premios.timers.TimerSuperArma;
 import entidades.proyectiles.Proyectil_Infectado;
 import entidades.proyectiles.Proyectil_Jugador;
-import factories.proyectiles.ProyectilFuerteFactory;
 import visitors.Visitor;
-import visitors.premios.VisitorAplicarCuarentena;
 
 public class VisitorJugador extends Visitor {
 	// Atributos de instancia

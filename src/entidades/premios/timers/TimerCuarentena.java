@@ -7,7 +7,6 @@ import javax.swing.Timer;
 
 import entidades.Entidad;
 import entidades.premios.EfectoCuarentena;
-import logica.Juego;
 import visitors.premios.VisitorNormalizarInfectado;
 
 /**
