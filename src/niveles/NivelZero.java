@@ -15,6 +15,12 @@ public class NivelZero extends Nivel {
 		 * ahora SuperAlfa */ 
 	}
 
+	@Override
+	public void configurar() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
 
 /**

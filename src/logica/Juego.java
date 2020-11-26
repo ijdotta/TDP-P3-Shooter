@@ -34,7 +34,6 @@ public class Juego {
 	private Entidad jugador;
 	private Nivel nivel;
 	private EntidadFactory factoryJugador;
-	private EntidadFactory[] premios;
 
 	// Constructor
 	/**
@@ -188,19 +187,14 @@ public class Juego {
 	}
 
 	/**
-	 * Se genera un premio al azar de los disponibles detras y en el centro de la
-	 * entidad pasada por parametro.
-	 * 
+	 * Se le pide al nivel un premio al azar, si es que existe
 	 * @param enti entidad la cual suelta el premio
 	 */
 	public void generarPremio(Entidad enti) {
 		Entidad premio;
-		Random rand;
-
-		// Se genera un premio al azar de los disponibles, si es que existe
-		if (premios.length > 0) {
-			rand = new Random();
-			premio = premios[rand.nextInt(premios.length)].crearEntidad();
+		
+		if (nivel.hayPremio()) {
+			premio = nivel.getPremioRandom();
 			
 			// Posiciono el premio en el centro de la entidad
 			premio.setLocation(enti.getX() + (enti.getWidth() / 2) - (premio.getWidth() / 2),
@@ -308,10 +302,6 @@ public class Juego {
 
 	public void setGui(Ventana_principal vp) {
 		gui = vp;
-	}
-
-	public void setPremios(EntidadFactory[] p) {
-		premios = p;
 	}
 
 	public Jugador getJugador() {

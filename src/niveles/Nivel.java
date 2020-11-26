@@ -17,6 +17,7 @@ import logica.Juego;
 
 public abstract class Nivel {
 
+	// Atributos de instancia
 	protected Juego juego;
 	protected Nivel siguienteNivel;
 
@@ -24,6 +25,7 @@ public abstract class Nivel {
 	protected EntidadFactory[] fInfectados;
 	protected EntidadFactory[] fPremios;
 
+	// Constructor
 	/**
 	 * Si hacemos esto así, de alguna forma los niveles pueden reutilizar el método
 	 * configurar, pero pueden ir variando las fábricas (y así, el tipo específico
@@ -32,65 +34,36 @@ public abstract class Nivel {
 	 */
 	public Nivel(Juego j) {
 		juego = j;
-
-		cantidad_infectados = 20;
-		fInfectados = new EntidadFactory[3];
-		fInfectados[0] = new InfectadoAlphaFactory(juego);
-		fInfectados[1] = new InfectadoBetaFactory(juego);
-
-		fPremios = new EntidadFactory[3];
-		fPremios[0] = new PremioPermanentePocionFactory(juego);
 	}
 
+	// Metodos
 	/**
-	 * Crea la nueva lista de entidades del juego (o vacía la lista vieja y carga
-	 * las nuevas entidades en la misma lista [ver como afecta esto a la GUI])
+	 * Cada nivel va a determinar su background, el nivel en el que está, los tipos
+	 * de infectados que se van a generar y su cantidad, los tipos de premios que se
+	 * pueden generar (junto a su timer si es un premio temporal). Ademas debe
+	 * setear su siguiente nivel, si no tiene entonces null.
 	 */
-	public void configurar() {
-		Random rand = new Random();
-		Entidad enti;
-		EntidadFactory[] premios;
-		
-		// Background del nivel
-		juego.setBackground("/img/Background_Scenery1.png");
-		
-		// Indicar graficamente en cual nivel estoy
-		juego.indicarNivel("Nivel Abstracto");
-
-		// Agregando infectados al escenario
-		for (int i = 0; i < cantidad_infectados / 2; i++) {
-			enti = fInfectados[0].crearEntidad();
-
-			// Para ponerle una posicion inicial.
-			enti.setLocation(rand.nextInt((int) juego.escenarioWidth() - enti.getWidth()), rand.nextInt(25) - enti.getHeight());
-			
-			juego.addEntidad(enti);
-		}
-
-		// Determinando que premios pueden aparecer en el escenario
-		premios = new EntidadFactory[3];
-
-		premios[0] = new PremioPermanentePocionFactory(juego);
-		premios[1] = new PremioTemporalCuarentenaFactory(juego);
-		premios[2] = new PremioTemporalSuperArmaFactory(juego);
-		
-		// De cada premio temporal hacerle conocer el juego
-		TimerCuarentena.getInstance().setJuego(juego);
-		TimerSuperArma.getInstance().setJuego(juego);
-		
-		juego.setPremios(premios);
-	}
+	public abstract void configurar();
 
 	/**
 	 * ¿Se encarga de limpiar el juego y hacer que se limpie la GUI de cosas viejas
 	 * del nivel anterior, para configurar el nuevo nivel?
 	 */
 	public void limpiar() {
-
+		// TODO tratar de utilizar juego.limpiarEscenario()
+		// como la lista de entidades es un atributo del juego es responsabilidad de el
+		// limpiarla
 	}
 
+	/**
+	 * Si el nivel se ganó, pasar al siguiente nivel Pidiendole al juego que limpie
+	 * cualquier residuos y reposicione al jugador
+	 */
 	public void siguienteNivel() {
 		if (siguienteNivel != null) {
+			juego.limpiarEscenario();
+			juego.posicionInicialJugador();
+
 			juego.setNivel(siguienteNivel);
 			juego.getNivel().configurar();
 		} else {
@@ -98,6 +71,41 @@ public abstract class Nivel {
 		}
 	}
 
+	/**
+	 * Indica si hay premios
+	 * 
+	 * @return true si hay premios, false caso contrario
+	 */
+	public boolean hayPremio() {
+		return (fPremios.length > 0);
+	}
+
+	/**
+	 * Retorna un premio al azar de los disponibles, retorna nulo si no hay premios.
+	 * 
+	 * @return un premio al azar, null si no hay premios.
+	 */
+	public Entidad getPremioRandom() {
+		Entidad premio = null;
+		Random rand;
+
+		// Se genera un premio al azar de los disponibles, si es que existe
+		if (fPremios.length > 0) {
+			rand = new Random();
+			premio = fPremios[rand.nextInt(fPremios.length)].crearEntidad();
+		}
+
+		return premio;
+	}
+
+	/**
+	 * Decrementa en uno (1) la cantidad de infectados.
+	 */
+	public void decrementarInfectados() {
+		cantidad_infectados--;
+	}
+
+	// Getters/ Setters
 	public void setJuego(Juego j) {
 		juego = j;
 	}
