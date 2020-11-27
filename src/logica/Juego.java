@@ -207,7 +207,7 @@ public class Juego {
 		entidades.remove(enti);
 		logger.info("***Removido*** Entidad: " + enti.toString());
 	}
-
+	
 	/**
 	 * Agrega la entidad a la lista y graficamente al escenario en la capa superior
 	 * 
@@ -264,23 +264,40 @@ public class Juego {
 	}
 
 	/**
-	 * Remueve todas las entidades de la lista y escenario excepto el jugador
+	 * Remueve todas las entidades de la lista y el escenario.
 	 */
-	public void limpiarEscenario() {
+	public void limpiarEscenario() {	
+		// Remuevo graficamente a todas las entidades de la lista
 		for (Entidad e : entidades) {
-			if (!e.equals(jugador)) {
-				this.removerEntidad(e);
-			}
+			gui.removeComponent(e.getLabelImagen());
 		}
+		
+		// Creo una nueva lista de entidades vacia.
+		entidades = new LinkedList<Entidad>();
 	}
 
 	public void iniciarNivel() {
+		limpiarTodoMenosJugador();
+		
 		nivel.configurar();
 	}
-	
+	private void limpiarTodoMenosJugador() {
+		// Remuevo graficamente a todas las entidades de la lista
+		for (Entidad e : entidades) {
+			gui.removeComponent(e.getLabelImagen());
+		}
+		
+		// Creo una nueva lista de entidades vacia.
+		entidades = new LinkedList<Entidad>();
+		this.addEntidad(jugador);
+	}
 	public void reiniciarJuego() {
 		this.limpiarEscenario();
+		
+		jugador = factoryJugador.crearEntidad();
+		posicionInicialJugador();
 		this.addEntidad(jugador);
+		gui.actualizarLabelVidaJugador("Vida: "+ jugador.getVida());
 		this.principioDelJuego();
 	}
 	

@@ -118,10 +118,11 @@ public class Ventana_principal extends JFrame {
 		juego = new Juego(this);
 		
 		// Para reconocer inputs
-		this.agregarListener(juego);
+		this.agregarListener();
 
 		// Muestreo inicial de labels
 		lblStatus.setVisible(true);
+		lblNivel.setText("Menu");
 		lblStatus.setText("Vertical Shooter");
 
 		// Inicializacion del timer
@@ -165,9 +166,13 @@ public class Ventana_principal extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				lblReiniciar.setVisible(false);
 				lblIniciar.setVisible(true);
+				lblNivel.setText("Menu");
+				background.setImagen("/img/background_Scenery43.png");
 				lblStatus.setForeground(Color.BLACK);
 				lblStatus.setText("Vertical Shooter");
+				
 				juego.reiniciarJuego();
+				agregarListener();
 				timer.start();
 			}
 
@@ -188,7 +193,7 @@ public class Ventana_principal extends JFrame {
 	 * 
 	 * @param j
 	 */
-	private void agregarListener(Juego j) {
+	private void agregarListener() {
 		keyListener = new KeyListener() {
 
 			@Override
@@ -197,7 +202,7 @@ public class Ventana_principal extends JFrame {
 
 			@Override
 			public void keyPressed(KeyEvent e) {
-				j.recibirInput(e);
+				juego.recibirInput(e);
 			}
 
 			@Override

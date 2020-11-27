@@ -3,6 +3,7 @@ package entidades.infectados;
 import entidadesGraficas.infectados.GraficoBeta;
 import logica.Juego;
 import visitors.Visitor;
+import visitors.infectados.VisitorBeta;
 
 public class Beta extends Infectado {
 
@@ -11,6 +12,7 @@ public class Beta extends Infectado {
 		
 		entidadGrafica = new GraficoBeta(50, 50); 
 		damage = 2;
+		visitor = new VisitorBeta(this);
 	}
 
 	@Override
