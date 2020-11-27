@@ -100,7 +100,7 @@ public class Ventana_principal extends JFrame {
 		
 		// Inicio label Iniciar
 		lblIniciar = new JLabel("Iniciar");
-		this.agregarListenerIniciar(lblIniciar);
+		this.agregarListenerIniciar();
 		lblIniciar.setHorizontalAlignment(SwingConstants.CENTER);
 		lblIniciar.setBounds(241, 200, 292, 87);
 		lblIniciar.setVisible(true);
@@ -108,7 +108,7 @@ public class Ventana_principal extends JFrame {
 
 		// Inicio label Reiniciar
 		lblReiniciar = new JLabel("Reiniciar");
-		this.agregarListenerReiniciar(lblReiniciar);
+		this.agregarListenerReiniciar();
 		lblReiniciar.setHorizontalAlignment(SwingConstants.CENTER);
 		lblReiniciar.setBounds(241, 200, 292, 87);
 		lblReiniciar.setVisible(false);
@@ -138,8 +138,8 @@ public class Ventana_principal extends JFrame {
 		timer.start();
 	}
 
-	private void agregarListenerIniciar(JLabel labelIniciar) {
-		labelIniciar.addMouseListener(new MouseAdapter() {
+	private void agregarListenerIniciar() {
+		lblIniciar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				lblIniciar.setVisible(false);
@@ -149,18 +149,18 @@ public class Ventana_principal extends JFrame {
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				labelIniciar.setForeground(Color.yellow);
+				lblIniciar.setForeground(Color.yellow);
 			}
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				labelIniciar.setForeground(Color.black);
+				lblIniciar.setForeground(Color.black);
 			}
 		});
 	}
 
-	private void agregarListenerReiniciar(JLabel labelIniciar) {
-		labelIniciar.addMouseListener(new MouseAdapter() {
+	private void agregarListenerReiniciar() {
+		lblReiniciar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				lblReiniciar.setVisible(false);
@@ -173,12 +173,12 @@ public class Ventana_principal extends JFrame {
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				labelIniciar.setForeground(Color.yellow);
+				lblReiniciar.setForeground(Color.yellow);
 			}
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				labelIniciar.setForeground(Color.black);
+				lblReiniciar.setForeground(Color.black);
 			}
 		});
 	}
