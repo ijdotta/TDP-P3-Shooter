@@ -11,6 +11,9 @@ import logica.visitors.Visitor;
 import logica.visitors.VisitorNulo;
 
 public abstract class Entidad {
+	
+	protected static int VIDA_MAX = 100;
+	
 	// Atributos de instancia
 	protected Juego juego;
 	protected EntidadGrafica entidadGrafica;
@@ -31,9 +34,8 @@ public abstract class Entidad {
 	 */
 	public Entidad(Juego j) {
 		juego = j;
-
 		visitor = new VisitorNulo();
-		vida = 100;
+		vida = Entidad.VIDA_MAX;
 		state = new DefaultState(this);
 	}
 
