@@ -13,12 +13,12 @@ import logica.visitors.Visitor;
 public class VisitorProyectilI extends Visitor{
 
 	// Atributos de instancia
-	private Proyectil_Infectado projectili;
+	private Proyectil_Infectado proyectilInfectado;
 	
 	// Constructor
 	public VisitorProyectilI(Proyectil_Infectado pi)
 	{
-		projectili = pi;
+		proyectilInfectado = pi;
 	}
 	
 	// Metodos
@@ -66,10 +66,8 @@ public class VisitorProyectilI extends Visitor{
 
 	@Override
 	public void visitJugador(Jugador j) {
-		// Hacer daño
-		j.setVida(j.getVida() - projectili.getDamage());
-		// Matar el projectil
-		projectili.setVida(-1);
+		j.damage(proyectilInfectado);
+		proyectilInfectado.destruir();
 	}
 
 }

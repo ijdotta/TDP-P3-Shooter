@@ -13,36 +13,25 @@ import logica.visitors.Visitor;
 public class VisitorProyectilJ extends Visitor{
 	
 	// Atributos de instancia
-	private Proyectil_Jugador projectilj;
+	private Proyectil_Jugador proyectilJugador;
 	
 	// Constructor
 	public VisitorProyectilJ(Proyectil_Jugador pj)
 	{
-		projectilj = pj;
+		proyectilJugador = pj;
 	}
 	
 	// Metodos	
 	@Override
 	public void visitAlpha(Alpha a) {
-		// Hacerle daño
-		a.setVida(a.getVida() - projectilj.getDamage());
-		// Matar el projectil
-		projectilj.setVida(-1);
-		
-		if(a.getVida() <= 0)
-		{
-			System.out.println("MUERTO: "+a.toString()+"   HP: "+a.getVida());
-		}
+		a.damage(proyectilJugador);
+		proyectilJugador.destruir();
 	}
 
 	@Override
 	public void visitBeta(Beta b) {
-		b.setVida(b.getVida() - projectilj.getDamage());
-		
-		if(b.getVida() <= 0)
-		{
-			System.out.println("MUERTO: "+b.toString());
-		}
+		b.damage(proyectilJugador);
+		proyectilJugador.destruir();
 	}
 
 	@Override

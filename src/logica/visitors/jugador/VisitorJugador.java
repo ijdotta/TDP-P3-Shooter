@@ -22,14 +22,12 @@ public class VisitorJugador extends Visitor {
 	// Metodos
 	@Override
 	public void visitAlpha(Alpha a) {
-		// TODO Auto-generated method stub
-
+		a.damage(jugador);
 	}
 
 	@Override
 	public void visitBeta(Beta b) {
-		// TODO Auto-generated method stub
-
+		b.damage(jugador);
 	}
 
 	@Override

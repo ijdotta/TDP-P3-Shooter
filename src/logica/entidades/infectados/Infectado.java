@@ -7,8 +7,6 @@ import logica.factories.proyectiles.ProyectilInfectadoFactory;
 import logica.movimientos.MVertical;
 
 public abstract class Infectado extends Personaje {
-	// Atributos de instancia
-	protected int damage;
 	
 	/**
 	 * SUBCLASE DEBE DETERMINAR DMG, VISITOR Y EG
@@ -28,16 +26,9 @@ public abstract class Infectado extends Personaje {
 		state = new InfectadoDefaultState(this);
 		proyectil = new ProyectilInfectadoFactory(juego);
 	}
-
-	// Metodos
-	public int getDamage() {
-		return damage;
-	}
-
-	public void setDamage(int dmg) {
-		damage = dmg;
-	}
 	
+	//subí damage a las entidades porque me sirve para el método damage
+
 	/**
 	 * Si el infectado esta out of bounds me vuelvo a reposicionar
 	 */

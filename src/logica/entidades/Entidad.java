@@ -19,6 +19,7 @@ public abstract class Entidad {
 	protected Visitor visitor;
 	protected int vida;
 	protected State state;
+	protected int damage;
 
 	// Constructor
 	/**
@@ -55,6 +56,33 @@ public abstract class Entidad {
 
 	public void mover() {
 		state.mover();
+	}
+	
+	/**
+	 * Recibe daño de una entidad.
+	 * @param enemy Enemigo que provoca el daño.
+	 */
+	public void damage(Entidad enemy) {
+		this.vida -= enemy.getDamage();
+		
+		//TODO esto por el momento no funciona
+		/*
+		 * ConcurrentModificationException cuando se busca la intersección de entidades. 
+		 * Supongo que es porque Juego.java recorre la lista de entidades en busca de colisiones
+		 * sin haber terminado de recorrer la lista de colisiones, detecta que proyectilJugador impactó
+		 * sobre Infetcado. Más aún, el proyectil lo mató. Cuando lo mata se debe soltar el premio, i.e., añadir un objeto
+		 * a la lista de entidades que se está recorriendo.
+		 * Modificar la lista en pleno recorrido hace que explote todo.
+		 * Capaz con synchronized funcione, o sino dejamos como estaba antes.
+		 */
+		
+//		if (this.vida <= 0) {
+//			this.morir();
+//		}
+	}
+	
+	public int getDamage() {
+		return damage;
 	}
 
 	public void outOfBounds() {

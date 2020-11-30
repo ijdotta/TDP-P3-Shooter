@@ -5,20 +5,13 @@ import logica.entidades.Entidad;
 
 public abstract class Proyectil extends Entidad {
 
-	// Atributos de instancia
-	int damage;
-
 	// Constructor
 	public Proyectil(Juego j) {
 		super(j);
 	}
-
-	// Metodos
-	public int getDamage() {
-		return damage;
+	
+	public void destruir() {
+		this.vida = -1;
 	}
 
-	public void setDamage(int dmg) {
-		damage = dmg;
-	}
 }

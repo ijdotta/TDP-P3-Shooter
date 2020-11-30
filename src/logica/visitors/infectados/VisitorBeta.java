@@ -65,6 +65,6 @@ public class VisitorBeta extends Visitor{
 
 	@Override
 	public void visitJugador(Jugador j) {
-		j.setVida(j.getVida() - beta.getDamage());
+		j.damage(beta);
 	}
 }
