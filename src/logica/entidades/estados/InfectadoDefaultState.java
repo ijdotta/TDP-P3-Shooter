@@ -1,11 +1,13 @@
 package logica.entidades.estados;
 
+import java.util.Random;
+
 import logica.entidades.infectados.Infectado;
 
 public class InfectadoDefaultState implements State {
-	
+
 	protected Infectado infectado;
-	
+
 	public InfectadoDefaultState(Infectado infectado) {
 		this.infectado = infectado;
 	}
@@ -17,7 +19,11 @@ public class InfectadoDefaultState implements State {
 
 	@Override
 	public void morir() {
-		infectado.getJuego().generarPremio(infectado);
+		Random r = new Random();
+		//P(soltarPremio) = 1/3
+		if (r.nextInt(3) == 0) {
+			infectado.getJuego().generarPremio(infectado);
+		}
 	}
 
 	@Override

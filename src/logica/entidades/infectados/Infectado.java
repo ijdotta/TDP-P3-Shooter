@@ -5,7 +5,6 @@ import logica.entidades.Personaje;
 import logica.entidades.estados.InfectadoDefaultState;
 import logica.factories.proyectiles.ProyectilInfectadoFactory;
 import logica.movimientos.MVertical;
-import logica.visitors.Visitor;
 
 public abstract class Infectado extends Personaje {
 
