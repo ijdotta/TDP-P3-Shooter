@@ -10,16 +10,16 @@ import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import entidades.Entidad;
-import entidades.Personaje;
-import entidades.jugador.Jugador;
-import factories.EntidadFactory;
-import factories.jugador.JugadorFactory;
 import gui.Ventana_principal;
-import movimientos.MHorizontal;
-import movimientos.Movimiento;
-import niveles.Nivel;
-import niveles.NivelUno;
+import logica.entidades.Entidad;
+import logica.entidades.Personaje;
+import logica.entidades.jugador.Jugador;
+import logica.factories.EntidadFactory;
+import logica.factories.jugador.JugadorFactory;
+import logica.movimientos.MHorizontal;
+import logica.movimientos.Movimiento;
+import logica.niveles.Nivel;
+import logica.niveles.NivelUno;
 
 public class Juego {
 	
