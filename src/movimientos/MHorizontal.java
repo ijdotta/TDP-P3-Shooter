@@ -1,7 +1,5 @@
 package movimientos;
 
-import javax.swing.JLabel;
-
 import entidades.Entidad;
 
 public class MHorizontal extends Movimiento
@@ -17,15 +15,14 @@ public class MHorizontal extends Movimiento
 	public void mover() 
 	{
 		int x,y;
-		JLabel label = entidad.getEntidadGrafica().getLabelImagen();
 		
-		x = (int) (label.getX() + entidad.getVelocidad() * direccion);
+		x = (int) (entidad.getX() + entidad.getVelocidad() * direccion);
 		
 		// Si esta adentro del escenario lo sigo moviendo
-		if ( (x >= 0) && ((x + entidad.getEntidadGrafica().getLabelImagen().getWidth() + 15) <= entidad.getJuego().getGui().getWidth()) ) {
-			y = (int) label.getY();
+		if ( (x >= 0) && ((x + entidad.getWidth()) <= entidad.getJuego().escenarioWidth() )) {
+			y = (int) entidad.getY();
 			
-			label.setLocation(x, y);
+			entidad.setLocation(x, y);
 		}		
 	}
 }

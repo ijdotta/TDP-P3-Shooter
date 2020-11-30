@@ -1,7 +1,5 @@
 package movimientos;
 
-import javax.swing.JLabel;
-
 import entidades.Entidad;
 
 public class MVertical extends Movimiento
@@ -15,11 +13,9 @@ public class MVertical extends Movimiento
 	}
 	
 	public void mover()
-	{
-		JLabel label = entidad.getEntidadGrafica().getLabelImagen();
-		
-		int x = (int) label.getX();
-		int y = (int) (label.getY() + entidad.getVelocidad() * direccion);
-		label.setLocation(x, y);
+	{		
+		int x = (int) entidad.getX();
+		int y = (int) (entidad.getY() + entidad.getVelocidad() * direccion);
+		entidad.setLocation(x, y);
 	}
 }
