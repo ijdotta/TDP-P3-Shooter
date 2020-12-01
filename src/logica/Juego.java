@@ -33,11 +33,8 @@ public class Juego {
 	private Ventana_principal gui;
 	private List<Entidad> entidades;
 	private Entidad jugador;
-	private List<Nivel> niveles;
 	private Nivel nivel;
 	private EntidadFactory factoryJugador;
-	private int indexLvl;
-	private boolean matoUno;
 	// Constructor
 	/**
 	 * Inicia el juego con el jugador centrado en la parte inferior y se configura
@@ -57,18 +54,13 @@ public class Juego {
 		posicionInicialJugador();
 		this.addEntidad(jugador);
 		gui.actualizarLabelVidaJugador("Vida: " + jugador.getVida());
-		matoUno=false;
 
 		// Dejar iniciado el juego desde el primer nivel
-		inicializarNiveles();
+		primerNivel();
 	}
 
-	private void inicializarNiveles() {
-		indexLvl=0;
-		niveles= new LinkedList<Nivel>();
-		niveles.add(0,new NivelZero(this));
-		niveles.add(1,new NivelUno(this));
-		nivel= niveles.get(indexLvl);
+	private void primerNivel() {
+		nivel= new NivelUno(this);
 	}
 
 	// Metodos
@@ -122,7 +114,6 @@ public class Juego {
 			// Ver si la entidad esta muerta
 			if (e.getVida() <= 0) {
 				a_eliminar.add(e);
-				matoUno=true;
 			}
 		}
 
@@ -133,23 +124,11 @@ public class Juego {
 			e.morir();
 			removerEntidad(e);
 		}	
-		
-		if(entidades.size()==1&&jugador.getVida()>0&&matoUno) {
-			indexLvl++;
-			siguienteNivel();
-		}
 		perderJuego();
 	}
 
 	private void siguienteNivel() {
-		if(indexLvl>=niveles.size()) {
-			gui.ganarJuego();
-		}else {
-			matoUno=false;
-			nivel= niveles.get(indexLvl);
-			gui.siguienteNivel();
-		}
-		
+			gui.siguienteNivel();		
 	}
 	
 
@@ -285,7 +264,7 @@ public class Juego {
 	}
 
 	public void finalizarJuego() {
-
+		gui.ganarJuego();
 	}
 
 	/**
@@ -316,7 +295,7 @@ public class Juego {
 		nivel.configurar();
 	}
 
-	private void limpiarTodoMenosJugador() {
+	public void limpiarTodoMenosJugador() {
 		// Remuevo graficamente a todas las entidades de la lista
 		for (Entidad e : entidades) {
 			gui.removeComponent(e.getLabelImagen());
@@ -334,7 +313,6 @@ public class Juego {
 		posicionInicialJugador();
 		this.addEntidad(jugador);
 		gui.actualizarLabelVidaJugador("Vida: " + jugador.getVida());
-		niveles.get(indexLvl);
 	}
 
 
@@ -378,7 +356,10 @@ public class Juego {
 	public void indicarNivel(String nivel_actual) {
 		gui.indicarNivel(nivel_actual);
 	}
-
+	
+	public void decrementarInfectados() {
+		nivel.decrementarInfectados();
+	}
 	private void inicializarLogger() {
 		if (logger == null) {
 
@@ -394,5 +375,6 @@ public class Juego {
 			for (Handler h : rootLoger.getHandlers())
 				h.setLevel(Level.OFF);
 		}
-	}
+	}	
+	
 }

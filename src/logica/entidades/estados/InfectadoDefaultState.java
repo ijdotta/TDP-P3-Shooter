@@ -24,6 +24,7 @@ public class InfectadoDefaultState implements State {
 		if (r.nextInt(3) == 0) {
 			infectado.getJuego().generarPremio(infectado);
 		}
+		infectado.getJuego().decrementarInfectados();
 	}
 
 	@Override

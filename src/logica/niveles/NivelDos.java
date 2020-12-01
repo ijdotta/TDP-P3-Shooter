@@ -13,50 +13,49 @@ import logica.factories.premios.PremioPermanentePocionFactory;
 import logica.factories.premios.PremioTemporalCuarentenaFactory;
 import logica.factories.premios.PremioTemporalSuperArmaFactory;
 
-public class NivelUno extends Nivel {
+public class NivelDos extends Nivel {
 	
 	private int cantidad_alpha;
 	private int cantidad_beta;
 	
-	public NivelUno(Juego j) {
+	public NivelDos(Juego j) {
 		super(j);
 	}
 
-	/**
-	 * Este es un ejemplo de como puede ser configurado un nivel. Background de
-	 * pasteleria, nivel Uno, hay 20 infectados total, 10 alpha, 10 beta, todos los
-	 * premios disponibles, por ahora no tiene nivel siguiente.
-	 */
+	@Override
 	public void configurar() {
 		// Cantidad de infectados
-		cantidad_alpha=2;
-		cantidad_beta=2;
-		cantidad_infectados=cantidad_beta+cantidad_alpha;
-		cant_primeraTanda=(cantidad_beta/2)+(cantidad_alpha/2);
-		// Siguiente nivel
-		siguienteNivel= new NivelDos(juego);
-		
-		// Background del nivel
-		juego.setBackground("/img/Background_Scenery1.png");
+				cantidad_alpha=7;
+				cantidad_beta=6;
+				cantidad_infectados=cantidad_beta+cantidad_alpha;
+				cant_primeraTanda=(cantidad_beta/2)+(cantidad_alpha/2);
+				// Siguiente nivel
+				siguienteNivel= new NivelDos(juego);
+				
+				// Background del nivel
+				juego.setBackground("/img/Background_Scenery1.png");
+				
+				// Indicar graficamente en cual nivel estoy
+				juego.indicarNivel("Nivel Dos");
+				
+				//Agrego la primera tanda de infecados
+				this.primeraTanda();
+				
+				// Determinando que premios pueden aparecer en el escenario
+				fPremios = new EntidadFactory[3];
 
-		// Indicar graficamente en cual nivel estoy
-		juego.indicarNivel("Nivel Uno");
-		
-		//Agrego la primera tanda de infecados
-		this.primeraTanda();
-		
-		// Determinando que premios pueden aparecer en el escenario
-		fPremios = new EntidadFactory[3];
+				fPremios[0] = new PremioPermanentePocionFactory(juego);
+				fPremios[1] = new PremioTemporalCuarentenaFactory(juego);
+				fPremios[2] = new PremioTemporalSuperArmaFactory(juego);
 
-		fPremios[0] = new PremioPermanentePocionFactory(juego);
-		fPremios[1] = new PremioTemporalCuarentenaFactory(juego);
-		fPremios[2] = new PremioTemporalSuperArmaFactory(juego);
-
-		// De cada premio temporal hacerle conocer el juego
-		TimerCuarentena.getInstance().setJuego(juego);
-		TimerSuperArma.getInstance().setJuego(juego);
+				// De cada premio temporal hacerle conocer el juego
+				TimerCuarentena.getInstance().setJuego(juego);
+				TimerSuperArma.getInstance().setJuego(juego);
+				
+				siguienteNivel=null;
 	}
-	
+
+	@Override
 	public void primeraTanda() {
 		Random rand = new Random();
 		Entidad enti;
@@ -87,8 +86,10 @@ public class NivelUno extends Nivel {
 				}
 				cantidad_alpha=cantidad_alpha-(cantidad_alpha/2);
 				cantidad_beta=cantidad_beta-(cantidad_beta/2);
+		
 	}
 
+	@Override
 	public void segundaTanda() {
 		Random rand = new Random();
 		Entidad enti;
@@ -115,6 +116,7 @@ public class NivelUno extends Nivel {
 			rand.nextInt(25) - enti.getHeight());
 			juego.addEntidad(enti);
 		}
+		
 	}
 
 }

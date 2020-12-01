@@ -75,6 +75,18 @@ public class NivelZero extends Nivel {
 
 	}
 
+	@Override
+	public void primeraTanda() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void segundaTanda() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
 
 /**

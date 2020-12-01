@@ -5,6 +5,8 @@ import java.util.Random;
 import logica.Juego;
 import logica.entidades.Entidad;
 import logica.factories.EntidadFactory;
+import logica.factories.infectados.InfectadoAlphaFactory;
+import logica.factories.infectados.InfectadoBetaFactory;
 
 public abstract class Nivel {
 
@@ -12,7 +14,8 @@ public abstract class Nivel {
 	protected Juego juego;
 	protected Nivel siguienteNivel;
 
-	protected int cantidad_infectados;
+	protected int cantidad_infectados; // Cantidad que falta por aparecer.
+	protected int cant_primeraTanda; //Cantidad de infectados de la primera tanda.
 	protected EntidadFactory[] fInfectados;
 	protected EntidadFactory[] fPremios;
 
@@ -52,7 +55,7 @@ public abstract class Nivel {
 	 */
 	public void siguienteNivel() {
 		if (siguienteNivel != null) {
-			juego.limpiarEscenario();
+			juego.limpiarTodoMenosJugador();
 			juego.posicionInicialJugador();
 
 			juego.setNivel(siguienteNivel);
@@ -94,7 +97,19 @@ public abstract class Nivel {
 	 */
 	public void decrementarInfectados() {
 		cantidad_infectados--;
+		cant_primeraTanda--;
+		if(cantidad_infectados==0) {
+			siguienteNivel();
+		}else{
+			if(cant_primeraTanda==0) {
+				segundaTanda();
+			}
+		}
 	}
+
+	public abstract void primeraTanda();
+	
+	public abstract void segundaTanda();
 
 	// Getters/ Setters
 	public void setJuego(Juego j) {

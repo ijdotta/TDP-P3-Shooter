@@ -47,5 +47,6 @@ public abstract class Infectado extends Personaje {
 			juego.reposicionarInfectado(this);
 		}
 	}
+	
 
 }
