@@ -22,9 +22,9 @@ import javax.swing.SwingConstants;
 import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
 
-import entidadesGraficas.EntidadGrafica;
-import entidadesGraficas.background.Background;
 import logica.Juego;
+import logica.entidadesGraficas.EntidadGrafica;
+import logica.entidadesGraficas.background.Background;
 
 public class Ventana_principal extends JFrame {
 
