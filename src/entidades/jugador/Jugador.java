@@ -13,15 +13,15 @@ public class Jugador extends Personaje {
 	// Constructor
 	public Jugador(Juego j) {
 		super(j);
-		
+
 		movimiento = new MHorizontal(this, MHorizontal.LEFT);
-		
+
 		entidadGrafica = new GraficoJugador(50, 50);
-		
+
 		velocidad = 9;
-		
+
 		visitor = new VisitorJugador(this);
-		
+
 		proyectil = new ProyectilJugadorFactory(juego);
 	}
 	// Metodos
@@ -30,10 +30,10 @@ public class Jugador extends Personaje {
 	public void accept(Visitor v) {
 		v.visitJugador(this);
 	}
-	
+
 	public void setVida(int val) {
 		super.setVida(val);
-		
-		juego.getGui().actualizarLabelVidaJugador("Vida: "+vida);
+
+		juego.getGui().actualizarLabelVidaJugador("Vida: " + vida);
 	}
 }

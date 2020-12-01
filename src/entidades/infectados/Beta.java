@@ -9,8 +9,8 @@ public class Beta extends Infectado {
 
 	public Beta(Juego j) {
 		super(j);
-		
-		entidadGrafica = new GraficoBeta(50, 50); 
+
+		entidadGrafica = new GraficoBeta(50, 50);
 		damage = 2;
 		visitor = new VisitorBeta(this);
 	}
@@ -19,5 +19,5 @@ public class Beta extends Infectado {
 	public void accept(Visitor v) {
 		v.visitBeta(this);
 	}
-	
+
 }

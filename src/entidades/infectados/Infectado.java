@@ -9,9 +9,10 @@ import movimientos.MVertical;
 public abstract class Infectado extends Personaje {
 	// Atributos de instancia
 	protected int damage;
-	
+
 	/**
 	 * SUBCLASE DEBE DETERMINAR DMG, VISITOR Y EG
+	 * 
 	 * @param j
 	 * @param eg
 	 * @param m
@@ -20,11 +21,11 @@ public abstract class Infectado extends Personaje {
 	 */
 	public Infectado(Juego j) {
 		super(j);
-		
+
 		velocidad = 1;
-		
+
 		movimiento = new MVertical(this, MVertical.DOWN);
-		
+
 		state = new InfectadoDefaultState(this);
 		proyectil = new ProyectilInfectadoFactory(juego);
 	}
@@ -37,7 +38,7 @@ public abstract class Infectado extends Personaje {
 	public void setDamage(int dmg) {
 		damage = dmg;
 	}
-	
+
 	/**
 	 * Si el infectado esta out of bounds me vuelvo a reposicionar
 	 */
@@ -46,5 +47,5 @@ public abstract class Infectado extends Personaje {
 			juego.reposicionarInfectado(this);
 		}
 	}
-	
+
 }

@@ -25,52 +25,52 @@ public class VisitorCuarentena extends Visitor {
 	@Override
 	public void visitAlpha(Alpha a) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void visitBeta(Beta b) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void visitCuarentena(EfectoCuarentena ec) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void visitPocion(EfectoPocion ep) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void visitSuperArma(EfectoSuperArma esa) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void visitProjectilJ(Proyectil_Jugador pj) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void visitProjectilI(Proyectil_Infectado pi) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void visitJugador(Jugador j) {
-		TimerP tc;		
+		TimerP tc;
 
 		// Iniciar/ Reiniciar Timer
 		tc = eCuarentena.getTimerCuarentena();
-		
+
 		if (tc.isRunning()) {
 			tc.restart();
 		} else {
@@ -78,13 +78,13 @@ public class VisitorCuarentena extends Visitor {
 			for (Entidad e : eCuarentena.getJuego().getEntidades()) {
 				e.accept(new VisitorAplicarCuarentena());
 			}
-			
+
 			tc.start();
 		}
 
 		// El premio muere
 		eCuarentena.setVida(-1);
-		
+
 	}
 
 }

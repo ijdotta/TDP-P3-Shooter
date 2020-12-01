@@ -7,15 +7,15 @@ public class InfectadoCongeladoState extends InfectadoDefaultState {
 	public InfectadoCongeladoState(Infectado infectado) {
 		super(infectado);
 	}
-	
+
 	@Override
 	public void disparar() {
-		//no hacer nada
+		// no hacer nada
 	}
-	
+
 	@Override
 	public void mover() {
-		//no hacer nada
+		// no hacer nada
 	}
 
 }

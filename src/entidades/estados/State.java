@@ -13,15 +13,16 @@ public interface State {
 	 * 2. Agregar un método getImage() : Image (o URL) y luego entidad tiene un
 	 * updateImage que usa esa imagen que recibió
 	 */
-	
+
 	/*
-	 * Estoy pensando que CongeladoState podría ser una subclase de DefaultState para que redefina solo lo que tiene que redefinir.
+	 * Estoy pensando que CongeladoState podría ser una subclase de DefaultState
+	 * para que redefina solo lo que tiene que redefinir.
 	 */
 
 	public void disparar();
 
 	public void morir();
-	
+
 	public void mover();
 
 }

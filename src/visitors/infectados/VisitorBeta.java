@@ -10,7 +10,7 @@ import entidades.proyectiles.Proyectil_Infectado;
 import entidades.proyectiles.Proyectil_Jugador;
 import visitors.Visitor;
 
-public class VisitorBeta extends Visitor{
+public class VisitorBeta extends Visitor {
 
 	// Atributos de instancia
 	private Beta beta;

@@ -18,10 +18,10 @@ public abstract class Nivel {
 
 	// Constructor
 	/**
-	 * Si hacemos esto así, de alguna forma los niveles pueden reutilizar el método
-	 * configurar, pero pueden ir variando las fábricas (y así, el tipo específico
-	 * de infectado) desde su propio constructor. Probablemente habrpia que añadir
-	 * más varables fInfectados
+	 * Si hacemos esto así, de alguna forma los niveles pueden reutilizar el
+	 * método configurar, pero pueden ir variando las fábricas (y así, el tipo
+	 * específico de infectado) desde su propio constructor. Probablemente habrpia
+	 * que añadir más varables fInfectados
 	 */
 	public Nivel(Juego j) {
 		juego = j;

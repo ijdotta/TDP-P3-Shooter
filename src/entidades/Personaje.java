@@ -7,6 +7,7 @@ public abstract class Personaje extends Entidad {
 
 	// Atributos de instancia
 	protected EntidadFactory proyectil;
+
 	// Constructor
 	/**
 	 * 
@@ -17,14 +18,13 @@ public abstract class Personaje extends Entidad {
 	public Personaje(Juego j) {
 		super(j);
 	}
+
 	// Metodos
-	public EntidadFactory getProyectil()
-	{
+	public EntidadFactory getProyectil() {
 		return proyectil;
 	}
-	
-	public void setProyectil(EntidadFactory p)
-	{
+
+	public void setProyectil(EntidadFactory p) {
 		proyectil = p;
 	}
 }

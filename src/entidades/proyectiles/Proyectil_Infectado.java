@@ -10,7 +10,7 @@ public class Proyectil_Infectado extends Proyectil {
 
 	public Proyectil_Infectado(Juego j) {
 		super(j);
-		
+
 		movimiento = new MVertical(this, MVertical.DOWN);
 		entidadGrafica = new GraficoProyectilInfectado(10, 10);
 		visitor = new VisitorProyectilI(this);

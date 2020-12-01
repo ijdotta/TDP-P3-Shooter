@@ -3,9 +3,9 @@ package entidades.estados;
 import entidades.infectados.Infectado;
 
 public class InfectadoDefaultState implements State {
-	
+
 	protected Infectado infectado;
-	
+
 	public InfectadoDefaultState(Infectado infectado) {
 		this.infectado = infectado;
 	}

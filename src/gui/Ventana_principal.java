@@ -40,6 +40,7 @@ public class Ventana_principal extends JFrame {
 	private JLabel lblIniciar;
 	private EntidadGrafica background;
 	private KeyListener keyListener;
+	private JLabel lblSiguienteNivel;
 
 	/**
 	 * Launch the application.
@@ -84,20 +85,20 @@ public class Ventana_principal extends JFrame {
 		lblVidaJugador.setHorizontalAlignment(SwingConstants.CENTER);
 		lblVidaJugador.setBounds(607, 37, 167, 25);
 		escenario.add(lblVidaJugador, Integer.valueOf(3));
-		
+
 		// Inicio label Status
 		lblStatus = new JLabel("Estado del juego");
 		lblStatus.setHorizontalAlignment(SwingConstants.CENTER);
 		lblStatus.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 32));
 		lblStatus.setBounds(150, 100, 500, 200);
 		escenario.add(lblStatus, Integer.valueOf(3));
-		
+
 		// Inicio label Nivel
 		lblNivel = new JLabel("Nivel actual");
 		lblNivel.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblNivel.setBounds(10, 11, 141, 69);
 		escenario.add(lblNivel, Integer.valueOf(3));
-		
+
 		// Inicio label Iniciar
 		lblIniciar = new JLabel("Iniciar");
 		this.agregarListenerIniciar();
@@ -114,9 +115,17 @@ public class Ventana_principal extends JFrame {
 		lblReiniciar.setVisible(false);
 		escenario.add(lblReiniciar, Integer.valueOf(5));
 		
+		// Inicio siguiente nivel
+		lblSiguienteNivel = new JLabel("Siguiente Nivel");
+		this.agregarListenerSigNivel();
+		lblSiguienteNivel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSiguienteNivel.setBounds(241, 200, 292, 87);
+		lblSiguienteNivel.setVisible(false);
+		escenario.add(lblSiguienteNivel, Integer.valueOf(5));
+
 		// Inicializar juego
 		juego = new Juego(this);
-		
+
 		// Para reconocer inputs
 		this.agregarListener();
 
@@ -126,6 +135,11 @@ public class Ventana_principal extends JFrame {
 		lblStatus.setText("Vertical Shooter");
 
 		// Inicializacion del timer
+		iniciarTimer();
+	}
+
+	private void iniciarTimer() {
+		//Creo el timer
 		refrescoTimer = 33; // 30 ticks/segundo
 		// refrescoTimer = 16; // 60 ticks/segundo
 
@@ -136,7 +150,30 @@ public class Ventana_principal extends JFrame {
 			}
 		});
 
-		timer.start();
+		timer.start();		
+	}
+
+	private void agregarListenerSigNivel() {
+		lblSiguienteNivel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				lblSiguienteNivel.setVisible(false);
+				lblStatus.setVisible(false);
+				juego.iniciarNivel();
+				iniciarTimer();
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				lblSiguienteNivel.setForeground(Color.yellow);
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				lblSiguienteNivel.setForeground(Color.black);
+			}
+		});
+		
 	}
 
 	private void agregarListenerIniciar() {
@@ -170,7 +207,7 @@ public class Ventana_principal extends JFrame {
 				background.setImagen("/img/background_Scenery43.png");
 				lblStatus.setForeground(Color.BLACK);
 				lblStatus.setText("Vertical Shooter");
-				
+
 				juego.reiniciarJuego();
 				agregarListener();
 				timer.start();
@@ -289,7 +326,14 @@ public class Ventana_principal extends JFrame {
 		lblStatus.setVisible(true);
 		timer.stop();
 	}
-
+	
+	public void siguienteNivel() {
+		this.lblSiguienteNivel.setVisible(true);
+		
+	}
+	
+	
+	
 	public void indicarNivel(String nivel_actual) {
 		lblNivel.setText(nivel_actual);
 	}

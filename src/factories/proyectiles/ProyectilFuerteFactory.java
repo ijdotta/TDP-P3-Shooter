@@ -5,7 +5,7 @@ import entidades.proyectiles.Proyectil_Fuerte;
 import factories.EntidadFactory;
 import logica.Juego;
 
-public class ProyectilFuerteFactory extends EntidadFactory{
+public class ProyectilFuerteFactory extends EntidadFactory {
 
 	public ProyectilFuerteFactory(Juego j) {
 		super(j);

@@ -18,9 +18,11 @@ public class NivelUno extends Nivel {
 	public NivelUno(Juego j) {
 		super(j);
 	}
+
 	/**
-	 * Este es un ejemplo de como puede ser configurado un nivel.
-	 * Background de pasteleria, nivel Uno, hay 20 infectados total, 10 alpha, 10 beta, todos los premios disponibles, por ahora no tiene nivel siguiente.
+	 * Este es un ejemplo de como puede ser configurado un nivel. Background de
+	 * pasteleria, nivel Uno, hay 20 infectados total, 10 alpha, 10 beta, todos los
+	 * premios disponibles, por ahora no tiene nivel siguiente.
 	 */
 	public void configurar() {
 		Random rand = new Random();
@@ -32,14 +34,14 @@ public class NivelUno extends Nivel {
 		// Indicar graficamente en cual nivel estoy
 		juego.indicarNivel("Nivel Uno");
 
-		// Infectados que se van a generan en el nivel		
+		// Infectados que se van a generan en el nivel
 
 		fInfectados = new EntidadFactory[2];
 		fInfectados[0] = new InfectadoAlphaFactory(juego);
 		fInfectados[1] = new InfectadoBetaFactory(juego);
 
 		// Agregando infectados al escenario
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 1; i++) {
 			enti = fInfectados[0].crearEntidad();
 
 			// Para ponerle una posicion inicial.
@@ -49,8 +51,8 @@ public class NivelUno extends Nivel {
 			juego.addEntidad(enti);
 			cantidad_infectados++;
 		}
-		
-		for (int i = 0; i < 10; i++) {
+
+		for (int i = 0; i < 1; i++) {
 			enti = fInfectados[1].crearEntidad();
 
 			// Para ponerle una posicion inicial.
@@ -71,9 +73,6 @@ public class NivelUno extends Nivel {
 		// De cada premio temporal hacerle conocer el juego
 		TimerCuarentena.getInstance().setJuego(juego);
 		TimerSuperArma.getInstance().setJuego(juego);
-		
-		// Siguiente nivel
-		siguienteNivel = null;
 	}
-	
+
 }

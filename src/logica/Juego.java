@@ -20,19 +20,22 @@ import movimientos.MHorizontal;
 import movimientos.Movimiento;
 import niveles.Nivel;
 import niveles.NivelUno;
+import niveles.NivelZero;
 
 public class Juego {
-	
-	//Testing
+
+	// Testing
 	private static Logger logger;
-	
+
 	// Atributos de instancia
 	private Ventana_principal gui;
 	private List<Entidad> entidades;
 	private Entidad jugador;
+	private List<Nivel> niveles;
 	private Nivel nivel;
 	private EntidadFactory factoryJugador;
-
+	private int indexLvl;
+	private boolean matoUno;
 	// Constructor
 	/**
 	 * Inicia el juego con el jugador centrado en la parte inferior y se configura
@@ -42,7 +45,7 @@ public class Juego {
 	 */
 	public Juego(Ventana_principal vp) {
 		inicializarLogger();
-		
+
 		this.gui = vp;
 		entidades = new LinkedList<Entidad>();
 		factoryJugador = new JugadorFactory(this);
@@ -52,9 +55,18 @@ public class Juego {
 		posicionInicialJugador();
 		this.addEntidad(jugador);
 		gui.actualizarLabelVidaJugador("Vida: " + jugador.getVida());
+		matoUno=false;
 
 		// Dejar iniciado el juego desde el primer nivel
-		principioDelJuego();
+		inicializarNiveles();
+	}
+
+	private void inicializarNiveles() {
+		indexLvl=0;
+		niveles= new LinkedList<Nivel>();
+		niveles.add(0,new NivelZero(this));
+		niveles.add(1,new NivelUno(this));
+		nivel= niveles.get(indexLvl);
 	}
 
 	// Metodos
@@ -108,6 +120,7 @@ public class Juego {
 			// Ver si la entidad esta muerta
 			if (e.getVida() <= 0) {
 				a_eliminar.add(e);
+				matoUno=true;
 			}
 		}
 
@@ -117,10 +130,26 @@ public class Juego {
 		for (Entidad e : a_eliminar) {
 			e.morir();
 			removerEntidad(e);
+		}	
+		
+		if(entidades.size()==1&&jugador.getVida()>0&&matoUno) {
+			indexLvl++;
+			siguienteNivel();
 		}
-
 		perderJuego();
 	}
+
+	private void siguienteNivel() {
+		if(indexLvl>niveles.size()) {
+			gui.ganarJuego();
+		}else {
+			matoUno=false;
+			nivel= niveles.get(indexLvl);
+			gui.siguienteNivel();
+		}
+		
+	}
+	
 
 	/**
 	 * Recibe los input de la gui
@@ -132,8 +161,7 @@ public class Juego {
 
 		if ((codigoTecla == KeyEvent.VK_LEFT) || (codigoTecla == (KeyEvent.VK_RIGHT))) {
 			moverJugador(e);
-		} 
-		else if (codigoTecla == (KeyEvent.VK_SPACE)) {
+		} else if (codigoTecla == (KeyEvent.VK_SPACE)) {
 			logger.finer("Tecla: espacio");
 			generarDisparo((Personaje) jugador);
 		}
@@ -179,14 +207,15 @@ public class Juego {
 
 	/**
 	 * Se le pide al nivel un premio al azar, si es que existe
+	 * 
 	 * @param enti entidad la cual suelta el premio
 	 */
 	public void generarPremio(Entidad enti) {
 		Entidad premio;
-		
+
 		if (nivel.hayPremio()) {
 			premio = nivel.getPremioRandom();
-			
+
 			// Posiciono el premio en el centro de la entidad
 			premio.setLocation(enti.getX() + (enti.getWidth() / 2) - (premio.getWidth() / 2),
 					enti.getY() + (enti.getHeight() / 2) - (premio.getHeight() / 2));
@@ -207,7 +236,7 @@ public class Juego {
 		entidades.remove(enti);
 		logger.info("***Removido*** Entidad: " + enti.toString());
 	}
-	
+
 	/**
 	 * Agrega la entidad a la lista y graficamente al escenario en la capa superior
 	 * 
@@ -244,12 +273,15 @@ public class Juego {
 
 		enti.setLocation(x, y);
 	}
+
 	/**
 	 * Posiciona al jugador en su posicion inicial.
 	 */
 	public void posicionInicialJugador() {
-		jugador.setLocation((gui.escenarioWidth() / 2) - (jugador.getWidth()/2), (gui.escenarioHeight() - 50) - (jugador.getHeight()/2));
+		jugador.setLocation((gui.escenarioWidth() / 2) - (jugador.getWidth() / 2),
+				(gui.escenarioHeight() - 50) - (jugador.getHeight() / 2));
 	}
+
 	public void finalizarJuego() {
 
 	}
@@ -266,44 +298,44 @@ public class Juego {
 	/**
 	 * Remueve todas las entidades de la lista y el escenario.
 	 */
-	public void limpiarEscenario() {	
+	public void limpiarEscenario() {
 		// Remuevo graficamente a todas las entidades de la lista
 		for (Entidad e : entidades) {
 			gui.removeComponent(e.getLabelImagen());
 		}
-		
+
 		// Creo una nueva lista de entidades vacia.
 		entidades = new LinkedList<Entidad>();
 	}
 
 	public void iniciarNivel() {
 		limpiarTodoMenosJugador();
-		
+
 		nivel.configurar();
 	}
+
 	private void limpiarTodoMenosJugador() {
 		// Remuevo graficamente a todas las entidades de la lista
 		for (Entidad e : entidades) {
 			gui.removeComponent(e.getLabelImagen());
 		}
-		
+
 		// Creo una nueva lista de entidades vacia.
 		entidades = new LinkedList<Entidad>();
 		this.addEntidad(jugador);
 	}
+
 	public void reiniciarJuego() {
 		this.limpiarEscenario();
-		
+
 		jugador = factoryJugador.crearEntidad();
 		posicionInicialJugador();
 		this.addEntidad(jugador);
-		gui.actualizarLabelVidaJugador("Vida: "+ jugador.getVida());
-		this.principioDelJuego();
+		gui.actualizarLabelVidaJugador("Vida: " + jugador.getVida());
+		niveles.get(indexLvl);
 	}
-	
-	private void principioDelJuego() {
-		nivel = new NivelUno(this);
-	}
+
+
 	// Getter/Setters
 	public void setNivel(Nivel nivel) {
 		this.nivel = nivel;
@@ -328,31 +360,34 @@ public class Juego {
 	public Jugador getJugador() {
 		return (Jugador) jugador;
 	}
+
 	public int escenarioWidth() {
 		return gui.escenarioWidth();
 	}
-	
+
 	public int escenarioHeight() {
 		return gui.escenarioHeight();
 	}
+
 	public void setBackground(String ruta) {
 		gui.setBackground(ruta);
 	}
-	
+
 	public void indicarNivel(String nivel_actual) {
 		gui.indicarNivel(nivel_actual);
 	}
+
 	private void inicializarLogger() {
 		if (logger == null) {
-			
+
 			logger = Logger.getLogger(this.getClass().getName());
-			
+
 			Handler hnd = new ConsoleHandler();
 			hnd.setLevel(Level.ALL);
 			logger.addHandler(hnd);
-			
+
 			logger.setLevel(Level.ALL);
-			
+
 			Logger rootLoger = logger.getParent();
 			for (Handler h : rootLoger.getHandlers())
 				h.setLevel(Level.OFF);

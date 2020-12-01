@@ -11,18 +11,20 @@ public class EfectoCuarentena extends EfectoTemporal {
 	// Atributos
 	protected TimerCuarentena timer_cuarentena;
 	public static final int DURACION = 4000;
+
 	// Constructor
 	public EfectoCuarentena(Juego j) {
 		super(j);
-		
+
 		velocidad = 5;
-		
+
 		entidadGrafica = new GraficoCuarentena(30, 30);
-		
+
 		visitor = new VisitorCuarentena(this);
-		
+
 		timer_cuarentena = TimerCuarentena.getInstance();
 	}
+
 	// Metodos
 	@Override
 	public void accept(Visitor v) {

@@ -9,7 +9,7 @@ public class Alpha extends Infectado {
 
 	public Alpha(Juego j) {
 		super(j);
-		
+
 		damage = 1;
 		entidadGrafica = new GraficoAlpha(50, 50);
 		visitor = new VisitorAlpha(this);

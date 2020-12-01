@@ -11,31 +11,32 @@ import visitors.premios.VisitorNormalizarInfectado;
 
 /**
  * Con patron singleton
+ * 
  * @author
  *
  */
-public class TimerCuarentena extends TimerP{
+public class TimerCuarentena extends TimerP {
 
 	// Atributos
 	private static TimerCuarentena timer_cuarentena = new TimerCuarentena();
-	
+
 	// Constructor
-	private TimerCuarentena(){
-		
+	private TimerCuarentena() {
+
 		timer = new Timer(EfectoCuarentena.DURACION, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+
 				// Devolver el estado normal del infectado
-				for(Entidad enti: juego.getEntidades()) {
+				for (Entidad enti : juego.getEntidades()) {
 					enti.accept(new VisitorNormalizarInfectado());
 				}
-				
+
 				timer.stop();
 			}
 		});
 	}
-	
+
 	// Metodos
 	public static TimerCuarentena getInstance() {
 		return timer_cuarentena;

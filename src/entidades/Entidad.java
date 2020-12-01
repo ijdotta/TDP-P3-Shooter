@@ -84,7 +84,7 @@ public abstract class Entidad {
 
 		dentro_x = ((entidad_x + entidad_w) >= 0) && (entidad_x <= frame_w);
 		dentro_y = ((entidad_y + entidad_h) >= 0) && (entidad_y <= frame_h);
-		
+
 		return !(dentro_x && dentro_y);
 	}
 
@@ -144,56 +144,65 @@ public abstract class Entidad {
 	public void setState(State s) {
 		state = s;
 	}
-	
+
 	/**
 	 * Retorna el JLabel de la entidad grafica.
+	 * 
 	 * @return JLabel de la entidad grafica.
 	 */
 	public JLabel getLabelImagen() {
 		return entidadGrafica.getLabelImagen();
 	}
-	
+
 	/**
 	 * Retorna el ancho del label.
+	 * 
 	 * @return ancho del label.
 	 */
 	public int getWidth() {
 		return entidadGrafica.getWidth();
 	}
-	
+
 	/**
 	 * Retorna la altura del label
+	 * 
 	 * @return altura del label
 	 */
 	public int getHeight() {
 		return entidadGrafica.getHeight();
 	}
-	
+
 	/**
 	 * setea el ancho y alto del label
+	 * 
 	 * @param w ancho
 	 * @param h alto
 	 */
 	public void setSize(int w, int h) {
 		entidadGrafica.setSize(w, h);
 	}
+
 	/**
 	 * Retorna la posicion del label en el eje x
+	 * 
 	 * @return posicion del label en el eje x
 	 */
 	public int getX() {
 		return entidadGrafica.getX();
 	}
-	
+
 	/**
 	 * Retorna la posicion del label en el eje y
+	 * 
 	 * @return posicion del label en el eje y
 	 */
 	public int getY() {
 		return entidadGrafica.getY();
 	}
+
 	/**
 	 * Setea la posicion del label segun los ejes coordenados
+	 * 
 	 * @param x posicion del label en el eje x
 	 * @param y posicion del label en el eje y
 	 */
