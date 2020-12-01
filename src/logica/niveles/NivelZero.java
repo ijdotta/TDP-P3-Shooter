@@ -1,22 +1,19 @@
 package logica.niveles;
 
-<<<<<<< HEAD:src/niveles/NivelZero.java
+
 import java.util.Random;
 
-import entidades.Entidad;
-import entidades.premios.timers.TimerCuarentena;
-import entidades.premios.timers.TimerSuperArma;
-import factories.EntidadFactory;
-import factories.infectados.InfectadoAlphaFactory;
-import factories.infectados.InfectadoBetaFactory;
-import factories.premios.PremioPermanentePocionFactory;
-import factories.premios.PremioTemporalCuarentenaFactory;
-import factories.premios.PremioTemporalSuperArmaFactory;
-=======
->>>>>>> ac4a7da6769403a542b10f48b109e09bfe369ce2:src/logica/niveles/NivelZero.java
 import logica.Juego;
 import logica.entidades.Entidad;
+import logica.entidades.premios.timers.TimerCuarentena;
+import logica.entidades.premios.timers.TimerSuperArma;
 import logica.factories.EntidadFactory;
+import logica.factories.infectados.InfectadoAlphaFactory;
+import logica.factories.infectados.InfectadoBetaFactory;
+import logica.factories.premios.PremioPermanentePocionFactory;
+import logica.factories.premios.PremioTemporalCuarentenaFactory;
+import logica.factories.premios.PremioTemporalSuperArmaFactory;
+
 
 public class NivelZero extends Nivel {
 

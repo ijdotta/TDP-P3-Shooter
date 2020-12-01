@@ -2,7 +2,9 @@ package movimientos;
 
 import javax.swing.JLabel;
 
-import entidades.Entidad;
+import logica.entidades.Entidad;
+import logica.movimientos.Movimiento;
+
 
 public class MHorizontal extends Movimiento {
 	public static final int RIGHT = 1;

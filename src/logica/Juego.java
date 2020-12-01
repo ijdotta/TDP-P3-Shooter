@@ -11,11 +11,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import gui.Ventana_principal;
-import movimientos.MHorizontal;
-import movimientos.Movimiento;
-import niveles.Nivel;
-import niveles.NivelUno;
-import niveles.NivelZero;
 import logica.entidades.Entidad;
 import logica.entidades.Personaje;
 import logica.entidades.jugador.Jugador;
@@ -25,6 +20,8 @@ import logica.movimientos.MHorizontal;
 import logica.movimientos.Movimiento;
 import logica.niveles.Nivel;
 import logica.niveles.NivelUno;
+import logica.niveles.NivelZero;
+
 
 
 public class Juego {
@@ -145,7 +142,7 @@ public class Juego {
 	}
 
 	private void siguienteNivel() {
-		if(indexLvl>niveles.size()) {
+		if(indexLvl>=niveles.size()) {
 			gui.ganarJuego();
 		}else {
 			matoUno=false;

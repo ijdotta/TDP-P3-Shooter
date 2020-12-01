@@ -13,20 +13,12 @@ import logica.visitors.Visitor;
 public class VisitorProyectilI extends Visitor {
 
 	// Atributos de instancia
-<<<<<<< HEAD:src/visitors/proyectiles/VisitorProyectilI.java
-	private Proyectil_Infectado projectili;
-
-	// Constructor
-	public VisitorProyectilI(Proyectil_Infectado pi) {
-		projectili = pi;
-=======
 	private Proyectil_Infectado proyectilInfectado;
 	
 	// Constructor
 	public VisitorProyectilI(Proyectil_Infectado pi)
 	{
 		proyectilInfectado = pi;
->>>>>>> ac4a7da6769403a542b10f48b109e09bfe369ce2:src/logica/visitors/proyectiles/VisitorProyectilI.java
 	}
 
 	// Metodos

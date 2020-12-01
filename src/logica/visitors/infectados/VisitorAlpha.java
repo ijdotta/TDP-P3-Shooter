@@ -1,5 +1,6 @@
 package logica.visitors.infectados;
 
+
 import logica.entidades.infectados.Alpha;
 import logica.entidades.infectados.Beta;
 import logica.entidades.jugador.Jugador;
@@ -16,8 +17,9 @@ public class VisitorAlpha extends Visitor {
 	private Alpha alpha;
 
 	// Constructor
-	public VisitorAlpha(Alpha a) {
-		alpha = a;
+
+	public VisitorAlpha(Alpha alpha) {
+		// TODO Auto-generated constructor stub
 	}
 
 	// Metodos

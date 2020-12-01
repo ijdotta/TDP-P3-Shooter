@@ -2,7 +2,9 @@ package movimientos;
 
 import javax.swing.JLabel;
 
-import entidades.Entidad;
+import logica.entidades.Entidad;
+import logica.movimientos.Movimiento;
+
 
 public class MVertical extends Movimiento {
 	public static final int UP = -1;
