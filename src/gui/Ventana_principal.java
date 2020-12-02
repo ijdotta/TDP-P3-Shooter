@@ -289,7 +289,7 @@ public class Ventana_principal extends JFrame {
 		lblStatus.setForeground(Color.GREEN);
 		lblStatus.setText("Ganaste");
 		lblStatus.setVisible(true);
-		timer.stop();
+		lblReiniciar.setVisible(true);
 	}
 	
 	public void siguienteNivel() {

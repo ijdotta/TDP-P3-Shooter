@@ -20,7 +20,6 @@ import logica.movimientos.MHorizontal;
 import logica.movimientos.Movimiento;
 import logica.niveles.Nivel;
 import logica.niveles.NivelUno;
-import logica.niveles.NivelZero;
 
 
 
@@ -53,12 +52,15 @@ public class Juego {
 		jugador = factoryJugador.crearEntidad();
 		posicionInicialJugador();
 		this.addEntidad(jugador);
-		gui.actualizarLabelVidaJugador("Vida: " + jugador.getVida());
+		this.actualizarVidaJugador(jugador.getVida());
 
 		// Dejar iniciado el juego desde el primer nivel
 		primerNivel();
 	}
 
+	public void actualizarVidaJugador(int vida) {
+		gui.actualizarLabelVidaJugador("Vida: " + vida);
+	}
 	private void primerNivel() {
 		nivel= new NivelUno(this);
 	}
@@ -307,14 +309,19 @@ public class Juego {
 	}
 
 	public void reiniciarJuego() {
+		// Limpiar todo el escenario
 		this.limpiarEscenario();
 
+		// Crear un jugador nuevo, alternativa para que empieze denuevo con 100 de vida.
 		jugador = factoryJugador.crearEntidad();
 		posicionInicialJugador();
 		this.addEntidad(jugador);
 		gui.actualizarLabelVidaJugador("Vida: " + jugador.getVida());
+		
+		// Dejar cargado el primer nivel
+		primerNivel();
 	}
-
+	
 
 	// Getter/Setters
 	public void setNivel(Nivel nivel) {

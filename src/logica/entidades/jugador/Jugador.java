@@ -1,6 +1,7 @@
 package logica.entidades.jugador;
 
 import logica.Juego;
+import logica.entidades.Entidad;
 import logica.entidades.Personaje;
 import logica.entidadesGraficas.jugador.GraficoJugador;
 import logica.factories.proyectiles.ProyectilJugadorFactory;
@@ -33,7 +34,15 @@ public class Jugador extends Personaje {
 
 	public void setVida(int val) {
 		super.setVida(val);
-
-		juego.getGui().actualizarLabelVidaJugador("Vida: " + vida);
+		this.actualizarVidaJugador();		
+	}
+	
+	public void damage(Entidad enemy) {
+		super.damage(enemy);
+		this.actualizarVidaJugador();
+	}
+	
+	private void actualizarVidaJugador() {
+		juego.actualizarVidaJugador(vida);
 	}
 }
