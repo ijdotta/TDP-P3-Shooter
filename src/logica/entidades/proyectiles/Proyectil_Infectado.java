@@ -15,10 +15,13 @@ import logica.visitors.proyectiles.VisitorProyectilI;
  * @author Steffano Miguel Pitto
  */
 public class Proyectil_Infectado extends Proyectil {
+	// Atributos de instancia
+	int rango;
+
 	// Constructor
 	/**
 	 * Inicia el proyectil del infectado con un movimiento hacia abajo, su sprite
-	 * grafico, su visitor, 10 de velocidad, 15 de daño.
+	 * grafico, su visitor, 10 de velocidad, 15 de daño y 300 de rango.
 	 * 
 	 * @param j juego a conocer
 	 */
@@ -30,11 +33,25 @@ public class Proyectil_Infectado extends Proyectil {
 		visitor = new VisitorProyectilI(this);
 		velocidad = 10;
 		damage = 15;
+		rango = 300;
 	}
 
 	// Metodos
 	@Override
 	public void accept(Visitor v) {
 		v.visitProjectilI(this);
+	}
+
+	/**
+	 * Moverse segun el comportamiento de su state, reducir la distancia recorrida.
+	 */
+	public void mover() {
+		super.mover();
+		rango -= velocidad;
+		
+		// Si ya recorrio su rango maximo, el proyectil muere
+		if(rango<= 0) {
+			vida = -1;
+		}
 	}
 }
