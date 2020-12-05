@@ -15,9 +15,6 @@ import logica.visitors.infectados.VisitorAlpha;
  * @author Steffano Miguel Pitto
  */
 public class Alpha extends Infectado {
-
-	protected static int VIDA_MAX = 200;
-
 	// Constructor
 	/**
 	 * Inicia el infectado tipo Alpha con 1 de daño, su sprite grafico y su visitor.
@@ -26,11 +23,9 @@ public class Alpha extends Infectado {
 	 */
 	public Alpha(Juego j) {
 		super(j);
-		vida = VIDA_MAX;
-		damage = 1;
+		damage = 2;
 		entidadGrafica = new GraficoAlpha(50, 50);
 		visitor = new VisitorAlpha(this);
-		System.out.println("Creando alpha con vida = " + this.vida + " y vida max = " + VIDA_MAX);
 	}
 
 	// Metodos

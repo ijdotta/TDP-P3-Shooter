@@ -1,6 +1,7 @@
 package logica.entidades.infectados;
 
 import logica.Juego;
+import logica.entidades.Entidad;
 import logica.entidadesGraficas.infectados.GraficoBeta;
 import logica.visitors.Visitor;
 import logica.visitors.infectados.VisitorBeta;
@@ -24,7 +25,7 @@ public class Beta extends Infectado {
 		super(j);
 
 		entidadGrafica = new GraficoBeta(50, 50);
-		damage = 2;
+		damage = 1;
 		visitor = new VisitorBeta(this);
 	}
 
@@ -34,4 +35,12 @@ public class Beta extends Infectado {
 		v.visitBeta(this);
 	}
 
+	/**
+	 * Recibe 20% menos de  daño de una entidad.
+	 * 
+	 * @param enemy Enemigo que provoca el daño.
+	 */
+	public void damage(Entidad enemy) {
+		this.vida -= (int) (enemy.getDamage() * 0.80);
+	}
 }

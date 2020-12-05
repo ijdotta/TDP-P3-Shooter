@@ -25,8 +25,6 @@ public abstract class Personaje extends Entidad {
 	 */
 	public Personaje(Juego j) {
 		super(j);
-		this.damage = 10; // TODO podría ser que cuando el personaje impaca con infectado también le haga
-							// daño
 	}
 
 	// Metodos
