@@ -10,10 +10,19 @@ import logica.movimientos.Movimiento;
 import logica.visitors.Visitor;
 import logica.visitors.VisitorNulo;
 
+/**
+ * Abstract Class Entidad Implementacion y definicion de los comportamientos
+ * generales de una entidad.
+ * 
+ * @author Comision 12
+ * @author Agustin Emanuel Gonzalez Diaz
+ * @author Ignacio Joaquin Dotta
+ * @author Steffano Miguel Pitto
+ */
 public abstract class Entidad {
-	
+
 	protected static int VIDA_MAX = 100;
-	
+
 	// Atributos de instancia
 	protected Juego juego;
 	protected EntidadGrafica entidadGrafica;
@@ -26,11 +35,9 @@ public abstract class Entidad {
 
 	// Constructor
 	/**
-	 * Inicia la entidad con 100 de vida.
+	 * Inicia la entidad con 100 de vida, un visitor nulo, y un state por defecto.
 	 * 
-	 * @param v  Movimiento que se va a utilizar
-	 * @param eg Velocidad
-	 * @param m  Entidad Grafica
+	 * @param j juego a conocer
 	 */
 	public Entidad(Juego j) {
 		juego = j;
@@ -40,53 +47,78 @@ public abstract class Entidad {
 	}
 
 	// Metodos
+	/**
+	 * Cada entidad concreta se reporta en el visitor pasado por parametro.
+	 * 
+	 * @param v visitor
+	 */
 	public abstract void accept(Visitor v);
 
 	/**
-	 * Redefinir disparo a aquellas entidades que disparen.
+	 * Disparar segun el comportamiento de su state.
 	 */
 	public void disparar() {
 		state.disparar();
 	}
 
 	/**
-	 * Redefinir morir a aquellas entidades que hagan alguna accion al morir.
+	 * Morir segun el comportamiento de su state.
 	 */
 	public void morir() {
 		state.morir();
 	}
 
+	/**
+	 * Moverse segun el comportamiento de su state.
+	 */
 	public void mover() {
 		state.mover();
 	}
-	
+
 	/**
 	 * Recibe daño de una entidad.
+	 * 
 	 * @param enemy Enemigo que provoca el daño.
 	 */
 	public void damage(Entidad enemy) {
 		this.vida -= enemy.getDamage();
-		
-		//TODO esto por el momento no funciona
+
+		// TODO esto por el momento no funciona
 		/*
-		 * ConcurrentModificationException cuando se busca la intersección de entidades. 
-		 * Supongo que es porque Juego.java recorre la lista de entidades en busca de colisiones
-		 * sin haber terminado de recorrer la lista de colisiones, detecta que proyectilJugador impactó
-		 * sobre Infetcado. Más aún, el proyectil lo mató. Cuando lo mata se debe soltar el premio, i.e., añadir un objeto
-		 * a la lista de entidades que se está recorriendo.
-		 * Modificar la lista en pleno recorrido hace que explote todo.
-		 * Capaz con synchronized funcione, o sino dejamos como estaba antes.
+		 * ConcurrentModificationException cuando se busca la intersección de entidades.
+		 * Supongo que es porque Juego.java recorre la lista de entidades en busca de
+		 * colisiones sin haber terminado de recorrer la lista de colisiones, detecta
+		 * que proyectilJugador impactó sobre Infetcado. Más aún, el proyectil lo mató.
+		 * Cuando lo mata se debe soltar el premio, i.e., añadir un objeto a la lista de
+		 * entidades que se está recorriendo. Modificar la lista en pleno recorrido hace
+		 * que explote todo. Capaz con synchronized funcione, o sino dejamos como estaba
+		 * antes.
 		 */
-		
+
 //		if (this.vida <= 0) {
 //			this.morir();
 //		}
 	}
-	
+
+	/**
+	 * retorna el daño que provoca la entidad
+	 * 
+	 * @return daño que provoca la entidad
+	 */
 	public int getDamage() {
 		return damage;
 	}
-
+	/**
+	 * Settea el daño actual con el que es pasado por parametro.
+	 * 
+	 * @param dmg daño nuevo
+	 */
+	public void setDamage(int dmg) {
+		damage = dmg;
+	}
+	/**
+	 * Si la entidad esta fuera del escenario procede a morir.
+	 */
 	public void outOfBounds() {
 		if (this.checkOutOfBounds()) {
 			vida = -1;
@@ -119,58 +151,128 @@ public abstract class Entidad {
 	}
 
 	// Setters/Getters
+	/**
+	 * Settea la entidad grafica actual con la que es pasada por parametro.
+	 * 
+	 * @param eg entidad grafica nueva
+	 */
 	public void setEntidadGrafica(EntidadGrafica eg) {
 		entidadGrafica = eg;
 	}
 
+	/**
+	 * Settea el movimiento actual con el que es pasado por parametro.
+	 * 
+	 * @param m movimiento nuevo
+	 */
 	public void setMovimiento(Movimiento m) {
 		movimiento = m;
 	}
 
+	/**
+	 * Settea la velocidad actual con la que es pasada por parametro.
+	 * 
+	 * @param v velocidad nueva
+	 */
 	public void setVelocidad(int v) {
 		velocidad = v;
 	}
 
+	/**
+	 * Retorna la velocidad actual
+	 * 
+	 * @return velocidad actual
+	 */
 	public int getVelocidad() {
 		return velocidad;
 	}
 
+	/**
+	 * Retorna la entidad grafica actual
+	 * 
+	 * @return entidad grafica actual
+	 */
 	public EntidadGrafica getEntidadGrafica() {
 		return entidadGrafica;
 	}
 
+	/**
+	 * Retorna el movimiento actual
+	 * 
+	 * @return movimiento actual
+	 */
 	public Movimiento getMovimiento() {
 		return movimiento;
 	}
 
+	/**
+	 * Retorna el visitor actual
+	 * 
+	 * @return visitor actual
+	 */
 	public Visitor getVisitor() {
 		return visitor;
 	}
 
+	/**
+	 * Settea el visitor actual con el que es pasado por parametro.
+	 * 
+	 * @param v visitor nuevo
+	 */
 	public void setVisitor(Visitor v) {
 		visitor = v;
 	}
 
+	/**
+	 * Retorna la vida actual
+	 * 
+	 * @return vida actual
+	 */
 	public int getVida() {
 		return vida;
 	}
 
+	/**
+	 * Settea la vida actual con la que es pasada por parametro.
+	 * 
+	 * @param val vida nueva
+	 */
 	public void setVida(int val) {
 		vida = val;
 	}
 
+	/**
+	 * Retorna el juego actual
+	 * 
+	 * @return juego actual
+	 */
 	public Juego getJuego() {
 		return juego;
 	}
 
+	/**
+	 * Settea el juego actual con el que es pasado por parametro.
+	 * 
+	 * @param j juego nuevo
+	 */
 	public void setJuego(Juego j) {
 		juego = j;
 	}
 
+	/**
+	 * Retorna el state actual
+	 * 
+	 * @return state actual
+	 */
 	public State getState() {
 		return state;
 	}
 
+	/**
+	 * Settea el state actual con el que es pasado por parametro.
+	 * 
+	 * @param s state nuevo
+	 */
 	public void setState(State s) {
 		state = s;
 	}

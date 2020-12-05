@@ -10,10 +10,12 @@ import logica.entidades.premios.EfectoCuarentena;
 import logica.visitors.premios.VisitorNormalizarInfectado;
 
 /**
- * Con patron singleton
+ * Class TimerCuarentena Implementacion del timer de un premio cuarentena.
  * 
- * @author
- *
+ * @author Comision 12
+ * @author Agustin Emanuel Gonzalez Diaz
+ * @author Ignacio Joaquin Dotta
+ * @author Steffano Miguel Pitto
  */
 public class TimerCuarentena extends TimerP {
 
@@ -21,6 +23,10 @@ public class TimerCuarentena extends TimerP {
 	private static TimerCuarentena timer_cuarentena = new TimerCuarentena();
 
 	// Constructor
+	/**
+	 * Inicia el timer con el comportamiento de ponerle a los infectados un state
+	 * normal.
+	 */
 	private TimerCuarentena() {
 
 		timer = new Timer(EfectoCuarentena.DURACION, new ActionListener() {
@@ -38,6 +44,10 @@ public class TimerCuarentena extends TimerP {
 	}
 
 	// Metodos
+	/**
+	 * Retorna la unica instancia del timer cuarentena
+	 * @return unica instancia del timer cuarentena
+	 */
 	public static TimerCuarentena getInstance() {
 		return timer_cuarentena;
 	}

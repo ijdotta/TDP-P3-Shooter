@@ -4,10 +4,13 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 /**
- * Implementacion de la parte grafica de una Entidad,
+ * Abstract Class EntidadGrafica Implementacion y definicion de los
+ * comportamientos generales de la parte grafica de una entidad.
  * 
  * @author Comision 12
- *
+ * @author Agustin Emanuel Gonzalez Diaz
+ * @author Ignacio Joaquin Dotta
+ * @author Steffano Miguel Pitto
  */
 public abstract class EntidadGrafica {
 	// Atributos de instancia

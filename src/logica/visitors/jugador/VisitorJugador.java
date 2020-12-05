@@ -9,57 +9,65 @@ import logica.entidades.premios.EfectoSuperArma;
 import logica.entidades.proyectiles.Proyectil_Infectado;
 import logica.entidades.proyectiles.Proyectil_Jugador;
 import logica.visitors.Visitor;
-
-public class VisitorJugador extends Visitor {
+/**
+ * Class VisitorJugador Implementacion de una entidad que visita a un jugador.
+ * 
+ * @author Comision 12
+ * @author Agustin Emanuel Gonzalez Diaz
+ * @author Ignacio Joaquin Dotta
+ * @author Steffano Miguel Pitto
+ */
+public class VisitorJugador implements Visitor {
 	// Atributos de instancia
 	private Jugador jugador;
 
 	// Constructor
+	/**
+	 * Inicia el visitor conociendo a su jugador
+	 * @param j jugador a conocer
+	 */
 	public VisitorJugador(Jugador j) {
 		jugador = j;
 	}
 
 	// Metodos
-	@Override
-	public void visitAlpha(Alpha a) {
-		a.damage(jugador);
-	}
+	/**
+	 * no tiene interaccion
+	 */
+	public void visitAlpha(Alpha a) {}
 
-	@Override
-	public void visitBeta(Beta b) {
-		b.damage(jugador);
-	}
+	/**
+	 * no tiene interaccion
+	 */
+	public void visitBeta(Beta b) {}
 
-	@Override
-	public void visitCuarentena(EfectoCuarentena ec) {
+	/**
+	 * no tiene interaccion
+	 */
+	public void visitCuarentena(EfectoCuarentena ec) {}
 
-	}
+	/**
+	 * no tiene interaccion
+	 */
+	public void visitPocion(EfectoPocion ep) {}
 
-	@Override
-	public void visitPocion(EfectoPocion ep) {
+	/**
+	 * no tiene interaccion
+	 */
+	public void visitSuperArma(EfectoSuperArma esa) {}
 
-	}
+	/**
+	 * no tiene interaccion
+	 */
+	public void visitProjectilJ(Proyectil_Jugador pj) {}
 
-	@Override
-	public void visitSuperArma(EfectoSuperArma esa) {
+	/**
+	 * no tiene interaccion
+	 */
+	public void visitProjectilI(Proyectil_Infectado pi) {}
 
-	}
-
-	@Override
-	public void visitProjectilJ(Proyectil_Jugador pj) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void visitProjectilI(Proyectil_Infectado pi) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void visitJugador(Jugador j) {
-		// TODO Auto-generated method stub
-
-	}
+	/**
+	 * no tiene interaccion
+	 */
+	public void visitJugador(Jugador j) {}
 }

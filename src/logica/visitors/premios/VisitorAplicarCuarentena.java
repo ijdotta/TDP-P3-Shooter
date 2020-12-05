@@ -11,61 +11,70 @@ import logica.entidades.premios.EfectoSuperArma;
 import logica.entidades.proyectiles.Proyectil_Infectado;
 import logica.entidades.proyectiles.Proyectil_Jugador;
 import logica.visitors.Visitor;
+/**
+ * Class VisitorAplicarCuarentena Implementacion de una entidad que visita al efecto de un premio cuarentena.
+ * 
+ * @author Comision 12
+ * @author Agustin Emanuel Gonzalez Diaz
+ * @author Ignacio Joaquin Dotta
+ * @author Steffano Miguel Pitto
+ */
+public class VisitorAplicarCuarentena implements Visitor {
 
-public class VisitorAplicarCuarentena extends Visitor {
-
-	@Override
+	/**
+	 * Congela al infectado de tipo alpha
+	 */
 	public void visitAlpha(Alpha a) {
 		this.congelarInfectado(a);
 	}
 
-	@Override
+	/**
+	 * Congela al infectado de tipo beta
+	 */
 	public void visitBeta(Beta b) {
 		this.congelarInfectado(b);
 	}
 
-	@Override
-	public void visitCuarentena(EfectoCuarentena ec) {
-		// TODO Auto-generated method stub
+	/**
+	 * no tiene interaccion
+	 */
+	public void visitCuarentena(EfectoCuarentena ec) {}
 
-	}
+	/**
+	 * no tiene interaccion
+	 */
+	public void visitPocion(EfectoPocion ep) {}
 
-	@Override
-	public void visitPocion(EfectoPocion ep) {
-		// TODO Auto-generated method stub
+	/**
+	 * no tiene interaccion
+	 */
+	public void visitSuperArma(EfectoSuperArma esa) {}
 
-	}
+	/**
+	 * no tiene interaccion
+	 */
+	public void visitProjectilJ(Proyectil_Jugador pj) {}
 
-	@Override
-	public void visitSuperArma(EfectoSuperArma esa) {
-		// TODO Auto-generated method stub
+	/**
+	 * no tiene interaccion
+	 */
+	public void visitProjectilI(Proyectil_Infectado pi) {}
 
-	}
-
-	@Override
-	public void visitProjectilJ(Proyectil_Jugador pj) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void visitProjectilI(Proyectil_Infectado pi) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void visitJugador(Jugador j) {
-		// TODO Auto-generated method stub
-
-	}
-
-	private void congelarInfectado(Infectado enti) {
+	/**
+	 * no tiene interaccion
+	 */
+	public void visitJugador(Jugador j) {}
+	
+	/**
+	 * Congela al infectado
+	 * @param inf infectado a congelar
+	 */
+	private void congelarInfectado(Infectado inf) {
 		// Guardo el estado anterior
 		// State state_anterior = enti.getState();
 		// Pongo su estado en congelado
-		enti.setState(new InfectadoCongeladoState(enti));
+		inf.setState(new InfectadoCongeladoState(inf));
 
-		System.out.println("***Congelado*** " + enti.toString());
+		System.out.println("***Congelado*** " + inf.toString());
 	}
 }

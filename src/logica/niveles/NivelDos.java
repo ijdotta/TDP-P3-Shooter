@@ -12,17 +12,32 @@ import logica.factories.infectados.InfectadoBetaFactory;
 import logica.factories.premios.PremioPermanentePocionFactory;
 import logica.factories.premios.PremioTemporalCuarentenaFactory;
 import logica.factories.premios.PremioTemporalSuperArmaFactory;
-
+/**
+ * Class NivelDos Implementacion del nivel dos.
+ * 
+ * @author Comision 12
+ * @author Agustin Emanuel Gonzalez Diaz
+ * @author Ignacio Joaquin Dotta
+ * @author Steffano Miguel Pitto
+ */
 public class NivelDos extends Nivel {
-	
+	// Atributos de instancia
 	private int cantidad_alpha;
 	private int cantidad_beta;
-	
+	// Constructor
+	/**
+	 * Inicia el nivel uno
+	 * @param j juego a conocer
+	 */
 	public NivelDos(Juego j) {
 		super(j);
 	}
 
-	@Override
+	// Metodos
+	/**
+	 * Background de la costa, nivel Dos, hay xx infectados total, xx alpha, xx
+	 * beta, todos los premios disponibles, no hay siguiente nivel.
+	 */
 	public void configurar() {
 		// Cantidad de infectados
 				cantidad_alpha=7;
@@ -55,7 +70,9 @@ public class NivelDos extends Nivel {
 				siguienteNivel=null;
 	}
 
-	@Override
+	/**
+	 * se genera la primer mitad de infectados alpha y beta indicados en configurar().
+	 */
 	public void primeraTanda() {
 		Random rand = new Random();
 		Entidad enti;
@@ -89,7 +106,9 @@ public class NivelDos extends Nivel {
 		
 	}
 
-	@Override
+	/**
+	 * se genera la segunda mitad de infectados alpha y beta indicados en configurar().
+	 */
 	public void segundaTanda() {
 		Random rand = new Random();
 		Entidad enti;

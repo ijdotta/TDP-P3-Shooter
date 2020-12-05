@@ -26,6 +26,14 @@ import logica.Juego;
 import logica.entidadesGraficas.EntidadGrafica;
 import logica.entidadesGraficas.background.Background;
 
+/**
+ * Class Ventana_principal Implementacion de la parte grafica y gui del juego.
+ * 
+ * @author Comision 12
+ * @author Agustin Emanuel Gonzalez Diaz
+ * @author Ignacio Joaquin Dotta
+ * @author Steffano Miguel Pitto
+ */
 public class Ventana_principal extends JFrame {
 
 	private static Logger logger;
@@ -40,7 +48,6 @@ public class Ventana_principal extends JFrame {
 	private JLabel lblIniciar;
 	private EntidadGrafica background;
 	private KeyListener keyListener;
-	private JLabel lblSiguienteNivel;
 
 	/**
 	 * Launch the application.
@@ -62,7 +69,9 @@ public class Ventana_principal extends JFrame {
 	 * Create the frame.
 	 */
 	public Ventana_principal() {
+		// Iniciar de Logger
 		inicializarLogger();
+
 		// Inicio del frame
 		setTitle("Vertical Shooter");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -71,11 +80,12 @@ public class Ventana_principal extends JFrame {
 		// Escenario
 		escenario = new JLayeredPane();
 		setContentPane(escenario);
-
 		escenario.setBorder(new EmptyBorder(5, 5, 5, 5));
 		escenario.setLayout(null);
 
 		// Inicio del background
+		// se restan pixeles para que se muestre correctamente la imagen dentro del
+		// frame
 		background = new Background(this.getWidth() - 16, this.getHeight() - 39);
 		escenario.add(background.getLabelImagen(), Integer.valueOf(0));
 
@@ -114,7 +124,6 @@ public class Ventana_principal extends JFrame {
 		lblReiniciar.setBounds(241, 200, 292, 87);
 		lblReiniciar.setVisible(false);
 		escenario.add(lblReiniciar, Integer.valueOf(5));
-		
 
 		// Inicializar juego
 		juego = new Juego(this);
@@ -138,9 +147,12 @@ public class Ventana_principal extends JFrame {
 			}
 		});
 
-		timer.start();		
+		timer.start();
 	}
 
+	/**
+	 * Agrega comportamientos al label Iniciar para simular un boton.
+	 */
 	private void agregarListenerIniciar() {
 		lblIniciar.addMouseListener(new MouseAdapter() {
 			@Override
@@ -162,6 +174,9 @@ public class Ventana_principal extends JFrame {
 		});
 	}
 
+	/**
+	 * Agrega comportamientos al label Reiniciar para simular un boton.
+	 */
 	private void agregarListenerReiniciar() {
 		lblReiniciar.addMouseListener(new MouseAdapter() {
 			@Override
@@ -191,9 +206,8 @@ public class Ventana_principal extends JFrame {
 	}
 
 	/**
-	 * Agrega listener del teclado al frame principal.
-	 * 
-	 * @param j
+	 * Agrega listener del teclado al frame principal, envia los inputs a la parte
+	 * logica del juego.
 	 */
 	private void agregarListener() {
 		keyListener = new KeyListener() {
@@ -216,7 +230,7 @@ public class Ventana_principal extends JFrame {
 	}
 
 	/**
-	 * remueve el listener actual
+	 * remueve el listener actual, el usuario no pueda seguir utilizando el teclado.
 	 */
 	private void removerListener() {
 		this.removeKeyListener(keyListener);
@@ -225,7 +239,7 @@ public class Ventana_principal extends JFrame {
 	/**
 	 * Pone la componente en la capa superior
 	 * 
-	 * @param comp
+	 * @param comp componente a agregar
 	 */
 	public void addComponent(JComponent comp) {
 		getContentPane().add(comp, Integer.valueOf(2));
@@ -234,7 +248,7 @@ public class Ventana_principal extends JFrame {
 	/**
 	 * Pone la componente la capa del medio
 	 * 
-	 * @param comp
+	 * @param comp componente a agregar
 	 */
 	public void addComponent1(JComponent comp) {
 		getContentPane().add(comp, Integer.valueOf(1));
@@ -243,19 +257,19 @@ public class Ventana_principal extends JFrame {
 	/**
 	 * remueve una componente del escenario
 	 * 
-	 * @param comp
+	 * @param comp componente a agregar
 	 */
 	public void removeComponent(JComponent comp) {
-		// Luego lo quito del escenario
+		// sacar del escenario el label
 		this.remove(comp);
 		// Repintar el background remueve las basuras graficas
 		background.getLabelImagen().repaint();
 	}
 
 	/**
-	 * Actualiza la vida del jugador
+	 * Actualiza la vida del jugador en display
 	 * 
-	 * @param s
+	 * @param s texto indicando la vida del jugador
 	 */
 	public void actualizarLabelVidaJugador(String s) {
 		lblVidaJugador.setText(s);
@@ -271,46 +285,64 @@ public class Ventana_principal extends JFrame {
 	}
 
 	/**
-	 * Mostrar que se perdio el juego. Inhabilitar inputs del teclado
+	 * Mostrar que se perdio el juego. Inhabilita inputs del teclado
 	 */
 	public void perderJuego() {
+		// Muestra en rojo que se perdio
 		lblStatus.setForeground(Color.RED);
 		lblStatus.setText("Perdiste");
 		lblStatus.setVisible(true);
+		// Se frena el juego
 		timer.stop();
+		// Se inhabilita el teclado
 		removerListener();
+		// Se da la opcion de reiniciar
 		lblReiniciar.setVisible(true);
 	}
 
 	/**
-	 * Mostrar que se gano el juego
+	 * Mostrar que se ganó el juego
 	 */
 	public void ganarJuego() {
+		// Muestra en verde que se gano.
 		lblStatus.setForeground(Color.GREEN);
 		lblStatus.setText("Ganaste");
 		lblStatus.setVisible(true);
+
+		// Se da la opcion de reiniciar
 		lblReiniciar.setVisible(true);
 	}
-	
-	public void siguienteNivel() {
-		this.lblSiguienteNivel.setVisible(true);
-		
-	}
-	
-	
-	
+
+	/**
+	 * Actualiza el nivel en display.
+	 * 
+	 * @param nivel_actual texto indicando el nivel actual
+	 */
 	public void indicarNivel(String nivel_actual) {
 		lblNivel.setText(nivel_actual);
 	}
 
+	/**
+	 * Retorna el ancho del escenario
+	 * 
+	 * @return ancho del escenario
+	 */
 	public int escenarioWidth() {
 		return background.getLabelImagen().getWidth();
 	}
 
+	/**
+	 * Retorna el alto del escenario
+	 * 
+	 * @return alto del escenario
+	 */
 	public int escenarioHeight() {
 		return background.getLabelImagen().getHeight();
 	}
 
+	/**
+	 * Inicializá el logger.
+	 */
 	private void inicializarLogger() {
 		if (logger == null) {
 

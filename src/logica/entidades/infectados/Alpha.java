@@ -6,10 +6,24 @@ import logica.entidadesGraficas.infectados.GraficoAlpha;
 import logica.visitors.Visitor;
 import logica.visitors.infectados.VisitorAlpha;
 
+/**
+ * Class Alpha Implementacion de un infectado tipo Alpha.
+ * 
+ * @author Comision 12
+ * @author Agustin Emanuel Gonzalez Diaz
+ * @author Ignacio Joaquin Dotta
+ * @author Steffano Miguel Pitto
+ */
 public class Alpha extends Infectado {
-	
+
 	protected static int VIDA_MAX = 200;
-	
+
+	// Constructor
+	/**
+	 * Inicia el infectado tipo Alpha con 1 de daño, su sprite grafico y su visitor.
+	 * 
+	 * @param j juego a conocer
+	 */
 	public Alpha(Juego j) {
 		super(j);
 		vida = VIDA_MAX;
@@ -19,13 +33,15 @@ public class Alpha extends Infectado {
 		System.out.println("Creando alpha con vida = " + this.vida + " y vida max = " + VIDA_MAX);
 	}
 
+	// Metodos
 	@Override
 	public void accept(Visitor v) {
 		v.visitAlpha(this);
 	}
-	
+
 	/**
-	 * Cuando la vida es inferior al 20% Alpha duplica su velocidad.
+	 * Recibe daño de una entidad, Cuando la vida es inferior al 20% el infectado
+	 * tipo Alpha actual duplica su velocidad.
 	 */
 	@Override
 	public void damage(Entidad enemy) {

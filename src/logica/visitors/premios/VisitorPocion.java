@@ -9,60 +9,66 @@ import logica.entidades.premios.EfectoSuperArma;
 import logica.entidades.proyectiles.Proyectil_Infectado;
 import logica.entidades.proyectiles.Proyectil_Jugador;
 import logica.visitors.Visitor;
-
-public class VisitorPocion extends Visitor {
+/**
+ * Class VisitorPocion Implementacion de una entidad que visita a un premio pocion.
+ * 
+ * @author Comision 12
+ * @author Agustin Emanuel Gonzalez Diaz
+ * @author Ignacio Joaquin Dotta
+ * @author Steffano Miguel Pitto
+ */
+public class VisitorPocion implements Visitor {
 	// Atributos de instancia
 	private EfectoPocion ePocion;
 
 	// Constructor
+	/**
+	 * Inicia el visitor conociendo a su premio pocion
+	 * @param ep premio pocion a conocer
+	 */
 	public VisitorPocion(EfectoPocion ep) {
 		ePocion = ep;
 	}
 
 	// Metodos
-	@Override
-	public void visitAlpha(Alpha a) {
-		// TODO Auto-generated method stub
+	/**
+	 * no tiene interaccion
+	 */
+	public void visitAlpha(Alpha a) {}
 
-	}
+	/**
+	 * no tiene interaccion
+	 */
+	public void visitBeta(Beta b) {}
 
-	@Override
-	public void visitBeta(Beta b) {
-		// TODO Auto-generated method stub
+	/**
+	 * no tiene interaccion
+	 */
+	public void visitCuarentena(EfectoCuarentena ec) {}
 
-	}
+	/**
+	 * no tiene interaccion
+	 */
+	public void visitPocion(EfectoPocion ep) {}
 
-	@Override
-	public void visitCuarentena(EfectoCuarentena ec) {
-		// TODO Auto-generated method stub
+	/**
+	 * no tiene interaccion
+	 */
+	public void visitSuperArma(EfectoSuperArma esa) {}
 
-	}
+	/**
+	 * no tiene interaccion
+	 */
+	public void visitProjectilJ(Proyectil_Jugador pj) {}
 
-	@Override
-	public void visitPocion(EfectoPocion ep) {
-		// TODO Auto-generated method stub
+	/**
+	 * no tiene interaccion
+	 */
+	public void visitProjectilI(Proyectil_Infectado pi) {}
 
-	}
-
-	@Override
-	public void visitSuperArma(EfectoSuperArma esa) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void visitProjectilJ(Proyectil_Jugador pj) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void visitProjectilI(Proyectil_Infectado pi) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
+	/**
+	 * cura al jugador
+	 */
 	public void visitJugador(Jugador j) {
 		int vida_aumentada = j.getVida() + EfectoPocion.CURACION;
 

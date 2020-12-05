@@ -8,10 +8,12 @@ import logica.entidades.premios.EfectoSuperArma;
 import logica.factories.proyectiles.ProyectilJugadorFactory;
 
 /**
- * Con patron Singleton
+ * Class TimerSuperArma Implementacion del timer de un premio super arma.
  * 
- * @author
- *
+ * @author Comision 12
+ * @author Agustin Emanuel Gonzalez Diaz
+ * @author Ignacio Joaquin Dotta
+ * @author Steffano Miguel Pitto
  */
 public class TimerSuperArma extends TimerP {
 
@@ -19,6 +21,10 @@ public class TimerSuperArma extends TimerP {
 	private static TimerSuperArma timer_super_arma = new TimerSuperArma();
 
 	// Constructor
+	/**
+	 * Inicia el timer con el comportamiento de ponerle al jugador su fabrica de
+	 * proyectiles por defecto.
+	 */
 	private TimerSuperArma() {
 
 		timer = new Timer(EfectoSuperArma.DURACION, new ActionListener() {
@@ -34,6 +40,10 @@ public class TimerSuperArma extends TimerP {
 	}
 
 	// Metodos
+	/**
+	 * Retorna la unica instancia del timer super arma
+	 * @return unica instancia del timer super arma
+	 */
 	public static TimerSuperArma getInstance() {
 		return timer_super_arma;
 	}

@@ -5,7 +5,14 @@ import logica.entidades.premios.timers.TimerSuperArma;
 import logica.entidadesGraficas.premios.GraficoSuperArma;
 import logica.visitors.Visitor;
 import logica.visitors.premios.VisitorSuperArma;
-
+/**
+ * Class EfectoSuperArma Implementacion de un premio super arma.
+ * 
+ * @author Comision 12
+ * @author Agustin Emanuel Gonzalez Diaz
+ * @author Ignacio Joaquin Dotta
+ * @author Steffano Miguel Pitto
+ */
 public class EfectoSuperArma extends EfectoTemporal {
 
 	// Atributos
@@ -13,6 +20,10 @@ public class EfectoSuperArma extends EfectoTemporal {
 	public static final int DURACION = 8000;
 
 	// Constructor
+	/**
+	 * Inicia el premio cuarentena con 5 de velocidad, su sprite grafico, su visitor y su timer.
+	 * @param j juego a conocer
+	 */
 	public EfectoSuperArma(Juego j) {
 		super(j);
 
@@ -30,7 +41,10 @@ public class EfectoSuperArma extends EfectoTemporal {
 	public void accept(Visitor v) {
 		v.visitSuperArma(this);
 	}
-
+	/**
+	 * Retorna el timer de super arma actual
+	 * @return timer de super arma actual
+	 */
 	public TimerSuperArma getTimerSuperArma() {
 		return timer_super_arma;
 	}

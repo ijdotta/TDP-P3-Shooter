@@ -21,8 +21,14 @@ import logica.movimientos.Movimiento;
 import logica.niveles.Nivel;
 import logica.niveles.NivelUno;
 
-
-
+/**
+ * Class Juego Implementacion del juego.
+ * 
+ * @author Comision 12
+ * @author Agustin Emanuel Gonzalez Diaz
+ * @author Ignacio Joaquin Dotta
+ * @author Steffano Miguel Pitto
+ */
 public class Juego {
 
 	// Testing
@@ -34,6 +40,7 @@ public class Juego {
 	private Entidad jugador;
 	private Nivel nivel;
 	private EntidadFactory factoryJugador;
+
 	// Constructor
 	/**
 	 * Inicia el juego con el jugador centrado en la parte inferior y se configura
@@ -58,14 +65,23 @@ public class Juego {
 		primerNivel();
 	}
 
+	// Metodos
+	/**
+	 * le pide a la gui que actualize la vida del jugador en display
+	 * 
+	 * @param vida vida actual del jugador
+	 */
 	public void actualizarVidaJugador(int vida) {
 		gui.actualizarLabelVidaJugador("Vida: " + vida);
 	}
+
+	/**
+	 * Setea el nivel actual al primer nivel
+	 */
 	private void primerNivel() {
-		nivel= new NivelUno(this);
+		nivel = new NivelUno(this);
 	}
 
-	// Metodos
 	/**
 	 * Logica principal del juego. Se encarga de mover, accionar y remover
 	 * entidades, asi como tambien se encarga de detectar colisiones.
@@ -125,14 +141,9 @@ public class Juego {
 		for (Entidad e : a_eliminar) {
 			e.morir();
 			removerEntidad(e);
-		}	
+		}
 		perderJuego();
 	}
-
-	private void siguienteNivel() {
-			gui.siguienteNivel();		
-	}
-	
 
 	/**
 	 * Recibe los input de la gui
@@ -265,6 +276,9 @@ public class Juego {
 				(gui.escenarioHeight() - 50) - (jugador.getHeight() / 2));
 	}
 
+	/**
+	 * hace que el juego se gane
+	 */
 	public void finalizarJuego() {
 		gui.ganarJuego();
 	}
@@ -291,12 +305,20 @@ public class Juego {
 		entidades = new LinkedList<Entidad>();
 	}
 
+	/**
+	 * Inicia el nivel actual para que se generen las entidades correspondientes, Se
+	 * limpia cualquier residuo excepto el jugador.
+	 */
 	public void iniciarNivel() {
 		limpiarTodoMenosJugador();
 
 		nivel.configurar();
 	}
 
+	/**
+	 * Remueve todas las entidades de la lista y graficamente del escenarios,
+	 * excepto el jugador
+	 */
 	public void limpiarTodoMenosJugador() {
 		// Remuevo graficamente a todas las entidades de la lista
 		for (Entidad e : entidades) {
@@ -308,6 +330,10 @@ public class Juego {
 		this.addEntidad(jugador);
 	}
 
+	/**
+	 * Reinicia el juego, limpiando el escenario, dejando al jugador como nuevo e
+	 * iniciando desde el primer nivel.
+	 */
 	public void reiniciarJuego() {
 		// Limpiar todo el escenario
 		this.limpiarEscenario();
@@ -317,56 +343,100 @@ public class Juego {
 		posicionInicialJugador();
 		this.addEntidad(jugador);
 		gui.actualizarLabelVidaJugador("Vida: " + jugador.getVida());
-		
+
 		// Dejar cargado el primer nivel
 		primerNivel();
 	}
-	
 
 	// Getter/Setters
+	/**
+	 * Settea el nivel actual con el que es pasado por parametro.
+	 * 
+	 * @param nivel nivel nuevo
+	 */
 	public void setNivel(Nivel nivel) {
 		this.nivel = nivel;
 	}
-
+	
+	/**
+	 * Retorna el nivel actual
+	 * @return nivel actual
+	 */
 	public Nivel getNivel() {
 		return nivel;
 	}
 
+	/**
+	 * Retorna la lista de entidades actual
+	 * @return lista de entidades actual
+	 */
 	public List<Entidad> getEntidades() {
 		return entidades;
 	}
-
+	/**
+	 * Retorna la gui actual
+	 * @return gui actual
+	 */
 	public Ventana_principal getGui() {
 		return gui;
 	}
-
+	/**
+	 * Settea la gui actual con la que es pasado por parametro.
+	 * 
+	 * @param vp gui nueva
+	 */
 	public void setGui(Ventana_principal vp) {
 		gui = vp;
 	}
-
+	/**
+	 * Retorna el jugador actual
+	 * @return jugador actual
+	 */
 	public Jugador getJugador() {
 		return (Jugador) jugador;
 	}
 
+	/**
+	 * Retorna el ancho del escenario
+	 * @return ancho del escenario
+	 */
 	public int escenarioWidth() {
 		return gui.escenarioWidth();
 	}
-
+	/**
+	 * Retorna el alto del escenario
+	 * @return alto del escenario
+	 */
 	public int escenarioHeight() {
 		return gui.escenarioHeight();
 	}
-
+	/**
+	 * Settea el background del escenario segun la ruta pasada por parametro.
+	 * 
+	 * @param ruta ruta de la imagen
+	 */
 	public void setBackground(String ruta) {
 		gui.setBackground(ruta);
 	}
 
+	/**
+	 * le pide a la gui que actualize el nivel en display segun lo pasado por parametro
+	 * @param nivel_actual texto con el nivel que se quiere mostrar
+	 */
 	public void indicarNivel(String nivel_actual) {
 		gui.indicarNivel(nivel_actual);
 	}
-	
+
+	/**
+	 * le pide al nivel que decremente la cantidad de infectados.
+	 */
 	public void decrementarInfectados() {
 		nivel.decrementarInfectados();
 	}
+
+	/**
+	 * Inicio del logger
+	 */
 	private void inicializarLogger() {
 		if (logger == null) {
 
@@ -382,6 +452,6 @@ public class Juego {
 			for (Handler h : rootLoger.getHandlers())
 				h.setLevel(Level.OFF);
 		}
-	}	
-	
+	}
+
 }

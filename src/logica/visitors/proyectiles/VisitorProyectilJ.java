@@ -9,8 +9,15 @@ import logica.entidades.premios.EfectoSuperArma;
 import logica.entidades.proyectiles.Proyectil_Infectado;
 import logica.entidades.proyectiles.Proyectil_Jugador;
 import logica.visitors.Visitor;
-
-public class VisitorProyectilJ extends Visitor {
+/**
+ * Class VisitorProyectilJ Implementacion de una entidad que visita a un infectado tipo beta.
+ * 
+ * @author Comision 12
+ * @author Agustin Emanuel Gonzalez Diaz
+ * @author Ignacio Joaquin Dotta
+ * @author Steffano Miguel Pitto
+ */
+public class VisitorProyectilJ implements Visitor {
 
 	// Atributos de instancia
 	private Proyectil_Jugador proyectilJugador;
@@ -22,59 +29,54 @@ public class VisitorProyectilJ extends Visitor {
 	}
 
 	// Metodos
-	@Override
+	/**
+	 * daña al infectado tipo alpha
+	 */
 	public void visitAlpha(Alpha a) {
-		if (a.getVida() <= 0) {
-			System.out.println("MUERTO: " + a.toString() + "   HP: " + a.getVida());
-		}
 		a.damage(proyectilJugador);
+		
+		// el proyectil muere
 		proyectilJugador.destruir();
 	}
 
-	@Override
+	/**
+	 * daña al infectado tipo beta
+	 */
 	public void visitBeta(Beta b) {
-
-		if (b.getVida() <= 0) {
-			System.out.println("MUERTO: " + b.toString());
-		}
 		b.damage(proyectilJugador);
+		
+		// el proyectil muere
 		proyectilJugador.destruir();
 	}
 
-	@Override
-	public void visitCuarentena(EfectoCuarentena ec) {
-		// TODO Auto-generated method stub
+	/**
+	 * no tiene interaccion
+	 */
+	public void visitCuarentena(EfectoCuarentena ec) {}
 
-	}
+	/**
+	 * no tiene interaccion
+	 */
+	public void visitPocion(EfectoPocion ep) {}
 
-	@Override
-	public void visitPocion(EfectoPocion ep) {
-		// TODO Auto-generated method stub
+	/**
+	 * no tiene interaccion
+	 */
+	public void visitSuperArma(EfectoSuperArma esa) {}
 
-	}
+	/**
+	 * no tiene interaccion
+	 */
+	public void visitProjectilJ(Proyectil_Jugador pj) {}
 
-	@Override
-	public void visitSuperArma(EfectoSuperArma esa) {
-		// TODO Auto-generated method stub
+	/**
+	 * no tiene interaccion
+	 */
+	public void visitProjectilI(Proyectil_Infectado pi) {}
 
-	}
-
-	@Override
-	public void visitProjectilJ(Proyectil_Jugador pj) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void visitProjectilI(Proyectil_Infectado pi) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void visitJugador(Jugador j) {
-		// TODO Auto-generated method stub
-
-	}
+	/**
+	 * no tiene interaccion
+	 */
+	public void visitJugador(Jugador j) {}
 
 }

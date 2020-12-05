@@ -12,7 +12,16 @@ import logica.entidades.proyectiles.Proyectil_Jugador;
 import logica.factories.proyectiles.ProyectilFuerteFactory;
 import logica.visitors.Visitor;
 
-public class VisitorSuperArma extends Visitor {
+/**
+ * Class VisitorSuperArma Implementacion de una entidad que visita a un premio
+ * super arma.
+ * 
+ * @author Comision 12
+ * @author Agustin Emanuel Gonzalez Diaz
+ * @author Ignacio Joaquin Dotta
+ * @author Steffano Miguel Pitto
+ */
+public class VisitorSuperArma implements Visitor {
 	// Atributos de instancia
 	private EfectoSuperArma eSuperArma;
 
@@ -22,49 +31,52 @@ public class VisitorSuperArma extends Visitor {
 	}
 
 	// Metodos
-	@Override
+	/**
+	 * no tiene interaccion
+	 */
 	public void visitAlpha(Alpha a) {
-		// TODO Auto-generated method stub
-
 	}
 
-	@Override
+	/**
+	 * no tiene interaccion
+	 */
 	public void visitBeta(Beta b) {
-		// TODO Auto-generated method stub
-
 	}
 
-	@Override
+	/**
+	 * no tiene interaccion
+	 */
 	public void visitCuarentena(EfectoCuarentena ec) {
-		// TODO Auto-generated method stub
-
 	}
 
-	@Override
+	/**
+	 * no tiene interaccion
+	 */
 	public void visitPocion(EfectoPocion ep) {
-		// TODO Auto-generated method stub
-
 	}
 
-	@Override
+	/**
+	 * no tiene interaccion
+	 */
 	public void visitSuperArma(EfectoSuperArma esa) {
-		// TODO Auto-generated method stub
-
 	}
 
-	@Override
+	/**
+	 * no tiene interaccion
+	 */
 	public void visitProjectilJ(Proyectil_Jugador pj) {
-		// TODO Auto-generated method stub
-
 	}
 
-	@Override
+	/**
+	 * no tiene interaccion
+	 */
 	public void visitProjectilI(Proyectil_Infectado pi) {
-		// TODO Auto-generated method stub
-
 	}
 
-	@Override
+	/**
+	 * Le da al jugador un proyectil mas fuerte, inicia el timer para devolverlo a
+	 * su proyectil comun. Si ya tenia el efecto, reinicia el timer.
+	 */
 	public void visitJugador(Jugador j) {
 		TimerP tsa;
 

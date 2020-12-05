@@ -8,6 +8,14 @@ import logica.factories.EntidadFactory;
 import logica.factories.infectados.InfectadoAlphaFactory;
 import logica.factories.infectados.InfectadoBetaFactory;
 
+/**
+ * Abstract Class Nivel Implementacion y definicion de un nivel en general.
+ * 
+ * @author Comision 12
+ * @author Agustin Emanuel Gonzalez Diaz
+ * @author Ignacio Joaquin Dotta
+ * @author Steffano Miguel Pitto
+ */
 public abstract class Nivel {
 
 	// Atributos de instancia
@@ -15,16 +23,15 @@ public abstract class Nivel {
 	protected Nivel siguienteNivel;
 
 	protected int cantidad_infectados; // Cantidad que falta por aparecer.
-	protected int cant_primeraTanda; //Cantidad de infectados de la primera tanda.
+	protected int cant_primeraTanda; // Cantidad de infectados de la primera tanda.
 	protected EntidadFactory[] fInfectados;
 	protected EntidadFactory[] fPremios;
 
 	// Constructor
 	/**
-	 * Si hacemos esto así, de alguna forma los niveles pueden reutilizar el
-	 * método configurar, pero pueden ir variando las fábricas (y así, el tipo
-	 * específico de infectado) desde su propio constructor. Probablemente habrpia
-	 * que añadir más varables fInfectados
+	 * Inicia el nivel con su juego a conocer
+	 * 
+	 * @param j juego a conocer
 	 */
 	public Nivel(Juego j) {
 		juego = j;
@@ -40,18 +47,9 @@ public abstract class Nivel {
 	public abstract void configurar();
 
 	/**
-	 * ¿Se encarga de limpiar el juego y hacer que se limpie la GUI de cosas viejas
-	 * del nivel anterior, para configurar el nuevo nivel?
-	 */
-	public void limpiar() {
-		// TODO tratar de utilizar juego.limpiarEscenario()
-		// como la lista de entidades es un atributo del juego es responsabilidad de el
-		// limpiarla
-	}
-
-	/**
-	 * Si el nivel se ganó, pasar al siguiente nivel Pidiendole al juego que limpie
-	 * cualquier residuos y reposicione al jugador
+	 * Si el nivel se ganó, pasar al siguiente nivel pidiendole al juego que limpie
+	 * cualquier residuo y reposicione al jugador. Si no hay mas niveles es porque
+	 * se gano el juego.
 	 */
 	public void siguienteNivel() {
 		if (siguienteNivel != null) {
@@ -93,25 +91,37 @@ public abstract class Nivel {
 	}
 
 	/**
-	 * Decrementa en uno (1) la cantidad de infectados.
+	 * Decrementa en uno (1) la cantidad de infectados. Y segun la cantidad de
+	 * infectados restante se avanzando de tanda o nivel.
 	 */
 	public void decrementarInfectados() {
 		cantidad_infectados--;
 		cant_primeraTanda--;
-		if(cantidad_infectados==0) {
+		if (cantidad_infectados == 0) {
 			siguienteNivel();
-		}else{
-			if(cant_primeraTanda==0) {
+		} else {
+			if (cant_primeraTanda == 0) {
 				segundaTanda();
 			}
 		}
 	}
 
+	/**
+	 * Indica los tipos y cantidad de infectados que se generan en la primer tanda.
+	 */
 	public abstract void primeraTanda();
-	
+
+	/**
+	 * Indica los tipos y cantidad de infectados que se generan en la segunda tanda.
+	 */
 	public abstract void segundaTanda();
 
 	// Getters/ Setters
+	/**
+	 * Settea el juego actual con el que es pasado por parametro.
+	 * 
+	 * @param j juego nuevo
+	 */
 	public void setJuego(Juego j) {
 		juego = j;
 	}

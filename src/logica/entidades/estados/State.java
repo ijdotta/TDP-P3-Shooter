@@ -1,5 +1,13 @@
 package logica.entidades.estados;
 
+/**
+ * Interface State define de los comportamientos generales de una entidad.
+ * 
+ * @author Comision 12
+ * @author Agustin Emanuel Gonzalez Diaz
+ * @author Ignacio Joaquin Dotta
+ * @author Steffano Miguel Pitto
+ */
 public interface State {
 
 	/*
@@ -15,18 +23,26 @@ public interface State {
 	 */
 
 	/*
-<<<<<<< HEAD:src/entidades/estados/State.java
-	 * Estoy pensando que CongeladoState podría ser una subclase de DefaultState
-	 * para que redefina solo lo que tiene que redefinir.
-=======
-	 * Estoy pensando que CongeladoState podrï¿½a ser una subclase de DefaultState para que redefina solo lo que tiene que redefinir.
->>>>>>> ac4a7da6769403a542b10f48b109e09bfe369ce2:src/logica/entidades/estados/State.java
+	 * <<<<<<< HEAD:src/entidades/estados/State.java Estoy pensando que
+	 * CongeladoState podrï¿½a ser una subclase de DefaultState para que redefina solo
+	 * lo que tiene que redefinir. ======= Estoy pensando que CongeladoState podrï¿½a
+	 * ser una subclase de DefaultState para que redefina solo lo que tiene que
+	 * redefinir. >>>>>>>
+	 * ac4a7da6769403a542b10f48b109e09bfe369ce2:src/logica/entidades/estados/State.
+	 * java
 	 */
 
+	/**
+	 * Implementacion de que hace una entidad al disparar
+	 */
 	public void disparar();
-
+	/**
+	 * Implementacion de que hace una entidad al morir
+	 */
 	public void morir();
-
+	/**
+	 * Implementacion de que hace una entidad al moverse
+	 */
 	public void mover();
 
 }

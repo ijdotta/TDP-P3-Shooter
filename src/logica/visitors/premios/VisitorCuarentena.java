@@ -12,59 +12,76 @@ import logica.entidades.proyectiles.Proyectil_Infectado;
 import logica.entidades.proyectiles.Proyectil_Jugador;
 import logica.visitors.Visitor;
 
-public class VisitorCuarentena extends Visitor {
+/**
+ * Class VisitorCuarentena Implementacion de una entidad que visita a un premio
+ * cuarentena.
+ * 
+ * @author Comision 12
+ * @author Agustin Emanuel Gonzalez Diaz
+ * @author Ignacio Joaquin Dotta
+ * @author Steffano Miguel Pitto
+ */
+public class VisitorCuarentena implements Visitor {
 	// Atributos de instancia
 	private EfectoCuarentena eCuarentena;
 
 	// Constructor
+	/**
+	 * Inicia el visitor conociendo a su premio cuarentena
+	 * 
+	 * @param ec premio cuarentena a conocer
+	 */
 	public VisitorCuarentena(EfectoCuarentena ec) {
 		eCuarentena = ec;
 	}
 
 	// Metodos
-	@Override
+	/**
+	 * no tiene interaccion
+	 */
 	public void visitAlpha(Alpha a) {
-		// TODO Auto-generated method stub
-
 	}
 
-	@Override
+	/**
+	 * no tiene interaccion
+	 */
 	public void visitBeta(Beta b) {
-		// TODO Auto-generated method stub
-
 	}
 
-	@Override
+	/**
+	 * no tiene interaccion
+	 */
 	public void visitCuarentena(EfectoCuarentena ec) {
-		// TODO Auto-generated method stub
-
 	}
 
-	@Override
+	/**
+	 * no tiene interaccion
+	 */
 	public void visitPocion(EfectoPocion ep) {
-		// TODO Auto-generated method stub
-
 	}
 
-	@Override
+	/**
+	 * no tiene interaccion
+	 */
 	public void visitSuperArma(EfectoSuperArma esa) {
-		// TODO Auto-generated method stub
-
 	}
 
-	@Override
+	/**
+	 * no tiene interaccion
+	 */
 	public void visitProjectilJ(Proyectil_Jugador pj) {
-		// TODO Auto-generated method stub
-
 	}
 
-	@Override
+	/**
+	 * no tiene interaccion
+	 */
 	public void visitProjectilI(Proyectil_Infectado pi) {
-		// TODO Auto-generated method stub
-
 	}
 
-	@Override
+	/**
+	 * Congela a todos los infectados, iniciando el timer para descongelarlos. Si ya
+	 * estaban congelados se reinicia el timer
+	 */
 	public void visitJugador(Jugador j) {
 		TimerP tc;
 

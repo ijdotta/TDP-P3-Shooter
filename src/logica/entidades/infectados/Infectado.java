@@ -6,39 +6,34 @@ import logica.entidades.estados.InfectadoDefaultState;
 import logica.factories.proyectiles.ProyectilInfectadoFactory;
 import logica.movimientos.MVertical;
 
+/**
+ * Abstract Class Infectado Implementacion de un infectado en general.
+ * 
+ * @author Comision 12
+ * @author Agustin Emanuel Gonzalez Diaz
+ * @author Ignacio Joaquin Dotta
+ * @author Steffano Miguel Pitto
+ */
 public abstract class Infectado extends Personaje {
 	// Atributos de instancia
 	protected int damage;
 
-
+	// Constructor
 	/**
-	 * SUBCLASE DEBE DETERMINAR DMG, VISITOR Y EG
+	 * Inicia un infectado con 1 de velocidad, un movimiento vertical hacia abajo, un state de
+	 * infectado y su fabrica de proyectiles de infectado.
 	 * 
-	 * @param j
-	 * @param eg
-	 * @param m
-	 * @param v
-	 * @param dmg
+	 * @param j juego a conocer
 	 */
 	public Infectado(Juego j) {
 		super(j);
-
-		velocidad = 1;
-
-		movimiento = new MVertical(this, MVertical.DOWN);
-
 		velocidad = 1;
 		movimiento = new MVertical(this, MVertical.DOWN);
 		state = new InfectadoDefaultState(this);
 		proyectil = new ProyectilInfectadoFactory(juego);
 	}
 
-	// subí damage a las entidades porque me sirve para el método damage
-
-	public void setDamage(int dmg) {
-		damage = dmg;
-	}
-
+	// Metodos
 	/**
 	 * Si el infectado esta out of bounds me vuelvo a reposicionar
 	 */
@@ -47,6 +42,5 @@ public abstract class Infectado extends Personaje {
 			juego.reposicionarInfectado(this);
 		}
 	}
-	
 
 }

@@ -9,61 +9,67 @@ import logica.entidades.premios.EfectoSuperArma;
 import logica.entidades.proyectiles.Proyectil_Infectado;
 import logica.entidades.proyectiles.Proyectil_Jugador;
 import logica.visitors.Visitor;
-
-public class VisitorBeta extends Visitor {
+/**
+ * Class VisitorBeta Implementacion de una entidad que visita a un infectado tipo beta.
+ * 
+ * @author Comision 12
+ * @author Agustin Emanuel Gonzalez Diaz
+ * @author Ignacio Joaquin Dotta
+ * @author Steffano Miguel Pitto
+ */
+public class VisitorBeta implements Visitor {
 
 	// Atributos de instancia
 	private Beta beta;
 
 	// Constructor
+	/**
+	 * Inicia el visitor conociendo a su infectado beta
+	 * @param b infectado beta a conocer
+	 */
 	public VisitorBeta(Beta b) {
 		beta = b;
 	}
 
 	// Metodos
-	@Override
-	public void visitAlpha(Alpha a) {
-		// TODO Auto-generated method stub
+	/**
+	 * no tiene interaccion
+	 */
+	public void visitAlpha(Alpha a) {}
 
-	}
+	/**
+	 * no tiene interaccion
+	 */
+	public void visitBeta(Beta b) {}
 
-	@Override
-	public void visitBeta(Beta b) {
-		// TODO Auto-generated method stub
+	/**
+	 * no tiene interaccion
+	 */
+	public void visitCuarentena(EfectoCuarentena ec) {}
 
-	}
+	/**
+	 * no tiene interaccion
+	 */
+	public void visitPocion(EfectoPocion ep) {}
 
-	@Override
-	public void visitCuarentena(EfectoCuarentena ec) {
-		// TODO Auto-generated method stub
+	/**
+	 * no tiene interaccion
+	 */
+	public void visitSuperArma(EfectoSuperArma esa) {}
 
-	}
+	/**
+	 * no tiene interaccion
+	 */
+	public void visitProjectilJ(Proyectil_Jugador pj) {}
 
-	@Override
-	public void visitPocion(EfectoPocion ep) {
-		// TODO Auto-generated method stub
+	/**
+	 * no tiene interaccion
+	 */
+	public void visitProjectilI(Proyectil_Infectado pi) {}
 
-	}
-
-	@Override
-	public void visitSuperArma(EfectoSuperArma esa) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void visitProjectilJ(Proyectil_Jugador pj) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void visitProjectilI(Proyectil_Infectado pi) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
+	/**
+	 * el infectado beta daña al jugador
+	 */
 	public void visitJugador(Jugador j) {
 		j.damage(beta);
 	}
