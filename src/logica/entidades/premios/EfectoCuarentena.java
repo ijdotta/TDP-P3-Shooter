@@ -16,7 +16,6 @@ import logica.visitors.premios.VisitorCuarentena;
 public class EfectoCuarentena extends EfectoTemporal {
 
 	// Atributos
-	protected TimerCuarentena timer_cuarentena;
 	public static final int DURACION = 4000;
 
 	// Constructor
@@ -33,20 +32,12 @@ public class EfectoCuarentena extends EfectoTemporal {
 
 		visitor = new VisitorCuarentena(this);
 
-		timer_cuarentena = TimerCuarentena.getInstance();
+		timer = TimerCuarentena.getInstance();
 	}
 
 	// Metodos
 	@Override
 	public void accept(Visitor v) {
 		v.visitCuarentena(this);
-	}
-
-	/**
-	 * Retorna el timer de cuarentena actual
-	 * @return timer de cuarentena actual
-	 */
-	public TimerCuarentena getTimerCuarentena() {
-		return timer_cuarentena;
 	}
 }

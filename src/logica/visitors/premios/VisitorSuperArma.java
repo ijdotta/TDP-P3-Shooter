@@ -81,7 +81,7 @@ public class VisitorSuperArma implements Visitor {
 		TimerP tsa;
 
 		// Inicio/ Reinicio el timer
-		tsa = eSuperArma.getTimerSuperArma();
+		tsa = eSuperArma.getTimer();
 
 		if (tsa.isRunning()) {
 			tsa.restart();

@@ -308,6 +308,9 @@ public class Ventana_principal extends JFrame {
 		lblStatus.setForeground(Color.GREEN);
 		lblStatus.setText("Ganaste");
 		lblStatus.setVisible(true);
+		
+		// Se inhabilita el teclado
+		removerListener();
 
 		// Se da la opcion de reiniciar
 		lblReiniciar.setVisible(true);

@@ -18,7 +18,7 @@ import logica.factories.proyectiles.ProyectilJugadorFactory;
 public class TimerSuperArma extends TimerP {
 
 	// Atributos
-	private static TimerSuperArma timer_super_arma = new TimerSuperArma();
+	private static TimerSuperArma timer_super_arma;
 
 	// Constructor
 	/**
@@ -45,6 +45,9 @@ public class TimerSuperArma extends TimerP {
 	 * @return unica instancia del timer super arma
 	 */
 	public static TimerSuperArma getInstance() {
+		if (timer_super_arma == null) {
+			timer_super_arma = new TimerSuperArma();
+		}
 		return timer_super_arma;
 	}
 }

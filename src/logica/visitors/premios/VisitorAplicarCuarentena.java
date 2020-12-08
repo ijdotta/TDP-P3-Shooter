@@ -70,11 +70,7 @@ public class VisitorAplicarCuarentena implements Visitor {
 	 * @param inf infectado a congelar
 	 */
 	private void congelarInfectado(Infectado inf) {
-		// Guardo el estado anterior
-		// State state_anterior = enti.getState();
 		// Pongo su estado en congelado
 		inf.setState(new InfectadoCongeladoState(inf));
-
-		System.out.println("***Congelado*** " + inf.toString());
 	}
 }

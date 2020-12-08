@@ -15,9 +15,6 @@ import logica.movimientos.MVertical;
  * @author Steffano Miguel Pitto
  */
 public abstract class Infectado extends Personaje {
-	// Atributos de instancia
-	protected int damage;
-
 	// Constructor
 	/**
 	 * Inicia un infectado con 1 de velocidad, un movimiento vertical hacia abajo, un state de

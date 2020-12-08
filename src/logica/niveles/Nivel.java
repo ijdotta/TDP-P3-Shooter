@@ -45,6 +45,15 @@ public abstract class Nivel {
 	 * setear su siguiente nivel, si no tiene entonces null.
 	 */
 	public abstract void configurar();
+	/**
+	 * Indica los tipos y cantidad de infectados que se generan en la primer tanda.
+	 */
+	public abstract void primeraTanda();
+
+	/**
+	 * Indica los tipos y cantidad de infectados que se generan en la segunda tanda.
+	 */
+	public abstract void segundaTanda();
 
 	/**
 	 * Si el nivel se ganó, pasar al siguiente nivel pidiendole al juego que limpie
@@ -105,16 +114,6 @@ public abstract class Nivel {
 			}
 		}
 	}
-
-	/**
-	 * Indica los tipos y cantidad de infectados que se generan en la primer tanda.
-	 */
-	public abstract void primeraTanda();
-
-	/**
-	 * Indica los tipos y cantidad de infectados que se generan en la segunda tanda.
-	 */
-	public abstract void segundaTanda();
 
 	// Getters/ Setters
 	/**

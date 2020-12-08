@@ -16,7 +16,6 @@ import logica.visitors.premios.VisitorSuperArma;
 public class EfectoSuperArma extends EfectoTemporal {
 
 	// Atributos
-	protected TimerSuperArma timer_super_arma;
 	public static final int DURACION = 8000;
 
 	// Constructor
@@ -33,19 +32,12 @@ public class EfectoSuperArma extends EfectoTemporal {
 
 		visitor = new VisitorSuperArma(this);
 
-		timer_super_arma = TimerSuperArma.getInstance();
+		timer = TimerSuperArma.getInstance();
 	}
 
 	// Metodos
 	@Override
 	public void accept(Visitor v) {
 		v.visitSuperArma(this);
-	}
-	/**
-	 * Retorna el timer de super arma actual
-	 * @return timer de super arma actual
-	 */
-	public TimerSuperArma getTimerSuperArma() {
-		return timer_super_arma;
 	}
 }

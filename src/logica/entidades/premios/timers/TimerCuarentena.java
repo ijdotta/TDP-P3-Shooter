@@ -20,7 +20,7 @@ import logica.visitors.premios.VisitorNormalizarInfectado;
 public class TimerCuarentena extends TimerP {
 
 	// Atributos
-	private static TimerCuarentena timer_cuarentena = new TimerCuarentena();
+	private static TimerCuarentena timer_cuarentena;
 
 	// Constructor
 	/**
@@ -49,6 +49,9 @@ public class TimerCuarentena extends TimerP {
 	 * @return unica instancia del timer cuarentena
 	 */
 	public static TimerCuarentena getInstance() {
+		if (timer_cuarentena == null) {
+			timer_cuarentena  = new TimerCuarentena();
+		}
 		return timer_cuarentena;
 	}
 }

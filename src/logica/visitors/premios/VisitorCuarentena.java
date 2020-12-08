@@ -86,7 +86,7 @@ public class VisitorCuarentena implements Visitor {
 		TimerP tc;
 
 		// Iniciar/ Reiniciar Timer
-		tc = eCuarentena.getTimerCuarentena();
+		tc = eCuarentena.getTimer();
 
 		if (tc.isRunning()) {
 			tc.restart();
@@ -101,7 +101,6 @@ public class VisitorCuarentena implements Visitor {
 
 		// El premio muere
 		eCuarentena.setVida(-1);
-
 	}
 
 }

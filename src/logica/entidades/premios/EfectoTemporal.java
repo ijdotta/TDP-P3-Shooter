@@ -1,6 +1,7 @@
 package logica.entidades.premios;
 
 import logica.Juego;
+import logica.entidades.premios.timers.TimerP;
 /**
  * Abstract Class EfectoTemporal Implementacion y definicion de los comportamientos
  * generales de un premio temporal.
@@ -12,6 +13,8 @@ import logica.Juego;
  */
 public abstract class EfectoTemporal extends Premio {
 
+	// Atributos de instancia
+	protected TimerP timer;
 	// Constructor
 	/**
 	 * Inicia el premio temporal
@@ -20,5 +23,11 @@ public abstract class EfectoTemporal extends Premio {
 	public EfectoTemporal(Juego j) {
 		super(j);
 	}
-
+	/**
+	 * Retorna el timer del premio actual
+	 * @return timer del premio actual
+	 */
+	public TimerP getTimer() {
+		return timer;
+	}
 }

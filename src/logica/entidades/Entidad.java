@@ -99,23 +99,6 @@ public abstract class Entidad {
 //			this.morir();
 //		}
 	}
-
-	/**
-	 * retorna el daño que provoca la entidad
-	 * 
-	 * @return daño que provoca la entidad
-	 */
-	public int getDamage() {
-		return damage;
-	}
-	/**
-	 * Settea el daño actual con el que es pasado por parametro.
-	 * 
-	 * @param dmg daño nuevo
-	 */
-	public void setDamage(int dmg) {
-		damage = dmg;
-	}
 	/**
 	 * Si la entidad esta fuera del escenario procede a morir.
 	 */
@@ -151,6 +134,22 @@ public abstract class Entidad {
 	}
 
 	// Setters/Getters
+	/**
+	 * retorna el daño que provoca la entidad
+	 * 
+	 * @return daño que provoca la entidad
+	 */
+	public int getDamage() {
+		return damage;
+	}
+	/**
+	 * Settea el daño actual con el que es pasado por parametro.
+	 * 
+	 * @param dmg daño nuevo
+	 */
+	public void setDamage(int dmg) {
+		damage = dmg;
+	}
 	/**
 	 * Settea la entidad grafica actual con la que es pasada por parametro.
 	 * 

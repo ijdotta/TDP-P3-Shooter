@@ -1,5 +1,6 @@
 package logica.visitors.proyectiles;
 
+import logica.entidades.Entidad;
 import logica.entidades.infectados.Alpha;
 import logica.entidades.infectados.Beta;
 import logica.entidades.jugador.Jugador;
@@ -33,20 +34,14 @@ public class VisitorProyectilJ implements Visitor {
 	 * daña al infectado tipo alpha
 	 */
 	public void visitAlpha(Alpha a) {
-		a.damage(proyectilJugador);
-		
-		// el proyectil muere
-		proyectilJugador.destruir();
+		this.damageInfectado(a);
 	}
 
 	/**
 	 * daña al infectado tipo beta
 	 */
 	public void visitBeta(Beta b) {
-		b.damage(proyectilJugador);
-		
-		// el proyectil muere
-		proyectilJugador.destruir();
+		this.damageInfectado(b);
 	}
 
 	/**
@@ -78,5 +73,16 @@ public class VisitorProyectilJ implements Visitor {
 	 * no tiene interaccion
 	 */
 	public void visitJugador(Jugador j) {}
+	
+	/**
+	 * daña al infectado
+	 * @param inf infectado que se quiere dañar
+	 */
+	private void damageInfectado(Entidad inf) {
+		inf.damage(proyectilJugador);
+		
+		// el proyectil muere
+		proyectilJugador.destruir();		
+	}
 
 }
