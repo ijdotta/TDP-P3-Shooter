@@ -311,6 +311,9 @@ public class Ventana_principal extends JFrame {
 		lblStatus.setText("Ganaste");
 		lblStatus.setVisible(true);
 		
+		// Se frena el juego
+		timer.stop();
+		
 		// Se inhabilita el teclado
 		removerListener();
 
