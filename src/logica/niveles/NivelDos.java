@@ -48,7 +48,7 @@ public class NivelDos extends Nivel {
 				siguienteNivel= new NivelDos(juego);
 				
 				// Background del nivel
-				juego.setBackground("/img/Background_Scenery20.png");
+				juego.setBackground("/img/background_Scenery20.png");
 				
 				// Indicar graficamente en cual nivel estoy
 				juego.indicarNivel("Nivel Dos");
