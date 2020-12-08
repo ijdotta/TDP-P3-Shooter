@@ -23,9 +23,4 @@ public abstract class Proyectil extends Entidad {
 	public Proyectil(Juego j) {
 		super(j);
 	}
-
-	public void destruir() {
-		this.vida = -1;
-	}
-
 }

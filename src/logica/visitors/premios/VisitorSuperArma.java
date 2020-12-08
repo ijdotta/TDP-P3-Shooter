@@ -93,7 +93,7 @@ public class VisitorSuperArma implements Visitor {
 		}
 
 		// El premio muere
-		eSuperArma.setVida(-1);
+		eSuperArma.destruir();
 
 	}
 

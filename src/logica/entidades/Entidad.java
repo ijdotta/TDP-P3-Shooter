@@ -20,10 +20,8 @@ import logica.visitors.VisitorNulo;
  * @author Steffano Miguel Pitto
  */
 public abstract class Entidad {
-
-	protected static int VIDA_MAX = 100;
-
 	// Atributos de instancia
+	protected static int VIDA_MAX = 100;
 	protected Juego juego;
 	protected EntidadGrafica entidadGrafica;
 	protected Movimiento movimiento;
@@ -131,6 +129,12 @@ public abstract class Entidad {
 		dentro_y = ((entidad_y + entidad_h) >= 0) && (entidad_y <= frame_h);
 
 		return !(dentro_x && dentro_y);
+	}
+	/**
+	 * Hace que la entidad muera.
+	 */
+	public void destruir() {
+		this.vida = -1;
 	}
 
 	// Setters/Getters

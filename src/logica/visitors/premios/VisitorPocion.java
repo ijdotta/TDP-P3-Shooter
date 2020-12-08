@@ -80,7 +80,7 @@ public class VisitorPocion implements Visitor {
 		}
 
 		// El premio muere
-		ePocion.setVida(-1);
+		ePocion.destruir();
 	}
 
 }

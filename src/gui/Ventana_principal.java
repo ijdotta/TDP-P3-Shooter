@@ -94,6 +94,7 @@ public class Ventana_principal extends JFrame {
 		lblVidaJugador.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblVidaJugador.setHorizontalAlignment(SwingConstants.CENTER);
 		lblVidaJugador.setBounds(607, 37, 167, 25);
+		lblVidaJugador.setForeground(Color.ORANGE);
 		escenario.add(lblVidaJugador, Integer.valueOf(3));
 
 		// Inicio label Status
@@ -107,6 +108,7 @@ public class Ventana_principal extends JFrame {
 		lblNivel = new JLabel("Nivel actual");
 		lblNivel.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblNivel.setBounds(10, 11, 141, 69);
+		lblNivel.setForeground(Color.ORANGE);
 		escenario.add(lblNivel, Integer.valueOf(3));
 
 		// Inicio label Iniciar

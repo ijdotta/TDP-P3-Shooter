@@ -84,6 +84,7 @@ public class VisitorCuarentena implements Visitor {
 	 */
 	public void visitJugador(Jugador j) {
 		TimerP tc;
+		Visitor vac;
 
 		// Iniciar/ Reiniciar Timer
 		tc = eCuarentena.getTimer();
@@ -92,15 +93,16 @@ public class VisitorCuarentena implements Visitor {
 			tc.restart();
 		} else {
 			// Congelar a los infectados
+			vac = new VisitorAplicarCuarentena();
 			for (Entidad e : eCuarentena.getJuego().getEntidades()) {
-				e.accept(new VisitorAplicarCuarentena());
+				e.accept(vac);
 			}
 
 			tc.start();
 		}
 
 		// El premio muere
-		eCuarentena.setVida(-1);
+		eCuarentena.destruir();
 	}
 
 }
