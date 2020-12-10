@@ -26,6 +26,7 @@ public class Alpha extends Infectado {
 		damage = 2;
 		entidadGrafica = new GraficoAlpha();
 		visitor = new VisitorAlpha(this);
+		velocidad = 2;
 	}
 
 	// Metodos

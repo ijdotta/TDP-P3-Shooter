@@ -19,7 +19,7 @@ public class Proyectil_Jugador extends Proyectil {
 	// Constructor
 	/**
 	 * Inicia el proyectil del jugador con un movimiento hacia arriba, su sprite
-	 * grafico, su visitor, 15 de velocidad, 25 de daño.
+	 * grafico, su visitor, 15 de velocidad, 15 de daño.
 	 * 
 	 * @param j juego a conocer
 	 */
@@ -29,7 +29,7 @@ public class Proyectil_Jugador extends Proyectil {
 		entidadGrafica = new GraficoProyectilJugador();
 		visitor = new VisitorProyectilJ(this);
 		velocidad = 15;
-		damage = 25;
+		damage = 15;
 	}
 
 	// Metodos
