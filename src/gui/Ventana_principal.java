@@ -78,7 +78,7 @@ public class Ventana_principal extends JFrame {
 		inicializarLogger();
 
 		// Inicio del frame
-		setTitle("Vertical Shooter");
+		setTitle("Pâtisserie Nightmare");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 816, 639);
 		setResizable(false);
