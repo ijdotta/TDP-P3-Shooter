@@ -16,12 +16,9 @@ public class GraficoProyectilInfectado extends EntidadGrafica {
 	/**
 	 * Inicia el grafico del proyectil del infectado con su sprite grafico
 	 * representativo.
-	 * 
-	 * @param w ancho
-	 * @param h alto
 	 */
-	public GraficoProyectilInfectado(int w, int h) {
-		super("/img/proyectil_infectado.png", w, h);
+	public GraficoProyectilInfectado() {
+		super("/img/strawberry.png", 20, 26);
 	}
 
 }

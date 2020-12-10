@@ -36,6 +36,11 @@ import logica.entidadesGraficas.background.Background;
  */
 public class Ventana_principal extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private static Logger logger;
 	private JLayeredPane escenario;
 	private Juego juego;

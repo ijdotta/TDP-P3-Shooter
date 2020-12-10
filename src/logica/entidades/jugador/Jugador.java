@@ -30,7 +30,7 @@ public class Jugador extends Personaje {
 
 		movimiento = new MHorizontal(this, MHorizontal.LEFT);
 
-		entidadGrafica = new GraficoJugador(50, 50);
+		entidadGrafica = new GraficoJugador();
 
 		velocidad = 9;
 

@@ -16,12 +16,9 @@ public class GraficoAlpha extends EntidadGrafica {
 	/**
 	 * Inicia el grafico del infectado tipo alpha con su sprite grafico
 	 * representativo.
-	 * 
-	 * @param w ancho
-	 * @param h alto
 	 */
-	public GraficoAlpha(int w, int h) {
-		super("/img/infectado_alpha.png", w, h);
+	public GraficoAlpha() {
+		super("/img/infectado_alpha.png", 60, 56);
 	}
 
 }

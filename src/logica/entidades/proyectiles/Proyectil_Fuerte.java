@@ -22,7 +22,7 @@ public class Proyectil_Fuerte extends Proyectil_Jugador {
 	 */
 	public Proyectil_Fuerte(Juego j) {
 		super(j);
-		entidadGrafica = new GraficoProyectilFuerte(6, 24);
+		entidadGrafica = new GraficoProyectilFuerte();
 		velocidad = 13;
 		damage = 34;
 	}

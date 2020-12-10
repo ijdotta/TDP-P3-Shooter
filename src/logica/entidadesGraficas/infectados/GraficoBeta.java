@@ -16,12 +16,9 @@ public class GraficoBeta extends EntidadGrafica {
 	/**
 	 * Inicia el grafico del infectado tipo beta con su sprite grafico
 	 * representativo.
-	 * 
-	 * @param w ancho
-	 * @param h alto
 	 */
-	public GraficoBeta(int w, int h) {
-		super("/img/infectado_beta.png", w, h);
+	public GraficoBeta() {
+		super("/img/infectado_beta.png", 60, 70);
 	}
 
 }

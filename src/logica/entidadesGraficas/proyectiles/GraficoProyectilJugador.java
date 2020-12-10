@@ -17,12 +17,9 @@ public class GraficoProyectilJugador extends EntidadGrafica {
 	/**
 	 * Inicia el grafico del proyectil del jugador con su sprite grafico
 	 * representativo.
-	 * 
-	 * @param w ancho
-	 * @param h alto
 	 */
-	public GraficoProyectilJugador(int w, int h) {
-		super("/img/proyectil_jugador.png", w, h);
+	public GraficoProyectilJugador() {
+		super("/img/fork.png", 15, 44);
 	}
 
 }

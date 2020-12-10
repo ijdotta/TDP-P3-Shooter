@@ -14,11 +14,8 @@ public class GraficoJugador extends EntidadGrafica {
 	// Constructor
 	/**
 	 * Inicia el grafico del jugador con su sprite grafico representativo.
-	 * 
-	 * @param w ancho
-	 * @param h alto
 	 */
-	public GraficoJugador(int w, int h) {
-		super("/img/jugador_jugador.png", w, h);
+	public GraficoJugador() {
+		super("/img/chef.png", 50, 71);
 	}
 }

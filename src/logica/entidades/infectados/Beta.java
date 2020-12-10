@@ -24,7 +24,7 @@ public class Beta extends Infectado {
 	public Beta(Juego j) {
 		super(j);
 
-		entidadGrafica = new GraficoBeta(50, 50);
+		entidadGrafica = new GraficoBeta();
 		damage = 1;
 		visitor = new VisitorBeta(this);
 	}

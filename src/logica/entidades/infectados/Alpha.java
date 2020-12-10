@@ -24,7 +24,7 @@ public class Alpha extends Infectado {
 	public Alpha(Juego j) {
 		super(j);
 		damage = 2;
-		entidadGrafica = new GraficoAlpha(50, 50);
+		entidadGrafica = new GraficoAlpha();
 		visitor = new VisitorAlpha(this);
 	}
 

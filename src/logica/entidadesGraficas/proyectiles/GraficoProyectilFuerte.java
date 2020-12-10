@@ -15,12 +15,9 @@ public class GraficoProyectilFuerte extends EntidadGrafica {
 	// Constructor
 	/**
 	 * Inicia el grafico del proyectil fuerte con su sprite grafico representativo.
-	 * 
-	 * @param w ancho
-	 * @param h alto
 	 */
-	public GraficoProyectilFuerte(int w, int h) {
-		super("/img/proyectil_fuerte.png", w, h);
+	public GraficoProyectilFuerte() {
+		super("/img/fork_plus.png", 15, 44);
 	}
 
 }

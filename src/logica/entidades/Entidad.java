@@ -8,7 +8,6 @@ import logica.entidades.estados.State;
 import logica.entidadesGraficas.EntidadGrafica;
 import logica.movimientos.Movimiento;
 import logica.visitors.Visitor;
-import logica.visitors.VisitorNulo;
 
 /**
  * Abstract Class Entidad Implementacion y definicion de los comportamientos
@@ -39,7 +38,6 @@ public abstract class Entidad {
 	 */
 	public Entidad(Juego j) {
 		juego = j;
-		visitor = new VisitorNulo();
 		vida = Entidad.VIDA_MAX;
 		state = new DefaultState(this);
 	}

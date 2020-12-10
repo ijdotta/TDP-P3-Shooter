@@ -29,7 +29,7 @@ public class Proyectil_Infectado extends Proyectil {
 		super(j);
 
 		movimiento = new MVertical(this, MVertical.DOWN);
-		entidadGrafica = new GraficoProyectilInfectado(10, 10);
+		entidadGrafica = new GraficoProyectilInfectado();
 		visitor = new VisitorProyectilI(this);
 		velocidad = 10;
 		damage = 15;

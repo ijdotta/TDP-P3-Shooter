@@ -5,8 +5,6 @@ import java.util.Random;
 import logica.Juego;
 import logica.entidades.Entidad;
 import logica.factories.EntidadFactory;
-import logica.factories.infectados.InfectadoAlphaFactory;
-import logica.factories.infectados.InfectadoBetaFactory;
 
 /**
  * Abstract Class Nivel Implementacion y definicion de un nivel en general.
