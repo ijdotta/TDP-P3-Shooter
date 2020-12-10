@@ -94,13 +94,16 @@ public class Ventana_principal extends JFrame {
 		// frame
 		background = new Background(this.getWidth() - 16, this.getHeight() - 39);
 		escenario.add(background.getLabelImagen(), Integer.valueOf(0));
+		
+		//Colores
+		Color lbl_txt_color = Color.WHITE;
 
 		// Label vida del jugador
 		lblVidaJugador = new JLabel("Vida del jugador");
 		lblVidaJugador.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblVidaJugador.setHorizontalAlignment(SwingConstants.CENTER);
 		lblVidaJugador.setBounds(607, 37, 167, 25);
-		lblVidaJugador.setForeground(Color.ORANGE);
+		lblVidaJugador.setForeground(lbl_txt_color);
 		escenario.add(lblVidaJugador, Integer.valueOf(3));
 
 		// Inicio label Status
@@ -114,7 +117,7 @@ public class Ventana_principal extends JFrame {
 		lblNivel = new JLabel("Nivel actual");
 		lblNivel.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblNivel.setBounds(10, 11, 141, 69);
-		lblNivel.setForeground(Color.ORANGE);
+		lblNivel.setForeground(lbl_txt_color);
 		escenario.add(lblNivel, Integer.valueOf(3));
 
 		// Inicio label Iniciar
@@ -123,6 +126,7 @@ public class Ventana_principal extends JFrame {
 		lblIniciar.setHorizontalAlignment(SwingConstants.CENTER);
 		lblIniciar.setBounds(241, 200, 292, 87);
 		lblIniciar.setVisible(true);
+		lblIniciar.setForeground(Color.BLACK);
 		escenario.add(lblIniciar, Integer.valueOf(5));
 
 		// Inicio label Reiniciar
@@ -143,10 +147,10 @@ public class Ventana_principal extends JFrame {
 		lblStatus.setVisible(true);
 		lblNivel.setText("Menu");
 		lblStatus.setText("Vertical Shooter");
+		lblStatus.setForeground(Color.BLACK);
 
 		// Inicializacion del timer
 		refrescoTimer = 33; // 30 ticks/segundo
-		// refrescoTimer = 16; // 60 ticks/segundo
 
 		timer = new Timer(refrescoTimer, new ActionListener() {
 			@Override
@@ -172,12 +176,12 @@ public class Ventana_principal extends JFrame {
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				lblIniciar.setForeground(Color.yellow);
+				lblIniciar.setForeground(Color.GRAY);
 			}
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				lblIniciar.setForeground(Color.black);
+				lblIniciar.setForeground(Color.BLACK);
 			}
 		});
 	}
@@ -203,12 +207,12 @@ public class Ventana_principal extends JFrame {
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				lblReiniciar.setForeground(Color.yellow);
+				lblReiniciar.setForeground(Color.GRAY);
 			}
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				lblReiniciar.setForeground(Color.black);
+				lblReiniciar.setForeground(Color.BLACK);
 			}
 		});
 	}
@@ -312,8 +316,8 @@ public class Ventana_principal extends JFrame {
 	 * Mostrar que se ganó el juego
 	 */
 	public void ganarJuego() {
-		// Muestra en verde que se gano.
-		lblStatus.setForeground(Color.GREEN);
+		// Muestra que se ganó.
+		lblStatus.setForeground(Color.BLACK);
 		lblStatus.setText("Ganaste");
 		lblStatus.setVisible(true);
 		
