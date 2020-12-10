@@ -11,6 +11,8 @@ dona mutante que pronto contagió a los demás pasteles. Ahora debe lanzarles te
 * Se utilizan las felchas de dirección (izquierda y derecha) del teclado para el movimiento del jugador.
 * Los disparos se efectúan con la barra espaciadora.
 
+* *Sobre la vida del jugador: se muestran incluso valores negativos intencionalmete para dar una noción de "por cuánto" perdió el juego.*
+
 ### Niveles
 * Cada nivel configura un escenario de juego:
 - Determina la cantidad de infectados,
