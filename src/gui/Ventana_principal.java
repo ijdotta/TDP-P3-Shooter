@@ -146,7 +146,7 @@ public class Ventana_principal extends JFrame {
 		// Muestreo inicial de labels
 		lblStatus.setVisible(true);
 		lblNivel.setText("Menu");
-		lblStatus.setText("Vertical Shooter");
+		lblStatus.setText("Pâtisserie Nightmare");
 		lblStatus.setForeground(Color.BLACK);
 
 		// Inicializacion del timer
@@ -198,7 +198,7 @@ public class Ventana_principal extends JFrame {
 				lblNivel.setText("Menu");
 				background.setImagen("/img/background_Scenery43.png");
 				lblStatus.setForeground(Color.BLACK);
-				lblStatus.setText("Vertical Shooter");
+				lblStatus.setText("Pâtisserie Nightmare");
 
 				juego.reiniciarJuego();
 				agregarListener();
@@ -318,7 +318,7 @@ public class Ventana_principal extends JFrame {
 	public void ganarJuego() {
 		// Muestra que se ganó.
 		lblStatus.setForeground(Color.BLACK);
-		lblStatus.setText("Ganaste");
+		lblStatus.setText("¡Ganaste!");
 		lblStatus.setVisible(true);
 		
 		// Se frena el juego
