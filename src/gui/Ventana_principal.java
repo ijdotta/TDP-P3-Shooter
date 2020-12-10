@@ -81,6 +81,7 @@ public class Ventana_principal extends JFrame {
 		setTitle("Vertical Shooter");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 816, 639);
+		setResizable(false);
 
 		// Escenario
 		escenario = new JLayeredPane();
