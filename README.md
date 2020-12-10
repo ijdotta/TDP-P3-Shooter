@@ -2,8 +2,8 @@
 
 Juego del estilo "Vertical Shooter". 
 
-Un pastelero se encontraba probando una nueva receta para atraer más clientes, pero accidentalmente creó una
-dona mutante que pronto contagió a los demás pasteles. Ahora debe lanzarles tenedores para salvarse.
+*Un pastelero se encontraba probando una nueva receta para atraer más clientes, pero accidentalmente creó una
+dona mutante que pronto contagió a los demás pasteles. Ahora debe lanzarles tenedores para salvarse.*
 
 ## Observaciones :eyes:
 
