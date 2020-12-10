@@ -17,7 +17,7 @@ public class Beta extends Infectado {
 
 	// Constructor
 	/**
-	 * Inicia el infectado tipo Alpha con 2 de daño, su sprite grafico y su visitor.
+	 * Inicia el infectado tipo Beta con 2 de daño, su sprite grafico y su visitor.
 	 * 
 	 * @param j juego a conocer
 	 */
@@ -36,7 +36,7 @@ public class Beta extends Infectado {
 	}
 
 	/**
-	 * Recibe 20% menos de  daño de una entidad.
+	 * Recibe 20% menos de daño de una entidad.
 	 * 
 	 * @param enemy Enemigo que provoca el daño.
 	 */
